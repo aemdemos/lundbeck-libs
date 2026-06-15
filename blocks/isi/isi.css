@@ -198,7 +198,7 @@ main .isi a:hover {
 
   .isi-bar-content {
     flex-direction: column;
-    padding: 0 16px;
+    padding: 0 var(--isi-gap-s);
   }
 
   .isi-bar-col {
@@ -212,21 +212,21 @@ main .isi a:hover {
   }
 
   .isi-bar-col p {
-    padding-bottom: 16px;
+    padding-bottom: var(--isi-gap-s);
   }
 
   .isi-bar-toggle {
-    right: 16px;
+    right: var(--isi-gap-s);
   }
 }
 
 /* ── Desktop ≥ 900px ─────────────────────────────────────────── */
 @media (width >= 900px) {
   .isi-bar-content {
-    padding: 0 32px;
+    padding: 0 var(--isi-gap-s);
   }
 
   .isi-bar-toggle {
-    right: 32px;
+    right: var(--isi-gap-s);
   }
 }

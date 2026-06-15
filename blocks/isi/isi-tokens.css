@@ -43,6 +43,6 @@
 
 @media (max-width: 768px) {
   :root {
-    --isi-bar-height: var(--isi-bar-height-mobile);
+     --isi-gap-s:16px;
   }
 }
