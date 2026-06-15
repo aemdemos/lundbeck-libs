@@ -30,12 +30,19 @@
  *     grep -rc  '/\* @boilerplate' styles/ blocks/   (remaining count per file)
  */
 :root { /* @libs */
-  /* brand colors */
+  /* vyepti.com brand colors */
   --brand-teal: #046183; /* @libs */
   --brand-teal-light: #7ebcc6; /* @libs */
   --brand-teal-muted: #41748d; /* @libs */
   --brand-rose: #c02c57; /* @libs */
   --brand-rose-dark: #9a2346; /* @libs */
+  
+  /* libs brand colors */
+  --brand-primary: var(--brand-teal);
+  --brand-primary-light: var(--brand-teal-light);
+  --brand-primary-dark: var(--brand-teal-muted);
+  --brand-secondary: var(--brand-rose);
+  --brand-secondary-dark: var(--brand-rose-dark);
   --accent-bg: #e1f0f6; /* @libs */
   --card-bg-light: #eff6f9; /* @libs */
 
