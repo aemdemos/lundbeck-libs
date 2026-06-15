@@ -1,6 +1,37 @@
-/* footer design tokens */
-:root { /* @boilerplate */
-  --footer-max-width: var(--max-width-site); /* @boilerplate */
-  --footer-padding: var(--spacing-xl) var(--spacing-m) var(--spacing-m); /* @boilerplate */
-  --footer-padding-desktop: var(--spacing-xl) var(--spacing-l) var(--spacing-m); /* @boilerplate */
+/* footer design tokens (Tier 2 — reference global tokens where one exists) */
+:root {
+  --footer-max-width: var(--max-width-site);
+
+  /* footer-specific colors */
+  --footer-text-color: #484848;
+
+  /* footer-specific line heights */
+  --footer-base-line-height: 27px;
+  --footer-disclaimer-line-height: 20px;
+  --footer-phone-label-line-height: 21px;
+  --footer-link-line-height: 22px;
+
+  /* legal strip */
+  --footer-legal-strip-padding: 10px 0;
+  --footer-legal-strip-link-gap: 40px;
+
+  /* main footer */
+  --footer-main-padding: 40px 0 28px;
+  --footer-main-inline-padding: 0 16px;
+  --footer-left-padding-right: 30px;
+  --footer-paragraph-gap: 16px;
+
+  /* phone CTA */
+  --footer-phone-row-height: 62px;
+  --footer-phone-label-gap: 11px;
+  --footer-phone-btn-radius: 30px;
+  --footer-phone-btn-padding: 20px 21px 20px 45px;
+  --footer-phone-icon-size: 20px;
+
+  /* social + logo */
+  --footer-social-row-gap: 27px;
+  --footer-social-icon-size: 32px;
+  --footer-social-icon-gap: 8px;
+  --footer-logo-width: 160px;
+  --footer-logo-offset: 19px;
 }
