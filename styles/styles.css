@@ -29,118 +29,125 @@
  *     grep -rn  '/\* @boilerplate' styles/ blocks/   (every untouched line)
  *     grep -rc  '/\* @boilerplate' styles/ blocks/   (remaining count per file)
  */
-:root {
+:root { /* @libs */
   /* brand colors */
-  --brand-teal: #046183;
-  --brand-teal-light: #7ebcc6;
-  --brand-teal-muted: #41748d;
-  --brand-rose: #c02c57;
-  --brand-rose-dark: #9a2346;
-  --accent-bg: #e1f0f6;
-  --card-bg-light: #eff6f9;
+  --brand-teal: #046183; /* @libs */
+  --brand-teal-light: #7ebcc6; /* @libs */
+  --brand-teal-muted: #41748d; /* @libs */
+  --brand-rose: #c02c57; /* @libs */
+  --brand-rose-dark: #9a2346; /* @libs */
+  --accent-bg: #e1f0f6; /* @libs */
+  --card-bg-light: #eff6f9; /* @libs */
 
   /* semantic colors */
-  --background-color: #fff;
-  --light-color: #e1f0f6;
-  --dark-color: #046183;
-  --text-color: #333;
-  --text-color-light: #666;
-  --link-color: #046183;
-  --link-hover-color: #7ebcc6;
-  --overlay-background-color: #e1f0f6;
+  --background-color: #fff; /* @libs */
+  --light-color: #e1f0f6; /* @libs */
+  --dark-color: #046183; /* @libs */
+  --text-color: #333; /* @libs */
+  --text-color-light: #666; /* @libs */
+  --link-color: #046183; /* @libs */
+  --link-hover-color: #7ebcc6; /* @libs */
+  --overlay-background-color: #e1f0f6; /* @libs */
 
   /* fonts */
-  --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
-  --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
-  --body-line-height: 1.4;
-  --heading-font-weight: 800;
+  --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
+  --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
+  --body-line-height: 1.4; /* @libs */
+  --heading-font-weight: 800; /* @libs */
+  --heading-line-height: 1.2; /* @libs */
+  --font-weight-bold: 700; /* @libs */
+  --block-margin-top: 0.8em; /* @libs */
+  --block-margin-bottom: 0.25em; /* @libs */
 
   /* body sizes */
-  --body-font-size-m: 24px;
-  --body-font-size-s: 16px;
-  --body-font-size-xs: 14px;
+  --body-font-size-m: 24px; /* @libs */
+  --body-font-size-ms: 18px; /* @libs */
+  --body-font-size-s: 16px; /* @libs */
+  --body-font-size-xs: 14px; /* @libs */
 
   /* heading sizes (mobile-first) */
-  --heading-font-size-xxl: 32px;
-  --heading-font-size-xl: 24px;
-  --heading-font-size-l: 20px;
-  --heading-font-size-m: 18px;
-  --heading-font-size-s: 18px;
-  --heading-font-size-xs: 16px;
+  --heading-font-size-xxl: 32px; /* @libs */
+  --heading-font-size-xl: 24px; /* @libs */
+  --heading-font-size-l: 20px; /* @libs */
+  --heading-font-size-m: 18px; /* @libs */
+  --heading-font-size-s: 18px; /* @libs */
+  --heading-font-size-xs: 16px; /* @libs */
 
   /* layout */
-  --max-width-site: 1140px;
-  --section-padding-vertical: 40px;
-  --icon-size: 24px;
+  --max-width-site: 1140px; /* @libs */
+  --section-padding-vertical: 40px; /* @libs */
+  --icon-size: 24px; /* @libs */
+  --h1-max-width: 14em; /* @libs */
 
   /* nav heights */
-  --nav-height: 200px;
-  --nav-brand-row-height-mobile: 97px;
-  --breadcrumbs-height: 34px;
-  --header-height: var(--nav-height);
+  --nav-height: 200px; /* @libs */
+  --nav-brand-row-height-mobile: 97px; /* @libs */
+  --breadcrumbs-height: 34px; /* @libs */
+  --header-height: var(--nav-height); /* @libs */
 
   /* fixed-width / code */
-  --fixed-font-family: menlo, consolas, monospace;
+  --fixed-font-family: menlo, consolas, monospace; /* @libs */
 
   /* button tokens */
-  --button-border-radius: 100px;
-  --button-border-width: 2px;
-  --button-padding: 19px 25px;
-  --button-font-size: 18px;
-  --button-font-weight: 700;
-  --button-transition: 0.2s ease-in-out;
+  --button-border-radius: 100px; /* @libs */
+  --button-border-width: 2px; /* @libs */
+  --button-padding: 19px 25px; /* @libs */
+  --button-font-size: 18px; /* @libs */
+  --button-font-weight: 700; /* @libs */
+  --button-line-height: 1.25; /* @libs */
+  --button-transition: 0.2s ease-in-out; /* @libs */
 }
 
 /* fallback font for proxima-nova */
-@font-face {
-  font-family: proxima-nova-fallback;
-  size-adjust: 98%;
-  src: local('Arial');
+@font-face { /* @libs */
+  font-family: proxima-nova-fallback; /* @libs */
+  size-adjust: 98%; /* @libs */
+  src: local('Arial'); /* @libs */
 }
 
-@media (width >= 900px) {
-  :root {
+@media (width >= 900px) { /* @libs */
+  :root { /* @libs */
     /* heading sizes scale up on desktop */
-    --heading-font-size-xxl: 56px;
-    --heading-font-size-xl: 24px;
-    --heading-font-size-l: 24px;
-    --heading-font-size-m: 18px;
-    --heading-font-size-s: 18px;
-    --heading-font-size-xs: 16px;
+    --heading-font-size-xxl: 56px; /* @libs */
+    --heading-font-size-xl: 24px; /* @libs */
+    --heading-font-size-l: 24px; /* @libs */
+    --heading-font-size-m: 18px; /* @libs */
+    --heading-font-size-s: 18px; /* @libs */
+    --heading-font-size-xs: 16px; /* @libs */
   }
 }
 
-body {
-  display: none;
-  margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
-  line-height: var(--body-line-height);
+body { /* @libs */
+  display: none; /* @libs */
+  margin: 0; /* @libs */
+  background-color: var(--background-color); /* @libs */
+  color: var(--text-color); /* @libs */
+  font-family: var(--body-font-family); /* @libs */
+  font-size: var(--body-font-size-s); /* @libs */
+  line-height: var(--body-line-height); /* @libs */
 }
 
-body.appear {
-  display: block;
+body.appear { /* @libs */
+  display: block; /* @libs */
 }
 
-header {
-  height: var(--header-height);
+header { /* @libs */
+  height: var(--header-height); /* @libs */
 }
 
 header .header,
-footer .footer {
-  visibility: hidden;
+footer .footer { /* @libs */
+  visibility: hidden; /* @libs */
 }
 
 header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] {
-  visibility: visible;
+footer .footer[data-block-status="loaded"] { /* @libs */
+  visibility: visible; /* @libs */
 }
 
-@media (width >= 900px) {
-  body[data-breadcrumbs] {
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
+@media (width >= 900px) { /* @libs */
+  body[data-breadcrumbs] { /* @libs */
+    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height)); /* @libs */
   }
 }
 
@@ -150,54 +157,54 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
-  font-weight: var(--heading-font-weight);
-  line-height: 1.2;
-  scroll-margin: 40px;
-  color: var(--text-color);
+h6 { /* @libs */
+  margin-top: var(--block-margin-top); /* @libs */
+  margin-bottom: var(--block-margin-bottom); /* @libs */
+  font-family: var(--heading-font-family); /* @libs */
+  font-weight: var(--heading-font-weight); /* @libs */
+  line-height: var(--heading-line-height); /* @libs */
+  scroll-margin: 40px; /* @libs */
+  color: var(--text-color); /* @libs */
 }
 
-h1 {
-  font-size: var(--heading-font-size-xxl);
-  line-height: 1.125;
-  color: var(--brand-teal);
-  margin-top: 0;
-  max-width: 14em;
+h1 { /* @libs */
+  font-size: var(--heading-font-size-xxl); /* @libs */
+  line-height: 1.125; /* @libs */
+  color: var(--brand-teal); /* @libs */
+  margin-top: 0; /* @libs */
+  max-width: var(--h1-max-width); /* @libs */
 }
 
-h2 {
-  font-size: var(--heading-font-size-xl);
-  line-height: 1.2;
-  color: var(--brand-teal);
+h2 { /* @libs */
+  font-size: var(--heading-font-size-xl); /* @libs */
+  line-height: var(--heading-line-height); /* @libs */
+  color: var(--brand-teal); /* @libs */
 }
 
-h3 {
-  font-size: var(--heading-font-size-l);
-  font-weight: 700;
-  line-height: 1.6;
-  color: var(--text-color);
-  margin-bottom: 0;
+h3 { /* @libs */
+  font-size: var(--heading-font-size-l); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+  line-height: 1.6; /* @libs */
+  color: var(--text-color); /* @libs */
+  margin-bottom: 0; /* @libs */
 }
 
-h4 {
-  font-size: var(--heading-font-size-m);
-  font-weight: 700;
-  line-height: 1.5;
+h4 { /* @libs */
+  font-size: var(--heading-font-size-m); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+  line-height: 1.5; /* @libs */
 }
 
-h5 {
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1.22;
-  color: var(--brand-teal-muted);
+h5 { /* @libs */
+  font-size: var(--heading-font-size-s); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+  line-height: 1.22; /* @libs */
+  color: var(--brand-teal-muted); /* @libs */
 }
 
-h6 {
-  font-size: var(--heading-font-size-xs);
-  font-weight: 700;
+h6 { /* @libs */
+  font-size: var(--heading-font-size-xs); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
 }
 
 p,
@@ -205,248 +212,248 @@ dl,
 ol,
 ul,
 pre,
-blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+blockquote { /* @libs */
+  margin-top: var(--block-margin-top); /* @libs */
+  margin-bottom: var(--block-margin-bottom); /* @libs */
 }
 
 code,
-pre {
-  font-family: var(--fixed-font-family);
-  font-size: var(--body-font-size-s);
+pre { /* @libs */
+  font-family: var(--fixed-font-family); /* @libs */
+  font-size: var(--body-font-size-s); /* @libs */
 }
 
-pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
+pre { /* @libs */
+  padding: 16px; /* @libs */
+  border-radius: 8px; /* @libs */
+  background-color: var(--light-color); /* @libs */
+  overflow-x: auto; /* @libs */
+  white-space: pre; /* @libs */
 }
 
-main > div {
-  margin: 40px 16px;
+main > div { /* @libs */
+  margin: 40px 16px; /* @libs */
 }
 
 input,
 textarea,
 select,
-button {
-  font: inherit;
+button { /* @libs */
+  font: inherit; /* @libs */
 }
 
 /* links */
-a {
-  color: var(--link-color);
-  text-decoration: none;
-  font-weight: 700;
-  overflow-wrap: break-word;
+a { /* @libs */
+  color: var(--link-color); /* @libs */
+  text-decoration: none; /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+  overflow-wrap: break-word; /* @libs */
 }
 
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: none;
+a:hover { /* @libs */
+  color: var(--link-hover-color); /* @libs */
+  text-decoration: none; /* @libs */
 }
 
 /* buttons - primary (rose) */
 a.button,
-button {
-  box-sizing: border-box;
-  max-width: 100%;
-  font-family: var(--body-font-family);
-  font-style: normal;
-  line-height: 1.25;
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: inline-block;
-  background-color: transparent;
-  color: var(--brand-teal);
-  font-weight: 700;
-  text-decoration: none;
-  transition: var(--button-transition);
-  margin: 0;
-  white-space: nowrap;
-  font-size: var(--button-font-size);
-  border: var(--button-border-width) solid var(--brand-teal);
-  border-radius: 100px;
-  padding: 19px 25px;
+button { /* @libs */
+  box-sizing: border-box; /* @libs */
+  max-width: 100%; /* @libs */
+  font-family: var(--body-font-family); /* @libs */
+  font-style: normal; /* @libs */
+  line-height: var(--button-line-height); /* @libs */
+  text-align: center; /* @libs */
+  cursor: pointer; /* @libs */
+  overflow: hidden; /* @libs */
+  text-overflow: ellipsis; /* @libs */
+  display: inline-block; /* @libs */
+  background-color: transparent; /* @libs */
+  color: var(--brand-teal); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+  text-decoration: none; /* @libs */
+  transition: var(--button-transition); /* @libs */
+  margin: 0; /* @libs */
+  white-space: nowrap; /* @libs */
+  font-size: var(--button-font-size); /* @libs */
+  border: var(--button-border-width) solid var(--brand-teal); /* @libs */
+  border-radius: var(--button-border-radius); /* @libs */
+  padding: var(--button-padding); /* @libs */
 }
 
 a.button:hover,
-a.button:focus {
-  border-color: var(--brand-teal-light);
-  color: var(--brand-teal-light);
-  text-decoration: none;
-  cursor: pointer;
+a.button:focus { /* @libs */
+  border-color: var(--brand-teal-light); /* @libs */
+  color: var(--brand-teal-light); /* @libs */
+  text-decoration: none; /* @libs */
+  cursor: pointer; /* @libs */
 }
 
-a.button:focus {
-  outline: 0;
+a.button:focus { /* @libs */
+  outline: 0; /* @libs */
 }
 
-button:hover {
-  background-color: var(--brand-rose-dark);
-  border-color: var(--brand-rose-dark);
-  cursor: pointer;
+button:hover { /* @libs */
+  background-color: var(--brand-rose-dark); /* @libs */
+  border-color: var(--brand-rose-dark); /* @libs */
+  cursor: pointer; /* @libs */
 }
 
 button:disabled,
-button:disabled:hover {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--text-color-light);
-  cursor: unset;
+button:disabled:hover { /* @libs */
+  background-color: var(--light-color); /* @libs */
+  border-color: var(--light-color); /* @libs */
+  color: var(--text-color-light); /* @libs */
+  cursor: unset; /* @libs */
 }
 
-a.button::after {
-  content: "";
-  display: inline-block;
-  width: 18px;
-  height: 9px;
-  margin-left: 8px;
-  vertical-align: middle;
-  background-image: url("/icons/arrow-right.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  transition: var(--button-transition);
+a.button::after { /* @libs */
+  content: ""; /* @libs */
+  display: inline-block; /* @libs */
+  width: 18px; /* @libs */
+  height: 9px; /* @libs */
+  margin-left: 8px; /* @libs */
+  vertical-align: middle; /* @libs */
+  background-image: url("/icons/arrow-right.svg"); /* @libs */
+  background-size: contain; /* @libs */
+  background-repeat: no-repeat; /* @libs */
+  background-position: center; /* @libs */
+  transition: var(--button-transition); /* @libs */
 }
 
 a.button:hover::after,
-a.button:focus::after {
-  opacity: 0.5;
+a.button:focus::after { /* @libs */
+  opacity: 0.5; /* @libs */
 }
 
 /* buttons - secondary (teal outline / ghost) */
 a.button.secondary,
-button.secondary {
-  background-color: var(--background-color);
-  border: var(--button-border-width) solid var(--brand-teal);
-  color: var(--brand-teal);
+button.secondary { /* @libs */
+  background-color: var(--background-color); /* @libs */
+  border: var(--button-border-width) solid var(--brand-teal); /* @libs */
+  color: var(--brand-teal); /* @libs */
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus,
 button.secondary:hover,
-button.secondary:focus {
-  background-color: var(--background-color);
-  border-color: var(--brand-teal-light);
-  color: var(--brand-teal-light);
+button.secondary:focus { /* @libs */
+  background-color: var(--background-color); /* @libs */
+  border-color: var(--brand-teal-light); /* @libs */
+  color: var(--brand-teal-light); /* @libs */
 }
 
-main img {
-  max-width: 100%;
-  width: auto;
-  height: auto;
+main img { /* @libs */
+  max-width: 100%; /* @libs */
+  width: auto; /* @libs */
+  height: auto; /* @libs */
 }
 
-.icon {
-  display: inline-block;
-  height: var(--icon-size);
-  width: var(--icon-size);
+.icon { /* @libs */
+  display: inline-block; /* @libs */
+  height: var(--icon-size); /* @libs */
+  width: var(--icon-size); /* @libs */
 }
 
-.icon img {
-  height: 100%;
-  width: 100%;
+.icon img { /* @libs */
+  height: 100%; /* @libs */
+  width: 100%; /* @libs */
 }
 
 /* sections */
-main > .section {
-  margin: 0;
-  padding-bottom: 24px;
+main > .section { /* @libs */
+  margin: 0; /* @libs */
+  padding-bottom: 24px; /* @libs */
 }
 
-main > .section > div {
-  max-width: 540px;
-  margin: auto;
-  padding: 0 15px;
+main > .section > div { /* @libs */
+  max-width: 540px; /* @libs */
+  margin: auto; /* @libs */
+  padding: 0 15px; /* @libs */
 }
 
-.section.center {
-  text-align: center;
-  padding-top: 20px;
+.section.center { /* @libs */
+  text-align: center; /* @libs */
+  padding-top: 20px; /* @libs */
 
-  h1 {
-    font-size: 32px;
-    max-width: unset;
+  h1 { /* @libs */
+    font-size: var(--heading-font-size-xxl); /* @libs */
+    max-width: unset; /* @libs */
   }
 
-  p {
-    font-size: 20px;
+  p { /* @libs */
+    font-size: var(--body-font-size-m); /* @libs */
 
-    strong {
-      font-weight: 600;
+    strong { /* @libs */
+      font-weight: 600; /* @libs */
     }
   }
 }
 
-@media (width >= 768px) {
-  main > .section > div {
-    max-width: 720px;
+@media (width >= 768px) { /* @libs */
+  main > .section > div { /* @libs */
+    max-width: 720px; /* @libs */
   }
 }
 
-@media (width >= 992px) {
-  main > .section > div {
-    max-width: var(--max-width-site);
-    padding: 0 32px;
+@media (width >= 992px) { /* @libs */
+  main > .section > div { /* @libs */
+    max-width: var(--max-width-site); /* @libs */
+    padding: 0 32px; /* @libs */
   }
 
-  .section.center {
-    text-align: left;
+  .section.center { /* @libs */
+    text-align: left; /* @libs */
 
-    h1 {
-      font-size: 56px;
+    h1 { /* @libs */
+      font-size: var(--heading-font-size-xxl); /* @libs */
     }
 
-    p {
-      font-size: 22px;
+    p { /* @libs */
+      font-size: var(--body-font-size-m); /* @libs */
     }
   }
 }
 
 /* section metadata - accent (light blue help strip) */
-main .section.accent {
-  background-color: var(--accent-bg);
-  margin: 0;
-  padding: 20px 0;
+main .section.accent { /* @libs */
+  background-color: var(--accent-bg); /* @libs */
+  margin: 0; /* @libs */
+  padding: 20px 0; /* @libs */
 }
 
-main .section.accent > div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
+main .section.accent > div { /* @libs */
+  display: flex; /* @libs */
+  align-items: center; /* @libs */
+  justify-content: center; /* @libs */
+  gap: 12px; /* @libs */
 }
 
-main .section.accent p {
-  margin: 0;
-  font-size: 18px;
+main .section.accent p { /* @libs */
+  margin: 0; /* @libs */
+  font-size: var(--body-font-size-ms); /* @libs */
 }
 
-main .section.accent img {
-  max-width: unset;
-  width: 54px;
-  height: 54px;
+main .section.accent img { /* @libs */
+  max-width: unset; /* @libs */
+  width: 54px; /* @libs */
+  height: 54px; /* @libs */
 }
 
 /* section metadata - light */
 main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: var(--section-padding-vertical) 0;
+main .section.highlight { /* @libs */
+  background-color: var(--light-color); /* @libs */
+  margin: 0; /* @libs */
+  padding: var(--section-padding-vertical) 0; /* @libs */
 }
 
 /* section metadata - dark (teal) */
-main .section.dark {
-  background-color: var(--brand-teal);
-  color: var(--background-color);
-  margin: 0;
-  padding: var(--section-padding-vertical) 0;
+main .section.dark { /* @libs */
+  background-color: var(--brand-teal); /* @libs */
+  color: var(--background-color); /* @libs */
+  margin: 0; /* @libs */
+  padding: var(--section-padding-vertical) 0; /* @libs */
 }
 
 main .section.dark h1,
@@ -454,65 +461,65 @@ main .section.dark h2,
 main .section.dark h3,
 main .section.dark h4,
 main .section.dark h5,
-main .section.dark h6 {
-  color: var(--background-color);
+main .section.dark h6 { /* @libs */
+  color: var(--background-color); /* @libs */
 }
 
-main .section.dark a {
-  color: var(--background-color);
+main .section.dark a { /* @libs */
+  color: var(--background-color); /* @libs */
 }
 
-main .section.dark a:hover {
-  color: var(--brand-teal-light);
+main .section.dark a:hover { /* @libs */
+  color: var(--brand-teal-light); /* @libs */
 }
 
-main .section.dark a.button {
-  background-color: var(--background-color);
-  border-color: var(--background-color);
-  color: var(--brand-teal);
+main .section.dark a.button { /* @libs */
+  background-color: var(--background-color); /* @libs */
+  border-color: var(--background-color); /* @libs */
+  color: var(--brand-teal); /* @libs */
 }
 
 main .section.dark a.button:hover,
-main .section.dark a.button:focus {
-  background-color: var(--background-color);
-  border-color: var(--background-color);
-  color: var(--brand-teal);
-  opacity: 0.9;
+main .section.dark a.button:focus { /* @libs */
+  background-color: var(--background-color); /* @libs */
+  border-color: var(--background-color); /* @libs */
+  color: var(--brand-teal); /* @libs */
+  opacity: 0.9; /* @libs */
 }
 
-main .section.dark a.button.secondary {
-  background-color: transparent;
-  border-color: var(--background-color);
-  color: var(--background-color);
+main .section.dark a.button.secondary { /* @libs */
+  background-color: transparent; /* @libs */
+  border-color: var(--background-color); /* @libs */
+  color: var(--background-color); /* @libs */
 }
 
 main .section.dark a.button.secondary:hover,
-main .section.dark a.button.secondary:focus {
-  background-color: var(--background-color);
-  border-color: var(--background-color);
-  color: var(--brand-teal);
+main .section.dark a.button.secondary:focus { /* @libs */
+  background-color: var(--background-color); /* @libs */
+  border-color: var(--background-color); /* @libs */
+  color: var(--brand-teal); /* @libs */
 }
 
-@media (width >= 992px) {
-  header {
-    height: calc(var(--nav-height) + 23px);
+@media (width >= 992px) { /* @libs */
+  header { /* @libs */
+    height: calc(var(--nav-height) + 23px); /* @libs */
 }
 
-  main .section.accent > div {
-    gap: 30px;
+  main .section.accent > div { /* @libs */
+    gap: 30px; /* @libs */
   }
 
-  .section.center {
-    text-align: left;
+  .section.center { /* @libs */
+    text-align: left; /* @libs */
 
-    h1 {
-      max-width: 14em;
+    h1 { /* @libs */
+      max-width: var(--h1-max-width); /* @libs */
     }
   }
 }
 
-@media (width >= 1180px) {
-  header {
-    height: var(--nav-height);
+@media (width >= 1180px) { /* @libs */
+  header { /* @libs */
+    height: var(--nav-height); /* @libs */
   }
 }
