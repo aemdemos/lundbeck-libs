@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-/*
+ /*
  * Design tokens — two tiers:
  *   Tier 1 (this :root) = global semantic tokens; the surface a theme/customer overrides.
  *   Tier 2 = component tokens in blocks/{name}/{name}-tokens.css, which reference these.
@@ -29,346 +29,490 @@
  *     grep -rn  '/\* @boilerplate' styles/ blocks/   (every untouched line)
  *     grep -rc  '/\* @boilerplate' styles/ blocks/   (remaining count per file)
  */
-:root { /* @boilerplate */
-  /* colors */
-  --background-color: white; /* @boilerplate */
-  --light-color: #f8f8f8; /* @boilerplate */
-  --dark-color: #505050; /* @boilerplate */
-  --text-color: #131313; /* @boilerplate */
-  --link-color: #3b63fb; /* @boilerplate */
-  --link-hover-color: #1d3ecf; /* @boilerplate */
-  --overlay-background-color: lightgrey; /* @boilerplate */
-  --error-color: firebrick; /* @boilerplate */
+:root {
+  /* brand colors */
+  --brand-teal: #046183;
+  --brand-teal-light: #7ebcc6;
+  --brand-teal-muted: #41748d;
+  --brand-rose: #c02c57;
+  --brand-rose-dark: #9a2346;
+  --accent-bg: #e1f0f6;
+  --card-bg-light: #eff6f9;
+
+  /* semantic colors */
+  --background-color: #fff;
+  --light-color: #e1f0f6;
+  --dark-color: #046183;
+  --text-color: #333;
+  --text-color-light: #666;
+  --link-color: #046183;
+  --link-hover-color: #7ebcc6;
+  --overlay-background-color: #e1f0f6;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif; /* @boilerplate */
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif; /* @boilerplate */
+  --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
+  --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif;
+  --body-line-height: 1.4;
+  --heading-font-weight: 800;
 
   /* body sizes */
-  --body-font-size-m: 22px; /* @boilerplate */
-  --body-font-size-s: 19px; /* @boilerplate */
-  --body-font-size-xs: 17px; /* @boilerplate */
+  --body-font-size-m: 24px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px; /* @boilerplate */
-  --heading-font-size-xl: 44px; /* @boilerplate */
-  --heading-font-size-l: 34px; /* @boilerplate */
-  --heading-font-size-m: 27px; /* @boilerplate */
-  --heading-font-size-s: 24px; /* @boilerplate */
-  --heading-font-size-xs: 22px; /* @boilerplate */
-
-  /* line heights & weights */
-  --body-line-height: 1.6; /* @boilerplate */
-  --heading-line-height: 1.25; /* @boilerplate */
-  --heading-font-weight: 600; /* @boilerplate */
-
-  /* block flow rhythm (space above/below text blocks) */
-  --block-margin-top: 0.8em; /* @boilerplate */
-  --block-margin-bottom: 0.25em; /* @boilerplate */
-
-  /* spacing scale */
-  --spacing-xs: 8px; /* @boilerplate */
-  --spacing-s: 16px; /* @boilerplate */
-  --spacing-m: 24px; /* @boilerplate */
-  --spacing-l: 32px; /* @boilerplate */
-  --spacing-xl: 40px; /* @boilerplate */
-
-  /* borders */
-  --border-width-s: 1px; /* @boilerplate */
-  --border-color: #dadada; /* @boilerplate */
-  --border-radius-s: 4px; /* @boilerplate */
-  --border-radius-m: 8px; /* @boilerplate */
-
-  /* motion */
-  --transition-duration: 0.2s; /* @boilerplate */
-
-  /* focus ring */
-  --focus-ring-width: 2px; /* @boilerplate */
-  --focus-ring-offset: 2px; /* @boilerplate */
-  --focus-ring-color: var(--link-color); /* @boilerplate */
-
-  /* semantic color aliases — map intent onto the palette above (no marker: provenance follows the target) */
-  --color-surface: var(--background-color); /* @boilerplate */
-  --color-on-surface: var(--text-color); /* @boilerplate */
-  --color-action: var(--link-color); /* @boilerplate */
-  --color-action-hover: var(--link-hover-color); /* @boilerplate */
+  /* heading sizes (mobile-first) */
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 24px;
+  --heading-font-size-l: 20px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
 
   /* layout */
-  --max-width-site: 1200px; /* @boilerplate */
-  --icon-size: 24px; /* @boilerplate */
-
-  /* buttons (primary CTA = action color; secondary = outline) */
-  --button-margin: 12px 0; /* @boilerplate */
-  --button-padding: 0.5em 1.2em; /* @boilerplate */
-  --button-border-width: 2px; /* @boilerplate */
-  --button-border-radius: 2.4em; /* @boilerplate */
-  --button-font-weight: 500; /* @boilerplate */
-  --button-line-height: 1.25; /* @boilerplate */
-  --button-background: var(--color-action); /* @boilerplate */
-  --button-hover-background: var(--color-action-hover); /* @boilerplate */
-  --button-text-color: var(--background-color); /* @boilerplate */
-  --button-disabled-background: var(--light-color); /* @boilerplate */
+  --max-width-site: 1140px;
+  --section-padding-vertical: 40px;
+  --icon-size: 24px;
 
   /* nav heights */
-  --nav-height: 64px; /* @boilerplate */
-  --breadcrumbs-height: 34px; /* @boilerplate */
-  --header-height: var(--nav-height); /* @boilerplate */
+  --nav-height: 200px;
+  --nav-brand-row-height-mobile: 97px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
 
   /* fixed-width / code */
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, monospace; /* @boilerplate */
+  --fixed-font-family: menlo, consolas, monospace;
+
+  /* button tokens */
+  --button-border-radius: 100px;
+  --button-border-width: 2px;
+  --button-padding: 19px 25px;
+  --button-font-size: 18px;
+  --button-font-weight: 700;
+  --button-transition: 0.2s ease-in-out;
 }
 
-/* fallback fonts */
-@font-face { /* @boilerplate */
-  font-family: roboto-condensed-fallback; /* @boilerplate */
-  size-adjust: 88.82%; /* @boilerplate */
-  src: local('Arial'); /* @boilerplate */
+/* fallback font for proxima-nova */
+@font-face {
+  font-family: proxima-nova-fallback;
+  size-adjust: 98%;
+  src: local('Arial');
 }
 
-@font-face { /* @boilerplate */
-  font-family: roboto-fallback; /* @boilerplate */
-  size-adjust: 99.529%; /* @boilerplate */
-  src: local('Arial'); /* @boilerplate */
-}
-
-@media (width >= 900px) { /* @boilerplate */
-  :root { /* @boilerplate */
-    /* desktop overrides of the type scale above — resolve alongside the base values */
-
-    /* body sizes */
-    --body-font-size-m: 18px; /* @boilerplate */
-    --body-font-size-s: 16px; /* @boilerplate */
-    --body-font-size-xs: 14px; /* @boilerplate */
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px; /* @boilerplate */
-    --heading-font-size-xl: 36px; /* @boilerplate */
-    --heading-font-size-l: 28px; /* @boilerplate */
-    --heading-font-size-m: 22px; /* @boilerplate */
-    --heading-font-size-s: 20px; /* @boilerplate */
-    --heading-font-size-xs: 18px; /* @boilerplate */
+@media (width >= 900px) {
+  :root {
+    /* heading sizes scale up on desktop */
+    --heading-font-size-xxl: 56px;
+    --heading-font-size-xl: 24px;
+    --heading-font-size-l: 24px;
+    --heading-font-size-m: 18px;
+    --heading-font-size-s: 18px;
+    --heading-font-size-xs: 16px;
   }
 }
 
-body { /* @boilerplate */
-  display: none; /* @boilerplate */
-  margin: 0; /* @boilerplate */
-  background-color: var(--background-color); /* @boilerplate */
-  color: var(--text-color); /* @boilerplate */
-  font-family: var(--body-font-family); /* @boilerplate */
-  font-size: var(--body-font-size-m); /* @boilerplate */
-  line-height: var(--body-line-height); /* @boilerplate */
+body {
+  display: none;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  line-height: var(--body-line-height);
 }
 
-body.appear { /* @boilerplate */
-  display: block; /* @boilerplate */
+body.appear {
+  display: block;
 }
 
-header { /* @boilerplate */
-  height: var(--header-height); /* @boilerplate */
+header {
+  height: var(--header-height);
 }
 
 header .header,
-footer .footer { /* @boilerplate */
-  visibility: hidden; /* @boilerplate */
+footer .footer {
+  visibility: hidden;
 }
 
 header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] { /* @boilerplate */
-  visibility: visible; /* @boilerplate */
+footer .footer[data-block-status="loaded"] {
+  visibility: visible;
 }
 
-@media (width >= 900px) { /* @boilerplate */
-  body[data-breadcrumbs] { /* @boilerplate */
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height)); /* @boilerplate */
+@media (width >= 900px) {
+  body[data-breadcrumbs] {
+    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height));
   }
 }
 
+/* headings */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 { /* @boilerplate */
-  margin-top: var(--block-margin-top); /* @boilerplate */
-  margin-bottom: var(--block-margin-bottom); /* @boilerplate */
-  font-family: var(--heading-font-family); /* @boilerplate */
-  font-weight: var(--heading-font-weight); /* @boilerplate */
-  line-height: var(--heading-line-height); /* @boilerplate */
-  scroll-margin: var(--spacing-xl); /* @boilerplate */
+h6 {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  line-height: 1.2;
+  scroll-margin: 40px;
+  color: var(--text-color);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); } /* @boilerplate */
-h2 { font-size: var(--heading-font-size-xl); } /* @boilerplate */
-h3 { font-size: var(--heading-font-size-l); } /* @boilerplate */
-h4 { font-size: var(--heading-font-size-m); } /* @boilerplate */
-h5 { font-size: var(--heading-font-size-s); } /* @boilerplate */
-h6 { font-size: var(--heading-font-size-xs); } /* @boilerplate */
+h1 {
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.125;
+  color: var(--brand-teal);
+  margin-top: 0;
+  max-width: 14em;
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.2;
+  color: var(--brand-teal);
+}
+
+h3 {
+  font-size: var(--heading-font-size-l);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin-bottom: 0;
+}
+
+h4 {
+  font-size: var(--heading-font-size-m);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h5 {
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--brand-teal-muted);
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+  font-weight: 700;
+}
 
 p,
 dl,
 ol,
 ul,
 pre,
-blockquote { /* @boilerplate */
-  margin-top: var(--block-margin-top); /* @boilerplate */
-  margin-bottom: var(--block-margin-bottom); /* @boilerplate */
+blockquote {
+  margin-top: 0.8em;
+  margin-bottom: 0.25em;
 }
 
 code,
-pre { /* @boilerplate */
-  font-family: var(--fixed-font-family); /* @boilerplate */
-  font-size: var(--body-font-size-s); /* @boilerplate */
+pre {
+  font-family: var(--fixed-font-family);
+  font-size: var(--body-font-size-s);
 }
 
-pre { /* @boilerplate */
-  padding: var(--spacing-s); /* @boilerplate */
-  border-radius: var(--border-radius-m); /* @boilerplate */
-  background-color: var(--light-color); /* @boilerplate */
-  overflow-x: auto; /* @boilerplate */
-  white-space: pre; /* @boilerplate */
+pre {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--light-color);
+  overflow-x: auto;
+  white-space: pre;
 }
 
-main > div { /* @boilerplate */
-  margin: var(--spacing-xl) var(--spacing-s); /* @boilerplate */
+main > div {
+  margin: 40px 16px;
 }
 
 input,
 textarea,
 select,
-button { /* @boilerplate */
-  font: inherit; /* @boilerplate */
+button {
+  font: inherit;
 }
 
 /* links */
-a { /* @boilerplate */
-  color: var(--link-color); /* @boilerplate */
-  text-decoration: none; /* @boilerplate */
-  overflow-wrap: break-word; /* @boilerplate */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 700;
+  overflow-wrap: break-word;
 }
 
-a:hover { /* @boilerplate */
-  color: var(--link-hover-color); /* @boilerplate */
-  text-decoration: underline; /* @boilerplate */
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: none;
 }
 
-/* buttons */
+/* buttons - primary (rose) */
 a.button,
-button { /* @boilerplate */
-  box-sizing: border-box; /* @boilerplate */
-  display: inline-block; /* @boilerplate */
-  max-width: 100%; /* @boilerplate */
-  margin: var(--button-margin); /* @boilerplate */
-  border: var(--button-border-width) solid transparent; /* @boilerplate */
-  border-radius: var(--button-border-radius); /* @boilerplate */
-  padding: var(--button-padding); /* @boilerplate */
-  font-family: var(--body-font-family); /* @boilerplate */
-  font-style: normal; /* @boilerplate */
-  font-weight: var(--button-font-weight); /* @boilerplate */
-  line-height: var(--button-line-height); /* @boilerplate */
-  text-align: center; /* @boilerplate */
-  text-decoration: none; /* @boilerplate */
-  background-color: var(--button-background); /* @boilerplate */
-  color: var(--button-text-color); /* @boilerplate */
-  cursor: pointer; /* @boilerplate */
-  overflow: hidden; /* @boilerplate */
-  text-overflow: ellipsis; /* @boilerplate */
-  white-space: nowrap; /* @boilerplate */
+button {
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: var(--body-font-family);
+  font-style: normal;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  background-color: transparent;
+  color: var(--brand-teal);
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--button-transition);
+  margin: 0;
+  white-space: nowrap;
+  font-size: var(--button-font-size);
+  border: var(--button-border-width) solid var(--brand-teal);
+  border-radius: 100px;
+  padding: 19px 25px;
 }
 
 a.button:hover,
-a.button:focus,
-button:hover,
-button:focus { /* @boilerplate */
-  background-color: var(--button-hover-background); /* @boilerplate */
-  cursor: pointer; /* @boilerplate */
+a.button:focus {
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.button:focus {
+  outline: 0;
+}
+
+button:hover {
+  background-color: var(--brand-rose-dark);
+  border-color: var(--brand-rose-dark);
+  cursor: pointer;
 }
 
 button:disabled,
-button:disabled:hover { /* @boilerplate */
-  background-color: var(--button-disabled-background); /* @boilerplate */
-  cursor: unset; /* @boilerplate */
+button:disabled:hover {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--text-color-light);
+  cursor: unset;
 }
 
+a.button::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 9px;
+  margin-left: 8px;
+  vertical-align: middle;
+  background-image: url("/icons/arrow-right.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: var(--button-transition);
+}
+
+a.button:hover::after,
+a.button:focus::after {
+  opacity: 0.5;
+}
+
+/* buttons - secondary (teal outline / ghost) */
 a.button.secondary,
-button.secondary { /* @boilerplate */
-  background-color: unset; /* @boilerplate */
-  border: var(--button-border-width) solid currentcolor; /* @boilerplate */
-  color: var(--text-color); /* @boilerplate */
+button.secondary {
+  background-color: var(--background-color);
+  border: var(--button-border-width) solid var(--brand-teal);
+  color: var(--brand-teal);
 }
 
-main img { /* @boilerplate */
-  max-width: 100%; /* @boilerplate */
-  width: auto; /* @boilerplate */
-  height: auto; /* @boilerplate */
+a.button.secondary:hover,
+a.button.secondary:focus,
+button.secondary:hover,
+button.secondary:focus {
+  background-color: var(--background-color);
+  border-color: var(--brand-teal-light);
+  color: var(--brand-teal-light);
 }
 
-.icon { /* @boilerplate */
-  display: inline-block; /* @boilerplate */
-  height: var(--icon-size); /* @boilerplate */
-  width: var(--icon-size); /* @boilerplate */
+main img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
 }
 
-.icon img { /* @boilerplate */
-  height: 100%; /* @boilerplate */
-  width: 100%; /* @boilerplate */
+.icon {
+  display: inline-block;
+  height: var(--icon-size);
+  width: var(--icon-size);
+}
+
+.icon img {
+  height: 100%;
+  width: 100%;
 }
 
 /* sections */
-main > .section { /* @boilerplate */
-  padding: var(--spacing-xl) 0; /* @boilerplate */
-  margin: 0; /* @boilerplate */
+main > .section {
+  margin: 0;
+  padding-bottom: 24px;
 }
 
-main > .section > div:not(.bg-image) { /* @boilerplate */
-  max-width: var(--max-width-site); /* @boilerplate */
-  margin: auto; /* @boilerplate */
-  padding: 0 var(--spacing-m); /* @boilerplate */
+main > .section > div {
+  max-width: 540px;
+  margin: auto;
+  padding: 0 15px;
 }
 
-/* Section metadata: background image sits behind content */
-main > .section:has(> .bg-image) { /* @boilerplate */
-  position: relative; /* @boilerplate */
-  overflow: hidden; /* @boilerplate */
-}
+.section.center {
+  text-align: center;
+  padding-top: 20px;
 
-main > .section:has(> .bg-image) > div:not(.bg-image) { /* @boilerplate */
-  position: relative; /* @boilerplate */
-  z-index: 1; /* @boilerplate */
-}
+  h1 {
+    font-size: 32px;
+    max-width: unset;
+  }
 
-main > .section > .bg-image { /* @boilerplate */
-  position: absolute; /* @boilerplate */
-  inset: 0; /* @boilerplate */
-  z-index: 0; /* @boilerplate */
-  pointer-events: none; /* @boilerplate */
-}
+  p {
+    font-size: 20px;
 
-main > .section > .bg-image picture,
-main > .section > .bg-image img { /* @boilerplate */
-  display: block; /* @boilerplate */
-  width: 100%; /* @boilerplate */
-  height: 100%; /* @boilerplate */
-}
-
-main > .section > .bg-image img { /* @boilerplate */
-  object-fit: cover; /* @boilerplate */
-}
-
-main > .section:first-of-type { /* @boilerplate */
-  margin-top: 0; /* @boilerplate */
-}
-
-@media (width >= 900px) { /* @boilerplate */
-  main > .section > div:not(.bg-image) { /* @boilerplate */
-    padding: 0 var(--spacing-l); /* @boilerplate */
+    strong {
+      font-weight: 600;
+    }
   }
 }
 
-/* section metadata */
+@media (width >= 768px) {
+  main > .section > div {
+    max-width: 720px;
+  }
+}
+
+@media (width >= 992px) {
+  main > .section > div {
+    max-width: var(--max-width-site);
+    padding: 0 32px;
+  }
+
+  .section.center {
+    text-align: left;
+
+    h1 {
+      font-size: 56px;
+    }
+
+    p {
+      font-size: 22px;
+    }
+  }
+}
+
+/* section metadata - accent (light blue help strip) */
+main .section.accent {
+  background-color: var(--accent-bg);
+  margin: 0;
+  padding: 20px 0;
+}
+
+main .section.accent > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+main .section.accent p {
+  margin: 0;
+  font-size: 18px;
+}
+
+main .section.accent img {
+  max-width: unset;
+  width: 54px;
+  height: 54px;
+}
+
+/* section metadata - light */
 main .section.light,
-main .section.highlight { /* @boilerplate */
-  background-color: var(--light-color); /* @boilerplate */
-  margin: 0; /* @boilerplate */
-  padding: var(--spacing-xl) 0; /* @boilerplate */
+main .section.highlight {
+  background-color: var(--light-color);
+  margin: 0;
+  padding: var(--section-padding-vertical) 0;
+}
+
+/* section metadata - dark (teal) */
+main .section.dark {
+  background-color: var(--brand-teal);
+  color: var(--background-color);
+  margin: 0;
+  padding: var(--section-padding-vertical) 0;
+}
+
+main .section.dark h1,
+main .section.dark h2,
+main .section.dark h3,
+main .section.dark h4,
+main .section.dark h5,
+main .section.dark h6 {
+  color: var(--background-color);
+}
+
+main .section.dark a {
+  color: var(--background-color);
+}
+
+main .section.dark a:hover {
+  color: var(--brand-teal-light);
+}
+
+main .section.dark a.button {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--brand-teal);
+}
+
+main .section.dark a.button:hover,
+main .section.dark a.button:focus {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--brand-teal);
+  opacity: 0.9;
+}
+
+main .section.dark a.button.secondary {
+  background-color: transparent;
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+main .section.dark a.button.secondary:hover,
+main .section.dark a.button.secondary:focus {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--brand-teal);
+}
+
+@media (width >= 992px) {
+  header {
+    height: calc(var(--nav-height) + 23px);
+}
+
+  main .section.accent > div {
+    gap: 30px;
+  }
+
+  .section.center {
+    text-align: left;
+
+    h1 {
+      max-width: 14em;
+    }
+  }
+}
+
+@media (width >= 1180px) {
+  header {
+    height: var(--nav-height);
+  }
 }
