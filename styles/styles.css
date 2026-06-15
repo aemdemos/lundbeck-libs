@@ -55,6 +55,7 @@
   --link-color: #046183; /* @libs */
   --link-hover-color: #7ebcc6; /* @libs */
   --overlay-background-color: #e1f0f6; /* @libs */
+  --error-color: #c02c57; /* @boilerplate */
 
   /* fonts */
   --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
@@ -103,6 +104,11 @@
   --button-font-weight: 700; /* @libs */
   --button-line-height: 1.25; /* @libs */
   --button-transition: 0.2s ease-in-out; /* @libs */
+  --button-background: var(--brand-teal); /* @libs */
+  --button-hover-background: var(--brand-teal-light); /* @libs */
+  --button-text-color: var(--background-color); /* @libs */
+  --button-disabled-background: var(--light-color); /* @libs */
+
 }
 
 /* fallback font for proxima-nova */
@@ -115,6 +121,10 @@
 @media (width >= 900px) { /* @libs */
   :root { /* @libs */
     /* heading sizes scale up on desktop */
+    --body-font-size-m: 24px; /* @libs */
+    --body-font-size-ms: 18px; /* @libs */
+    --body-font-size-s: 16px; /* @libs */
+    --body-font-size-xs: 14px; /* @libs */
     --heading-font-size-xxl: 56px; /* @libs */
     --heading-font-size-xl: 24px; /* @libs */
     --heading-font-size-l: 24px; /* @libs */
