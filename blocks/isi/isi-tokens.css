@@ -1,0 +1,48 @@
+/* isi design tokens */
+:root {
+  /* colors */
+  --isi-text-color: #484848;
+  --isi-border-color: #d1d1d1;
+  --isi-heading-color: var(--brand-teal-muted, #41748d);
+
+  /* typography */
+  --isi-heading-font-size: 18px;
+  --isi-heading-font-weight: 700;
+  --isi-heading-line-height: 22px;
+  --isi-body-line-height: 1.5;
+  --isi-paragraph-line-height: 24px;
+  --isi-list-line-height: 1.7;
+  --isi-link-font-weight: 600;
+
+  /* spacing */
+  --isi-gap-s: 8px;
+  --isi-bar-inner-padding: 13px;
+  --isi-inline-padding-bottom: 64px;
+  --isi-list-item-gap: 10px;
+  --isi-heading-padding-bottom: 18px;
+  --isi-column-gap: 24px;
+
+  /* bar */
+  --isi-bar-height: 90px;
+  --isi-bar-height-mobile: 109px;
+  --isi-bar-max-height-expanded: 70vh;
+  --isi-bar-transition: height 0.3s ease-in-out;
+
+  /* toggle */
+  --isi-toggle-size: 24px;
+  --isi-toggle-icon-size: 12px;
+  --isi-toggle-stroke-width: 2px;
+  --isi-toggle-transition: color 0.2s, border-color 0.2s;
+  --isi-icon-opacity-transition: opacity 0.2s;
+
+  /* z-index */
+  --isi-bar-z-index: 5;
+  --isi-bar-expanded-z-index: 10;
+  --isi-toggle-z-index: 2;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --isi-bar-height: var(--isi-bar-height-mobile);
+  }
+}
