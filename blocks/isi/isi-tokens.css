@@ -3,7 +3,7 @@
   /* colors */
   --isi-text-color: #484848;
   --isi-border-color: #d1d1d1;
-  --isi-heading-color: var(--brand-teal-muted, #41748d);
+  --isi-heading-color: var(--brand-teal);
 
   /* typography */
   --isi-heading-font-size: 18px;
@@ -44,5 +44,11 @@
 @media (max-width: 768px) {
   :root {
      --isi-gap-s:16px;
+  }
+}
+
+@media (max-width: 900) {
+  :root {
+     --isi-gap-s:32px;
   }
 }
