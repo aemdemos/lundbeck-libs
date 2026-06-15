@@ -1,39 +1,503 @@
 @import url('./hero-tokens.css');
 
-.hero-container .hero-wrapper { /* @boilerplate */
-  max-width: unset; /* @boilerplate */
-  padding: 0; /* @boilerplate */
+/* Hero Pharma - full-width hero with background image and text overlay */
+
+/* Supports single-panel (legacy) and dual-panel (two-slide split) modes */
+
+/* Remove section wrapper constraints so hero is full-bleed */
+main > .section.hero-pharma-container {
+  padding-bottom: 0;
+  margin: 0;
 }
 
-.hero { /* @boilerplate */
-  position: relative; /* @boilerplate */
-  padding: var(--hero-padding); /* @boilerplate */
-  min-height: var(--hero-min-height); /* @boilerplate */
+.hero-pharma-container .hero-pharma-wrapper {
+  max-width: unset;
+  padding: 0;
 }
 
-.hero h1 { /* @boilerplate */
-  max-width: var(--hero-heading-max-width); /* @boilerplate */
-  margin-left: auto; /* @boilerplate */
-  margin-right: auto; /* @boilerplate */
-  color: var(--background-color); /* @boilerplate */
+/* ═══════════════════════════════════════════════════
+   SINGLE-PANEL MODE (legacy — 1 image row + 1 text row)
+   ═══════════════════════════════════════════════════ */
+
+.hero-pharma:not(.hero-pharma-dual) {
+  position: relative;
+  min-height: 350px;
+  overflow: hidden;
 }
 
-.hero picture { /* @boilerplate */
-  position: absolute; /* @boilerplate */
-  z-index: -1; /* @boilerplate */
-  inset: 0; /* @boilerplate */
-  object-fit: cover; /* @boilerplate */
-  box-sizing: border-box; /* @boilerplate */
+/* Image row - positioned to fill entire hero as background */
+.hero-pharma:not(.hero-pharma-dual) > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.hero img { /* @boilerplate */
-  object-fit: cover; /* @boilerplate */
-  width: 100%; /* @boilerplate */
-  height: 100%; /* @boilerplate */
+.hero-pharma:not(.hero-pharma-dual) > div:first-child > div,
+.hero-pharma:not(.hero-pharma-dual) > div:first-child p {
+  width: 100%;
+  height: 100%;
+  margin: 0;
 }
 
-@media (width >= 900px) { /* @boilerplate */
-  .hero { /* @boilerplate */
-    padding: var(--hero-padding-desktop); /* @boilerplate */
+.hero-pharma:not(.hero-pharma-dual) img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* Content row - sits above the background image */
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width-site);
+  margin: 0 auto;
+  width: 100%;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 350px;
+  box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════════════
+   DUAL-PANEL MODE (two-slide split hero — vyepti.com split-banner parity)
+   ═══════════════════════════════════════════════════ */
+
+.hero-pharma-dual {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-pharma-panels {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hero-pharma-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  min-height: 336px;
+
+  p {
+    margin: 0;
   }
 }
+
+/* Panel background image */
+.hero-pharma-panel-bg {
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-pharma-panel-bg img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-pharma-panel-light .hero-pharma-panel-content {
+  padding: 10px 20px;
+}
+
+/* Default for tablet+ before desktop override */
+.hero-pharma-panel-dark .hero-pharma-panel-bg img {
+  object-position: 50% 12%;
+}
+
+.hero-pharma-panel-light .hero-pharma-panel-bg img {
+  object-position: 55% bottom;
+}
+
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(2) {
+  font-size: 37px !important;
+  padding-bottom: 16px;
+  font-family: nunito, sans-serif;
+}
+
+/* Mobile: dark panel stretches to fill, light panel uses cover to preserve proportions */
+@media (width <= 767px) {
+  .hero-pharma-panel-dark .hero-pharma-panel-bg img {
+    object-position: 50% 50%;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-bg img {
+    object-fit: cover;
+    object-position: 70% center;
+  }
+}
+
+/* Panel text overlay — matches #split-image-col-wrapper-* .cmp-teaser__content */
+.hero-pharma-panel-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Copy block — light column stays centered; dark stays left */
+.hero-pharma-panel-description {
+  width: 100%;
+  text-align: center;
+}
+
+.hero-pharma-panel-dark .hero-pharma-panel-description {
+  text-align: center;
+  max-width: 100%;
+}
+
+@media (width >= 900px) {
+  .hero-pharma-panel-dark .hero-pharma-panel-description {
+    max-width: 100%;
+  }
+}
+
+@media (width >= 1600px) {
+  .hero-pharma-panel-light .hero-pharma-panel-description {
+    width: 75%;
+    margin-right: 25%;
+    margin-left: 0;
+  }
+}
+
+/* Dark panel — white Nunito-style stack (#split-image-col-wrapper-1) */
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p {
+  color: #fff;
+  font-family: nunito, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p:last-of-type {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 0;
+}
+
+/* Light panel — teal headline + centered subcopy (#split-image-col-wrapper-2) */
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p {
+  color: var(--brand-teal);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0 0 4px;
+  padding-bottom: 4px;
+}
+
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a::after,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a::after {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 9px;
+  margin-left: 12px;
+  vertical-align: middle;
+  background-image: url("https://www.assets.lundbeck-tools.com/content/dam/lundbeck/vyepti/overhaul/images/cta-button-arrow-20-global-blue.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a:hover,
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a:focus,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a:hover,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a:focus {
+  background-color: var(--brand-teal-light);
+}
+
+/* "Actor portrayal" caption */
+.hero-pharma .actor-portrayal {
+  position: absolute;
+  right: 20px;
+  bottom: 8px;
+  z-index: 2;
+  color: var(--background-color);
+  text-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+
+  sub {
+    font-size: 12px;
+  }
+}
+
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(3) {
+  color: var(--text-color) !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: center;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+@media (width >= 768px) {
+  /* Single-panel desktop */
+  .hero-pharma:not(.hero-pharma-dual) {
+    min-height: unset;
+    aspect-ratio: 2880 / 1116;
+  }
+
+  .hero-pharma:not(.hero-pharma-dual) > div:last-of-type {
+    min-height: unset;
+    padding: 60px 32px;
+  }
+
+  .hero-pharma:not(.hero-pharma-dual) h3,
+  .hero-pharma:not(.hero-pharma-dual) h1,
+  .hero-pharma:not(.hero-pharma-dual) > div:last-of-type p {
+    max-width: 55%;
+  }
+
+  .hero-pharma h3 {
+    font-size: 24px;
+  }
+
+  .hero-pharma h1 {
+    font-size: 56px;
+    line-height: 1.07;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-content {
+    padding: 20px;
+}
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
+    bottom: 50px;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p {
+    font-size: 22px;
+    line-height: 1.125;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p {
+    font-size: 22px;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p:last-of-type {
+    font-size: 48px;
+    line-height: 32px;
+  }
+
+  .hero-pharma:not(.hero-pharma-dual) .actor-portrayal {
+    bottom: 34px;
+    right: 67px;
+  }
+
+  /* Dual-panel desktop — height = vyepti banner 2880×1116 (explicit + aspect fallback) */
+  .hero-pharma-panels {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .hero-pharma-panel {
+    flex: 1 1 50%;
+    min-height: 0;
+    height: 100%;
+    align-self: stretch;
+  }
+}
+
+@media (width >= 991px) {
+  .hero-pharma-panel-content {
+    padding-top: 30px;
+  }
+
+  .hero-pharma .actor-portrayal {
+    bottom: 20px;
+    right: 60px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-pharma-panel-content {
+    padding: 40px;
+  }
+
+  .hero-pharma-panel-light .hero-pharma-panel-bg img {
+    object-position: 58% center;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p {
+    font-size: 28px;
+  }
+}
+
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(1) {
+  padding-bottom: 0;
+}
+
+@media (width >= 1440px) {
+  .hero-pharma-panel-content {
+    padding-top: 38px;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
+      left: 25%;
+    }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p {
+    font-size: 28px;
+    line-height: 1.5;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(1) {
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(2) {
+    font-size: 64px !important;
+    line-height: .9;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-dark .hero-pharma-panel-description > p:last-of-type {
+    font-size: 64px;
+    line-height: 1;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(3) {
+    line-height: 24px;
+    font-size: 18px;
+  }
+}
+
+@media (width >= 1600px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(2) {
+    line-height: 60px !important;
+  }
+
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(3) {
+    width: 100%;
+  }
+}
+
+@media (width >= 991px) and (width <= 1200px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-description > p:nth-child(3) {
+    width: 60%;
+  }
+}
+
+/* CTA band — absolute bottom, centered (vyepti #split-image-col-wrapper-2 .cmp-teaser__action-container) */
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
+  position: absolute;
+  right: auto;
+  margin: 0;
+  padding: 0;
+}
+
+@media (width >= 1024px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
+    bottom: 60px;
+  }
+}
+
+@media (width <= 768px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-cta-wrap {
+    bottom: 35px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   SHARED STYLES (both modes)
+   ═══════════════════════════════════════════════════ */
+
+/* Eyebrow h3 - rose */
+.hero-pharma h3 {
+  color: var(--brand-rose);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.33;
+  margin: 0 0 4px;
+}
+
+.hero-pharma h1 {
+  color: var(--brand-teal);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 800;
+  line-height: 1.07;
+  margin: 0 0 12px;
+}
+
+/* Bold text in headings → accent color */
+.hero-pharma .accent-color {
+  color: var(--brand-rose);
+  font-weight: inherit;
+}
+
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type p {
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  line-height: 1.22;
+  margin: 0 0 16px;
+}
+
+/* CTA link - teal outline pill button with arrow */
+.hero-pharma:not(.hero-pharma-dual) > div:last-of-type a,
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light a {
+  display: inline-block;
+  padding: 19px 25px;
+  background-color: var(--background-color);
+  color: var(--brand-teal);
+  border-radius: 100px;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--button-transition);
+  margin: 16px 0 0;
+}
+
+.hero-pharma.hero-pharma-dual .hero-pharma-panel-light .hero-pharma-panel-cta-wrap a {
+  margin: 0;
+  width: auto;
+  max-width: none;
+}
+
+@media (width <= 767px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel-light a {
+    padding: 19px 23px 19px 32px;
+  }
+}
+
+@media (width >= 1440px) {
+  .hero-pharma.hero-pharma-dual .hero-pharma-panel .actor-portrayal sub {
+    font-size: 16px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — TABLET+
+   ═══════════════════════════════════════════════════ */
+
+@media (width >= 600px) {
+  .hero-pharma:not(.hero-pharma-dual) {
+    min-height: 400px;
+  }
+
+  .hero-pharma:not(.hero-pharma-dual) > div:last-of-type {
+    min-height: 400px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — DESKTOP
+   ═══════════════════════════════════════════════════ */
