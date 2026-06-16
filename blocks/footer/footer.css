@@ -98,56 +98,6 @@ footer .footer .footer-main-right {
   text-align: right;
 }
 
-/* Phone CTA row */
-footer .footer .footer-phone-row {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  height: var(--footer-phone-row-height);
-}
-
-footer .footer .footer-phone-label {
-  font-size: var(--body-font-size-s);
-  font-weight: 700;
-  color: var(--footer-text-color);
-  line-height: var(--footer-phone-label-line-height);
-  margin-right: var(--footer-phone-label-gap);
-  white-space: nowrap;
-}
-
-footer .footer .footer-phone-btn {
-  display: inline-block;
-  background-color: var(--brand-rose);
-  color: var(--background-color);
-  text-decoration: none;
-  border-radius: var(--footer-phone-btn-radius);
-  padding: var(--footer-phone-btn-padding);
-  font-size: var(--body-font-size-ms);
-  font-weight: 400;
-  font-family: var(--body-font-family);
-  line-height: var(--footer-link-line-height);
-  text-align: center;
-  position: relative;
-  transition: background-color 0.2s ease;
-  white-space: nowrap;
-}
-
-footer .footer .footer-phone-btn:hover {
-  background-color: var(--brand-rose-dark);
-}
-
-footer .footer .footer-phone-icon {
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: var(--footer-phone-icon-size);
-  height: var(--footer-phone-icon-size);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.01-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.1.31.03.66-.25 1.02l-2.2 2.2z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 /* Social + brand logo row — right-aligned */
 footer .footer .footer-social-row {
   display: flex;

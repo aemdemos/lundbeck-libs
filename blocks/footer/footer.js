@@ -80,8 +80,6 @@ function buildMainFooter(section) {
   const items = section.querySelectorAll(':scope > p, :scope > a');
   const socialLinks = [];
   let brandLogoLink = null;
-  let phoneLink = null;
-  let assistanceText = null;
 
   items.forEach((item) => {
     const link = item.tagName === 'A' ? item : item.querySelector('a');
@@ -94,43 +92,12 @@ function buildMainFooter(section) {
       } else {
         socialLinks.push(link.cloneNode(true));
       }
-    } else if (link && link.href && link.href.includes('tel:')) {
-      phoneLink = link.cloneNode(true);
-    } else if (item.textContent.trim().toLowerCase().startsWith('for assistance')) {
-      assistanceText = item.textContent.trim();
-    } else if (!img && !link?.href?.includes('tel:') && item.textContent.trim()) {
+    } else if (!img && item.textContent.trim()) {
       const cp = document.createElement('p');
       cp.textContent = item.textContent.trim();
       leftCol.append(cp);
     }
   });
-
-  if (assistanceText || phoneLink) {
-    const phoneRow = document.createElement('div');
-    phoneRow.className = 'footer-phone-row';
-
-    if (assistanceText) {
-      const label = document.createElement('span');
-      label.className = 'footer-phone-label';
-      label.textContent = assistanceText;
-      phoneRow.append(label);
-    }
-
-    if (phoneLink) {
-      const btn = document.createElement('a');
-      btn.href = phoneLink.href;
-      btn.className = 'footer-phone-btn';
-      const iconSpan = document.createElement('span');
-      iconSpan.className = 'footer-phone-icon';
-      btn.append(iconSpan);
-      const textSpan = document.createElement('span');
-      textSpan.textContent = phoneLink.textContent.trim();
-      btn.append(textSpan);
-      phoneRow.append(btn);
-    }
-
-    rightCol.append(phoneRow);
-  }
 
   const socialRow = document.createElement('div');
   socialRow.className = 'footer-social-row';
