@@ -75,6 +75,21 @@
   background-image: var(--table-header-bg); /* @libs */
 }
 
+/* remove the separator above a heading row (the preceding row's bottom border) */
+.table.block.heading-2 table tbody tr:nth-child(1),
+.table.block.heading-3 table tbody tr:nth-child(2),
+.table.block.heading-4 table tbody tr:nth-child(3),
+.table.block.heading-5 table tbody tr:nth-child(4),
+.table.block.heading-6 table tbody tr:nth-child(5),
+.table.block.heading-7 table tbody tr:nth-child(6),
+.table.block.heading-8 table tbody tr:nth-child(7),
+.table.block.heading-9 table tbody tr:nth-child(8),
+.table.block.heading-10 table tbody tr:nth-child(9),
+.table.block.heading-11 table tbody tr:nth-child(10),
+.table.block.heading-12 table tbody tr:nth-child(11) { /* @libs */
+  border-bottom: 0; /* @libs */
+}
+
 .table.block.heading-1 table tbody tr:nth-child(1) td,
 .table.block.heading-2 table tbody tr:nth-child(2) td,
 .table.block.heading-3 table tbody tr:nth-child(3) td,
