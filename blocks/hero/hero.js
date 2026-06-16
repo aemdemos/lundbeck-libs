@@ -119,6 +119,20 @@ function flattenToSinglePanelRows(block) {
   });
 }
 
+/**
+ * Collapses the multiple responsive &lt;picture&gt; variants in the image row into a
+ * single art-direction &lt;picture&gt; (swaps asset per viewport), matching the
+ * dual-panel behaviour. Without this only the first picture is ever shown.
+ * @param {Element} block
+ */
+function consolidateSinglePanelImage(block) {
+  const imageRow = block.querySelector(':scope > div:first-child');
+  const imageCell = imageRow?.firstElementChild;
+  if (!imageCell) return;
+  const built = buildPictureContentFromImageCell(imageCell);
+  imageCell.replaceChildren(built);
+}
+
 export default function decorate(block) {
   const rows = [...block.children];
 
@@ -126,6 +140,7 @@ export default function decorate(block) {
   if (hasSingleSectionStyle(block)) {
     const isMultiCell = rows.some((row) => row.children.length >= 2);
     if (isMultiCell) flattenToSinglePanelRows(block);
+    consolidateSinglePanelImage(block);
     decorateSinglePanel(block);
     return;
   }
