@@ -39,12 +39,6 @@
   border-bottom: var(--table-row-border-width) solid var(--table-border-color);
 }
 
-/* second column emphasis (rose) */
-.table.block table tbody td:nth-child(2) {
-  font-weight: var(--font-weight-bold);
-  color: var(--table-emphasis-color);
-}
-
 .table table th p,
 .table table td p {
   margin: 0;
