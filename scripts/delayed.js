@@ -1,19 +1,21 @@
 // add delayed functionality here
-// eslint-disable-next-line import/no-cycle
-import { loadFragment } from '../blocks/fragment/fragment.js';
-import { hasConsent } from '../blocks/cookie-banner/cookie-banner.js';
+import { loadScript } from './aem.js';
 
-async function loadCookieBanner() {
-  if (hasConsent()) return;
+// CookieInformation consent management platform (same CMP as www.vyepti.com)
+async function loadConsentManager() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('martech') === 'off') return;
 
-  const fragment = await loadFragment('/content/fragments/cookie-banner');
-  const block = fragment?.querySelector('.cookie-banner');
-  if (!block) return;
+  window.cookieInformationCustomConfig = {
+    acceptFrequency: 365,
+    declineFrequency: 365,
+  };
 
-  const wrapper = document.createElement('div');
-  wrapper.className = 'cookie-banner-wrapper';
-  wrapper.append(block);
-  document.body.append(wrapper);
+  await loadScript('https://policy.app.cookieinformation.com/uc.js', {
+    id: 'CookieConsent',
+    'data-culture': 'EN',
+    type: 'text/javascript',
+  });
 }
 
-loadCookieBanner();
+loadConsentManager();
