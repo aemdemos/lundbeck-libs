@@ -1,2 +1,61 @@
 /* hero design tokens */
+:root {
+  /* display font */
+  --hero-font-family-display: nunito, sans-serif;
 
+  /* colors */
+  --hero-text-color-light: #fff;
+  --hero-text-shadow: 0 1px 3px rgb(0 0 0 / 60%);
+
+  /* eyebrow (h3) */
+  --hero-eyebrow-font-size: 20px;
+  --hero-eyebrow-font-size-desktop: 24px;
+  --hero-eyebrow-line-height: 1.33;
+  --hero-eyebrow-gap: 4px;
+
+  /* heading (h1) */
+  --hero-heading-line-height: 1.07;
+  --hero-heading-gap: 12px;
+
+  /* body copy */
+  --hero-body-line-height: 1.22;
+  --hero-body-gap: 16px;
+
+  /* single-panel layout */
+  --hero-single-min-height: 350px;
+  --hero-single-min-height-tablet: 400px;
+  --hero-aspect-ratio: 2880 / 1116;
+
+  /* dual-panel layout */
+  --hero-panel-min-height: 336px;
+
+  /* dark panel type scale */
+  --hero-dark-font-size: 18px;
+  --hero-dark-font-size-desktop: 22px;
+  --hero-dark-font-size-wide: 28px;
+  --hero-dark-hero-font-size: 38px;
+  --hero-dark-hero-font-size-desktop: 48px;
+  --hero-dark-hero-font-size-xl: 64px;
+
+  /* light panel type scale */
+  --hero-light-font-size: 20px;
+  --hero-light-font-size-desktop: 22px;
+  --hero-light-font-size-wide: 28px;
+  --hero-light-hero-font-size: 37px;
+  --hero-light-hero-font-size-xl: 64px;
+  --hero-light-body-font-size: 16px;
+  --hero-light-body-line-height: 19px;
+
+  /* actor portrayal caption */
+  --hero-caption-sub-font-size: 12px;
+  --hero-caption-sub-font-size-xl: 16px;
+
+  /* CTA arrow icon */
+  --hero-cta-arrow-width: 22px;
+  --hero-cta-arrow-height: 9px;
+
+  /* z-index layers */
+  --hero-z-bg: 0;
+  --hero-z-content: 1;
+  --hero-z-caption: 2;
+}
