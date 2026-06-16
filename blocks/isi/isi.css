@@ -1,5 +1,10 @@
 @import url('./isi-tokens.css');
 
+/* ── In-page ISI section (matches vyepti.com full ISI block) ───── */
+main .isi.isi-block { /* @boilerplate */
+  border-top: var(--isi-block-border-width) solid var(--isi-block-border-color); /* @boilerplate */
+}
+
 /* ── In-page inline content (Row 2) ───────────────────────────── */
 main .isi .isi-inline { /* @boilerplate */
   display: block; /* @boilerplate */

@@ -13,8 +13,10 @@
   --isi-bar-z-index: 5; /* @boilerplate */
   --isi-bar-expanded-z-index: 10; /* @boilerplate */
   --isi-bar-background: var(--background-color); /* @boilerplate */
-  --isi-bar-border-width: 1px; /* @boilerplate */
-  --isi-bar-border-color: #d1d1d1; /* @boilerplate */
+  --isi-block-border-width: 1px; /* @boilerplate */
+  --isi-block-border-color: #d1d1d1; /* @boilerplate */
+  --isi-bar-border-width: var(--isi-block-border-width); /* @boilerplate */
+  --isi-bar-border-color: var(--isi-block-border-color); /* @boilerplate */
   --isi-bar-height: 90px; /* @boilerplate */
   --isi-bar-padding: 13px 13px 8px; /* @boilerplate */
   --isi-bar-height-transition-duration: 0.3s; /* @boilerplate */
