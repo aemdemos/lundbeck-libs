@@ -9,20 +9,19 @@ Fixes #IssueID
 
 **New**
 
-- 
+-
 
 **Changed**
 
-- 
+-
 
 **Removed**
 
-- 
-
+-
 
 ## Test URLs and instructions -- There can be more than 1 set
 
 > If applicable, also describe how the PR reviewer can verify your expected changes, including anything that should NOT change.
 
-- Before: https://main--ise-boilerplate--aemdemos.aem.page/
-- After: https://BranchName--ise-boilerplate--aemdemos.aem.page/
+- Before: https://main--lundbeck-libs--aemdemos.aem.page/
+- After: https://BranchName--lundbeck-libs--aemdemos.aem.page/
