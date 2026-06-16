@@ -530,6 +530,8 @@ async function loadLazy(doc) {
 
   const entranceModal = getMetadata('entrance modal');
   if (entranceModal) {
+    // eslint-disable-next-line no-console
+    console.log('entrance-modal:', entranceModal);
     import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`)
       .then(({ openModal }) => openModal(entranceModal));
   }
