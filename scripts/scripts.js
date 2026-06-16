@@ -527,6 +527,12 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  const entranceModal = getMetadata('entrance-modal');
+  if (entranceModal) {
+    import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`)
+      .then(({ openModal }) => openModal(entranceModal));
+  }
 }
 
 /**
