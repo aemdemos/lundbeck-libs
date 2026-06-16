@@ -56,6 +56,21 @@
   --hero-cta-arrow-width: 22px;
   --hero-cta-arrow-height: 9px;
 
+  /* single-light / single-dark variants */
+  --hero-single-min-height-mobile: 420px;
+  --hero-single-min-height-desktop: 480px;
+  --hero-single-content-max-width: var(--max-width-site);
+  --hero-single-content-width: 46%;
+  --hero-single-padding-x: 24px;
+  --hero-single-padding-x-desktop: 60px;
+  --hero-single-heading-font-size: 36px;
+  --hero-single-heading-font-size-desktop: 56px;
+  --hero-single-body-font-size: 18px;
+  --hero-single-cta-bg: var(--brand-rose);
+  --hero-single-cta-bg-hover: var(--brand-rose-dark);
+  --hero-single-cta-color: var(--background-color);
+  --hero-single-cta-arrow: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="9" viewBox="0 0 22 9" fill="none"><path d="M0 4.5h20M16.5 1 20 4.5 16.5 8" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+
   /* z-index layers */
   --hero-z-bg: 0;
   --hero-z-content: 1;

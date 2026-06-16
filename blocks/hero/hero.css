@@ -514,3 +514,195 @@ main > .section.hero-container {
   }
 }
 
+/* ═══════════════════════════════════════════════════
+   SINGLE-LIGHT / SINGLE-DARK VARIANTS
+   Full-bleed background image with a left-aligned,
+   vertically-centered content overlay (H1 → body → CTA).
+   ═══════════════════════════════════════════════════ */
+
+.section.single-light .hero,
+.section.single-dark .hero {
+  position: relative;
+  display: block;
+  min-height: var(--hero-single-min-height-mobile);
+  overflow: hidden;
+}
+
+/* Background image row fills the whole hero */
+.section.single-light .hero > div:first-child,
+.section.single-dark .hero > div:first-child {
+  position: absolute;
+  inset: 0;
+  z-index: var(--hero-z-bg);
+}
+
+.section.single-light .hero > div:first-child > div,
+.section.single-dark .hero > div:first-child > div,
+.section.single-light .hero > div:first-child p,
+.section.single-dark .hero > div:first-child p {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.section.single-light .hero img,
+.section.single-dark .hero img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 70% center;
+}
+
+/* Content overlay — left-aligned, vertically centered (overrides legacy bottom anchor) */
+.section.single-light .hero > div:last-of-type,
+.section.single-dark .hero > div:last-of-type {
+  position: relative;
+  z-index: var(--hero-z-content);
+  box-sizing: border-box;
+  max-width: var(--hero-single-content-max-width);
+  width: 100%;
+  min-height: var(--hero-single-min-height-mobile);
+  margin: 0 auto;
+  padding: 32px var(--hero-single-padding-x);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Headline */
+.section.single-light .hero h1,
+.section.single-dark .hero h1 {
+  font-family: var(--hero-font-family-display);
+  font-size: var(--hero-single-heading-font-size);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--hero-heading-line-height);
+  margin: 0 0 var(--hero-heading-gap);
+  max-width: 100%;
+}
+
+/* Body copy */
+.section.single-light .hero > div:last-of-type p,
+.section.single-dark .hero > div:last-of-type p {
+  font-size: var(--hero-single-body-font-size);
+  font-weight: 400;
+  line-height: var(--hero-body-line-height);
+  margin: 0 0 var(--hero-body-gap);
+}
+
+/* CTA — rose pill, white label, white arrow (shared) */
+.section.single-light .hero > div:last-of-type a,
+.section.single-dark .hero > div:last-of-type a {
+  display: inline-block;
+  margin: var(--hero-body-gap) 0 0;
+  padding: var(--button-padding);
+  background-color: var(--hero-single-cta-bg);
+  color: var(--hero-single-cta-color);
+  border-radius: var(--button-border-radius);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  text-decoration: none;
+  transition: var(--button-transition);
+}
+
+.section.single-light .hero > div:last-of-type a::after,
+.section.single-dark .hero > div:last-of-type a::after {
+  content: "";
+  display: inline-block;
+  width: var(--hero-cta-arrow-width);
+  height: var(--hero-cta-arrow-height);
+  margin-left: var(--hero-heading-gap);
+  vertical-align: middle;
+  background-image: var(--hero-single-cta-arrow);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.section.single-light .hero > div:last-of-type a:hover,
+.section.single-light .hero > div:last-of-type a:focus,
+.section.single-dark .hero > div:last-of-type a:hover,
+.section.single-dark .hero > div:last-of-type a:focus {
+  background-color: var(--hero-single-cta-bg-hover);
+  color: var(--hero-single-cta-color);
+}
+
+/* "Actor portrayal" caption — italic, bottom-right */
+.section.single-light .hero .actor-portrayal,
+.section.single-dark .hero .actor-portrayal {
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
+  z-index: var(--hero-z-caption);
+  margin: 0;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── single-dark: white text over imagery ── */
+.section.single-dark .hero h1,
+.section.single-dark .hero > div:last-of-type p {
+  color: var(--hero-text-color-light);
+  text-shadow: var(--hero-text-shadow);
+}
+
+.section.single-dark .hero .actor-portrayal {
+  color: var(--hero-text-color-light);
+  text-shadow: var(--hero-text-shadow);
+}
+
+/* ── single-light: teal headline, dark body ── */
+.section.single-light .hero h1 {
+  color: var(--brand-teal);
+}
+
+.section.single-light .hero > div:last-of-type p {
+  color: var(--text-color);
+}
+
+.section.single-light .hero .actor-portrayal {
+  color: var(--text-color);
+}
+
+@media (width >= 768px) {
+  .section.single-light .hero,
+  .section.single-dark .hero {
+    min-height: var(--hero-single-min-height-desktop);
+    aspect-ratio: auto;
+  }
+
+  .section.single-light .hero > div:last-of-type,
+  .section.single-dark .hero > div:last-of-type {
+    min-height: var(--hero-single-min-height-desktop);
+    padding: 60px var(--hero-single-padding-x-desktop);
+  }
+
+  .section.single-light .hero h1,
+  .section.single-dark .hero h1 {
+    font-size: var(--hero-single-heading-font-size-desktop);
+  }
+
+  .section.single-light .hero h1,
+  .section.single-dark .hero h1,
+  .section.single-light .hero > div:last-of-type p,
+  .section.single-dark .hero > div:last-of-type p {
+    max-width: var(--hero-single-content-width);
+  }
+
+  .section.single-light .hero .actor-portrayal,
+  .section.single-dark .hero .actor-portrayal {
+    right: 40px;
+    bottom: 20px;
+  }
+}
+
+@media (width >= 1200px) {
+  .section.single-light .hero > div:last-of-type,
+  .section.single-dark .hero > div:last-of-type {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+

@@ -90,8 +90,45 @@ function decorateDualPanel(block, rows) {
   applyAccentColor(block);
 }
 
+/**
+ * Section-metadata styles single-light / single-dark force the single full-bleed
+ * panel layout regardless of how the hero cells are authored.
+ * @param {Element} block
+ * @returns {boolean} true if a single-* section style is present
+ */
+function hasSingleSectionStyle(block) {
+  const section = block.closest('.section');
+  return !!section && (section.classList.contains('single-light')
+    || section.classList.contains('single-dark'));
+}
+
+/**
+ * Flattens an authored [image cell, text cell] row into sibling rows, each
+ * wrapping its original cell, so decorateSinglePanel's DOM contract
+ * (row > cell > content) holds and instrumentation on cells is preserved.
+ * @param {Element} block
+ */
+function flattenToSinglePanelRows(block) {
+  const cells = [...block.children].flatMap((row) => [...row.children]);
+  if (cells.length < 2) return;
+  block.textContent = '';
+  cells.forEach((cell) => {
+    const row = document.createElement('div');
+    row.append(cell);
+    block.append(row);
+  });
+}
+
 export default function decorate(block) {
   const rows = [...block.children];
+
+  // Section style single-light / single-dark always renders as a single panel
+  if (hasSingleSectionStyle(block)) {
+    const isMultiCell = rows.some((row) => row.children.length >= 2);
+    if (isMultiCell) flattenToSinglePanelRows(block);
+    decorateSinglePanel(block);
+    return;
+  }
 
   // Detect mode: if any row has 2 cells (image + text), it's dual-panel
   const isDual = rows.some((row) => row.children.length >= 2);
