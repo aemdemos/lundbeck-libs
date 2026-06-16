@@ -25,7 +25,6 @@
 /* clickable header row */
 .accordion .accordion-item-label { /* @libs */
   position: relative; /* @libs */
-  display: flex; /* @libs */
   align-items: flex-start; /* @libs */
   justify-content: space-between; /* @libs */
   gap: 10px; /* @libs */
