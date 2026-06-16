@@ -20,8 +20,6 @@ export default function decorate(block) {
   const abbreviatedRow = rows[0];
   const inlineRow = rows[1];
 
-  block.classList.add('isi-block');
-
   /* Mark the inline row so CSS can control its visibility */
   inlineRow.classList.add('isi-inline');
 
