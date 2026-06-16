@@ -1,155 +1,329 @@
 @import url('./carousel-tokens.css');
 
-.carousel .carousel-slides-container { /* @boilerplate */
-  position: relative; /* @boilerplate */
+.carousel .carousel-slides-container { /* @libs */
+  position: relative; /* @libs */
 }
 
 .carousel .carousel-slides,
-.carousel .carousel-slide-indicators { /* @boilerplate */
-  list-style: none; /* @boilerplate */
-  margin: 0; /* @boilerplate */
-  padding: 0; /* @boilerplate */
+.carousel .carousel-slide-indicators { /* @libs */
+  list-style: none; /* @libs */
+  margin: 0; /* @libs */
+  padding: 0; /* @libs */
 }
 
-.carousel .carousel-slides { /* @boilerplate */
-  display: flex; /* @boilerplate */
-  scroll-behavior: smooth; /* @boilerplate */
-  scroll-snap-type: x mandatory; /* @boilerplate */
-  overflow: scroll clip; /* @boilerplate */
+.carousel .carousel-slides { /* @libs */
+  display: flex; /* @libs */
+  align-items: stretch; /* @libs */
+  scroll-behavior: smooth; /* @libs */
+  scroll-snap-type: x mandatory; /* @libs */
+  overflow: scroll clip; /* @libs */
+  user-select: none; /* @libs */
 }
 
-.carousel .carousel-slides::-webkit-scrollbar { /* @boilerplate */
-  display: none; /* @boilerplate */
+.carousel .carousel-slides::-webkit-scrollbar { /* @libs */
+  display: none; /* @libs */
 }
 
-.carousel .carousel-slide { /* @boilerplate */
-  flex: 0 0 100%; /* @boilerplate */
-  scroll-snap-align: start; /* @boilerplate */
-  display: flex; /* @boilerplate */
-  flex-direction: column; /* @boilerplate */
-  align-items: flex-start; /* @boilerplate */
-  justify-content: center; /* @boilerplate */
-  position: relative; /* @boilerplate */
-  width: 100%; /* @boilerplate */
-  min-height: min(50vw, calc(100dvh - var(--header-height))); /* @boilerplate */
+/* each slide is a quote card; mobile stacks text above the photo */
+.carousel .carousel-slide { /* @libs */
+  flex: 0 0 100%; /* @libs */
+  scroll-snap-align: start; /* @libs */
+  display: flex; /* @libs */
+  flex-direction: column; /* @libs */
+  gap: var(--carousel-card-gap); /* @libs */
+  width: 100%; /* @libs */
+  box-sizing: border-box; /* @libs */
+  padding: var(--carousel-card-padding); /* @libs */
+  border-radius: var(--carousel-card-radius); /* @libs */
+  background-color: var(--carousel-card-bg); /* @libs */
 }
 
-.carousel .carousel-slide:has(.carousel-slide-content[data-align='center']) { /* @boilerplate */
-  align-items: center; /* @boilerplate */
+/* text content: quote, divider, attribution, disclaimer, cta */
+.carousel .carousel-slide-content { /* @libs */
+  display: flex; /* @libs */
+  flex-direction: column; /* @libs */
+  align-items: center; /* @libs */
+  gap: var(--carousel-divider-gap); /* @libs */
+  text-align: center; /* @libs */
 }
 
-.carousel .carousel-slide:has(.carousel-slide-content[data-align='right']) { /* @boilerplate */
-  align-items: flex-end; /* @boilerplate */
+.carousel .carousel-slide-content h2 { /* @libs */
+  margin: 0; /* @libs */
+  color: var(--carousel-quote-color); /* @libs */
+  font-size: var(--carousel-quote-font-size); /* @libs */
+  font-weight: var(--carousel-quote-font-weight); /* @libs */
+  line-height: var(--carousel-quote-line-height); /* @libs */
 }
 
-.carousel .carousel-slide .carousel-slide-image picture { /* @boilerplate */
-  position: absolute; /* @boilerplate */
-  inset: 0; /* @boilerplate */
+/* decorative quote mark — the customer's brand SVG; light variant uses the
+   coral icon (icon-quote), dark variant uses the teal-light icon
+   (icon-quote-light), each authored per slide */
+.carousel .carousel-slide-content .icon-quote,
+.carousel .carousel-slide-content .icon-quote-light { /* @libs */
+  width: var(--carousel-quote-icon-size); /* @libs */
+  height: var(--carousel-quote-icon-size); /* @libs */
 }
 
-.carousel .carousel-slide .carousel-slide-image picture > img { /* @boilerplate */
-  height: 100%; /* @boilerplate */
-  width: 100%; /* @boilerplate */
-  object-fit: cover; /* @boilerplate */
+.carousel .carousel-slide-content .icon-quote img,
+.carousel .carousel-slide-content .icon-quote-light img { /* @libs */
+  width: 100%; /* @libs */
+  height: 100%; /* @libs */
 }
 
-.carousel .carousel-slide .carousel-slide-content { /* @boilerplate */
-  z-index: 1; /* @boilerplate */
-  margin: var(--carousel-content-margin); /* @boilerplate */
-  padding: var(--carousel-content-padding); /* @boilerplate */
-  color: var(--carousel-content-color); /* @boilerplate */
-  background-color: var(--carousel-content-background); /* @boilerplate */
-  position: relative; /* @boilerplate */
-  width: var(--slide-content-width, auto); /* @boilerplate */
+/* red accent divider (authored as a horizontal rule) */
+.carousel .carousel-slide-content hr { /* @libs */
+  width: var(--carousel-divider-width); /* @libs */
+  height: var(--carousel-divider-height); /* @libs */
+  margin: 0; /* @libs */
+  border: 0; /* @libs */
+  background-color: var(--carousel-divider-color); /* @libs */
 }
 
-.carousel .carousel-slide-indicators { /* @boilerplate */
-  display: flex; /* @boilerplate */
-  flex-wrap: wrap; /* @boilerplate */
-  justify-content: center; /* @boilerplate */
-  gap: var(--carousel-indicators-gap); /* @boilerplate */
-  padding: var(--carousel-indicators-padding); /* @boilerplate */
-  background-color: var(--light-color); /* @boilerplate */
-  line-height: 0; /* @boilerplate */
+.carousel .carousel-slide-content p { /* @libs */
+  margin: 0; /* @libs */
+  color: var(--carousel-name-color); /* @libs */
+  font-size: var(--carousel-name-font-size); /* @libs */
 }
 
-.carousel .carousel-slide-indicator button { /* @boilerplate */
-  width: var(--carousel-indicator-size); /* @boilerplate */
-  height: var(--carousel-indicator-size); /* @boilerplate */
-  margin: 0; /* @boilerplate */
-  padding: 0; /* @boilerplate */
-  border-radius: 50%; /* @boilerplate */
-  background-color: var(--carousel-indicator-background); /* @boilerplate */
-  transition: background-color var(--carousel-transition-duration); /* @boilerplate */
+/* small print: a paragraph that is only emphasised text reads as the disclaimer */
+.carousel .carousel-slide-content p em { /* @libs */
+  display: block; /* @libs */
+  font-size: var(--carousel-disclaimer-font-size); /* @libs */
+  line-height: var(--carousel-disclaimer-line-height); /* @libs */
+  font-style: normal; /* @libs */
+}
+
+.carousel .carousel-slide-content a { /* @libs */
+  display: inline-flex; /* @libs */
+  align-items: center; /* @libs */
+  gap: var(--carousel-link-arrow-gap); /* @libs */
+  color: var(--carousel-link-color); /* @libs */
+  font-size: var(--carousel-link-font-size); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+}
+
+/* trailing chevron echoing the source "watch story" arrow */
+.carousel .carousel-slide-content a::after { /* @libs */
+  content: ''; /* @libs */
+  width: var(--carousel-link-arrow-size); /* @libs */
+  height: var(--carousel-link-arrow-size); /* @libs */
+  border: solid var(--carousel-link-color); /* @libs */
+  border-width: var(--carousel-link-arrow-thickness) var(--carousel-link-arrow-thickness) 0 0; /* @libs */
+  transform: rotate(45deg); /* @libs */
+}
+
+/* photo — mobile shows the mobile crop (or the desktop one if no mobile crop
+   was authored); the desktop crop is hidden until the tablet breakpoint */
+.carousel .carousel-slide-image p { /* @libs */
+  margin: 0; /* @libs */
+}
+
+.carousel .carousel-slide-image img { /* @libs */
+  display: block; /* @libs */
+  width: 100%; /* @libs */
+  height: auto; /* @libs */
+}
+
+.carousel .carousel-slide-image picture.carousel-slide-image-desktop { /* @libs */
+  display: none; /* @libs */
+}
+
+/* on mobile the image column bleeds to the card edges (cancels the card's
+   inline + bottom padding) so the photo sits flush with square bottom corners;
+   margin-top:auto pins it to the bottom when a shorter slide is stretched to
+   match the tallest one */
+.carousel .carousel-slide-image { /* @libs */
+  margin: auto calc(-1 * var(--carousel-card-padding-inline))
+    calc(-1 * var(--carousel-card-padding-block)); /* @libs */
+}
+
+.carousel .carousel-slide-image picture.carousel-slide-image-mobile { /* @libs */
+  display: block; /* @libs */
+}
+
+.carousel .carousel-slide-image-mobile img { /* @libs */
+  border-radius: 0 0 var(--carousel-card-radius) var(--carousel-card-radius); /* @libs */
+}
+
+/* when only one picture is authored it serves both breakpoints */
+.carousel .carousel-slide-image:not(:has(.carousel-slide-image-mobile)) picture.carousel-slide-image-desktop { /* @libs */
+  display: block; /* @libs */
+}
+
+.carousel .carousel-slide-image:not(:has(.carousel-slide-image-mobile)) .carousel-slide-image-desktop img { /* @libs */
+  border-radius: 0 0 var(--carousel-card-radius) var(--carousel-card-radius); /* @libs */
+}
+
+/* dot indicators */
+.carousel .carousel-slide-indicators { /* @libs */
+  display: flex; /* @libs */
+  flex-wrap: wrap; /* @libs */
+  justify-content: center; /* @libs */
+  gap: var(--carousel-indicators-gap); /* @libs */
+  padding: var(--carousel-indicators-padding); /* @libs */
+  line-height: 0; /* @libs */
+}
+
+.carousel .carousel-slide-indicator button { /* @libs */
+  width: var(--carousel-indicator-size); /* @libs */
+  height: var(--carousel-indicator-size); /* @libs */
+  margin: 0; /* @libs */
+  padding: 0; /* @libs */
+  border: 0; /* @libs */
+  border-radius: 50%; /* @libs */
+  background-color: var(--carousel-indicator-background); /* @libs */
+  transition: background-color var(--carousel-transition-duration); /* @libs */
+  cursor: pointer; /* @libs */
 }
 
 .carousel .carousel-slide-indicator button:disabled,
 .carousel .carousel-slide-indicator button:hover,
-.carousel .carousel-slide-indicator button:focus-visible { /* @boilerplate */
-  background-color: var(--carousel-indicator-active-background); /* @boilerplate */
+.carousel .carousel-slide-indicator button:focus-visible { /* @libs */
+  background-color: var(--carousel-indicator-active-background); /* @libs */
 }
 
-.carousel .carousel-navigation-buttons { /* @boilerplate */
-  position: absolute; /* @boilerplate */
-  top: 50%; /* @boilerplate */
-  transform: translateY(-50%); /* @boilerplate */
-  left: var(--carousel-nav-inset); /* @boilerplate */
-  right: var(--carousel-nav-inset); /* @boilerplate */
-  display: flex; /* @boilerplate */
-  align-items: center; /* @boilerplate */
-  justify-content: space-between; /* @boilerplate */
-  z-index: 1; /* @boilerplate */
+/* prev / next buttons — overlaid on the slide, left & right, vertically centred */
+.carousel .carousel-navigation-buttons { /* @libs */
+  position: absolute; /* @libs */
+  inset: 0; /* @libs */
+  display: flex; /* @libs */
+  align-items: center; /* @libs */
+  justify-content: space-between; /* @libs */
+  padding: 0 var(--carousel-nav-inset); /* @libs */
+  pointer-events: none; /* @libs */
+  z-index: 1; /* @libs */
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.carousel .carousel-navigation-buttons button { /* @boilerplate */
-  position: relative; /* @boilerplate */
-  width: var(--carousel-nav-button-size); /* @boilerplate */
-  height: var(--carousel-nav-button-size); /* @boilerplate */
-  margin: 0; /* @boilerplate */
-  border-radius: 50%; /* @boilerplate */
-  padding: 0; /* @boilerplate */
-  background-color: var(--carousel-nav-button-background); /* @boilerplate */
-  transition: background-color var(--carousel-transition-duration); /* @boilerplate */
+.carousel .carousel-navigation-buttons button { /* @libs */
+  position: relative; /* @libs */
+  width: var(--carousel-nav-button-size); /* @libs */
+  height: var(--carousel-nav-button-size); /* @libs */
+  margin: 0; /* @libs */
+  padding: 0; /* @libs */
+  border: 0; /* @libs */
+  background-color: transparent; /* @libs */
+  cursor: pointer; /* @libs */
+  pointer-events: auto; /* @libs */
 }
 
-.carousel .carousel-navigation-buttons button:hover,
-.carousel .carousel-navigation-buttons button:focus-visible { /* @boilerplate */
-  background-color: var(--carousel-nav-button-hover-background); /* @boilerplate */
+.carousel .carousel-navigation-buttons button::after { /* @libs */
+  display: block; /* @libs */
+  content: ''; /* @libs */
+  position: absolute; /* @libs */
+  top: 50%; /* @libs */
+  left: 50%; /* @libs */
+  width: var(--carousel-nav-arrow-size); /* @libs */
+  height: var(--carousel-nav-arrow-size); /* @libs */
+  border: var(--carousel-nav-arrow-thickness) solid; /* @libs */
+  border-bottom: 0; /* @libs */
+  border-left: 0; /* @libs */
+  transform: translate(-25%, -50%) rotate(-135deg); /* @libs */
 }
 
-.carousel .carousel-navigation-buttons button::after { /* @boilerplate */
-  display: block; /* @boilerplate */
-  content: ''; /* @boilerplate */
-  border: var(--carousel-nav-arrow-thickness) solid; /* @boilerplate */
-  border-bottom: 0; /* @boilerplate */
-  border-left: 0; /* @boilerplate */
-  height: var(--carousel-nav-arrow-size); /* @boilerplate */
-  width: var(--carousel-nav-arrow-size); /* @boilerplate */
-  position: absolute; /* @boilerplate */
-  top: 50%; /* @boilerplate */
-  left: calc(50% + var(--carousel-nav-arrow-offset)); /* @boilerplate */
-  transform: translate(-50%, -50%) rotate(-135deg); /* @boilerplate */
+.carousel .carousel-navigation-buttons button.slide-prev::after { /* @libs */
+  color: var(--carousel-nav-arrow-color-prev); /* @libs */
 }
 
-.carousel .carousel-navigation-buttons button.slide-next::after { /* @boilerplate */
-  transform: translate(-50%, -50%) rotate(45deg); /* @boilerplate */
-  left: calc(50% - var(--carousel-nav-arrow-offset)); /* @boilerplate */
+/* mobile overlays the card (no photo behind), so the next arrow stays rose for
+   contrast; it switches to white at the desktop breakpoint where it sits over the photo */
+.carousel .carousel-navigation-buttons button.slide-next::after { /* @libs */
+  color: var(--carousel-nav-arrow-color-prev); /* @libs */
+  transform: translate(-75%, -50%) rotate(45deg); /* @libs */
 }
 
-@media (width >= 600px) { /* @boilerplate */
-  .carousel .carousel-navigation-buttons { /* @boilerplate */
-    left: var(--carousel-nav-inset-desktop); /* @boilerplate */
-    right: var(--carousel-nav-inset-desktop); /* @boilerplate */
+/* ===== dark variant (teal card, light text) ===== */
+.carousel.dark .carousel-slide { /* @libs */
+  background-color: var(--carousel-card-bg-dark); /* @libs */
+}
+
+.carousel.dark .carousel-slide-content h2 { /* @libs */
+  color: var(--carousel-quote-color-dark); /* @libs */
+}
+
+.carousel.dark .carousel-slide-content p { /* @libs */
+  color: var(--carousel-name-color-dark); /* @libs */
+}
+
+.carousel.dark .carousel-slide-content a { /* @libs */
+  color: var(--carousel-link-color-dark); /* @libs */
+}
+
+.carousel.dark .carousel-slide-content a::after { /* @libs */
+  border-color: var(--carousel-link-color-dark); /* @libs */
+}
+
+.carousel.dark .carousel-slide-indicator button:disabled,
+.carousel.dark .carousel-slide-indicator button:hover,
+.carousel.dark .carousel-slide-indicator button:focus-visible { /* @libs */
+  background-color: var(--carousel-indicator-active-background-dark); /* @libs */
+}
+
+.carousel.dark .carousel-navigation-buttons button.slide-prev::after,
+.carousel.dark .carousel-navigation-buttons button.slide-next::after { /* @libs */
+  color: var(--carousel-nav-arrow-color-dark); /* @libs */
+}
+
+/* ===== tablet+ : quote and photo side by side ===== */
+@media (width >= 768px) { /* @libs */
+  .carousel .carousel-slide { /* @libs */
+    flex-direction: row; /* @libs */
+    align-items: center; /* @libs */
+    padding: var(--carousel-card-padding-desktop); /* @libs */
+    overflow: hidden; /* @libs */
   }
 
-  .carousel .carousel-slide .carousel-slide-content { /* @boilerplate */
-    --slide-content-width: calc((100% - 184px) / 2); /* @boilerplate */
-
-    margin: var(--carousel-content-margin-desktop); /* @boilerplate */
+  /* next arrow now sits over the photo, so it switches to the light color */
+  .carousel .carousel-navigation-buttons button.slide-next::after { /* @libs */
+    color: var(--carousel-nav-arrow-color-next); /* @libs */
   }
 
-  .carousel .carousel-slide .carousel-slide-content[data-align='justify'] { /* @boilerplate */
-    --slide-content-width: auto; /* @boilerplate */
+  .carousel .carousel-slide-content { /* @libs */
+    position: relative; /* @libs */
+    z-index: 1; /* @libs */
+    flex: 1 1 var(--carousel-content-width-desktop); /* @libs */
+    align-items: flex-start; /* @libs */
+    padding: var(--carousel-card-content-padding-desktop); /* @libs */
+    text-align: left; /* @libs */
+    pointer-events: none; /* @libs */
+  }
+
+  /* keep the CTA link clickable; the rest of the text must not block the
+     overlaid prev/next nav buttons that sit above the slide */
+  .carousel .carousel-slide-content a { /* @libs */
+    pointer-events: auto; /* @libs */
+  }
+
+  /* the image column reserves its share of the row; the photo is anchored to
+     its right edge and keeps its full aspect at the card height. At narrow
+     widths it overflows left (behind the text) rather than being cropped, so
+     the whole subject always stays visible */
+  .carousel .carousel-slide-image { /* @libs */
+    position: relative; /* @libs */
+    flex: 1 1 var(--carousel-image-width-desktop); /* @libs */
+    align-self: stretch; /* @libs */
+    margin: 0; /* @libs */
+    overflow: visible; /* @libs */
+  }
+
+  /* tablet+ shows the desktop crop; the mobile crop is hidden */
+  .carousel .carousel-slide-image picture.carousel-slide-image-mobile { /* @libs */
+    display: none; /* @libs */
+  }
+
+  .carousel .carousel-slide-image picture.carousel-slide-image-desktop, /* @libs */
+  .carousel .carousel-slide-image:not(:has(.carousel-slide-image-mobile)) picture.carousel-slide-image-desktop { /* @libs */
+    position: absolute; /* @libs */
+    inset: 0; /* @libs */
+    display: flex; /* @libs */
+    justify-content: flex-end; /* @libs */
+    margin: 0; /* @libs */
+  }
+
+  .carousel .carousel-slide-image-desktop img { /* @libs */
+    height: 100%; /* @libs */
+    width: auto; /* @libs */
+    max-width: none; /* @libs */
+    object-fit: contain; /* @libs */
+    border-radius: 0; /* @libs */
   }
 }

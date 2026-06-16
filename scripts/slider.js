@@ -137,6 +137,85 @@ export function showSlide(block, slideIndex = 0, behavior = 'smooth', options = 
 }
 
 /**
+ * Enables click-and-drag scrolling on the slides container for mouse/pen users.
+ * Touch is left to the browser's native scroll-snap so vertical page scrolling
+ * keeps working; on release we snap to the nearest slide.
+ * @param {Element} block - Root block element
+ * @param {Object} opts - Resolved slider options map
+ */
+function bindMouseDrag(block, opts) {
+  const container = block.querySelector(opts.get('slidesContainer'));
+  if (!container) return;
+
+  // a small horizontal drag past this many pixels switches to the adjacent slide
+  const SWITCH_THRESHOLD = 40;
+
+  let isDown = false;
+  let moved = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let lastDelta = 0;
+
+  // native image dragging would otherwise steal the gesture when the press
+  // starts on a photo, so suppress it across the slides
+  container.addEventListener('dragstart', (e) => e.preventDefault());
+
+  container.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'touch') return; // native scroll handles touch
+    isDown = true;
+    moved = false;
+    startX = e.clientX;
+    lastDelta = 0;
+    startScrollLeft = container.scrollLeft;
+    container.style.scrollSnapType = 'none';
+    container.style.scrollBehavior = 'auto'; // track the cursor instantly, no smooth animation
+    // stop text selection / image-drag so the press anywhere starts a drag
+    e.preventDefault();
+    try { container.setPointerCapture(e.pointerId); } catch { /* non-active pointer */ }
+  });
+
+  container.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    lastDelta = e.clientX - startX;
+    if (Math.abs(lastDelta) > 5) moved = true;
+    container.scrollLeft = startScrollLeft - lastDelta;
+  });
+
+  const endDrag = (e) => {
+    if (!isDown) return;
+    isDown = false;
+    container.style.removeProperty('scroll-snap-type');
+    container.style.removeProperty('scroll-behavior'); // restore smooth for the snap
+    if (container.hasPointerCapture?.(e.pointerId)) container.releasePointerCapture(e.pointerId);
+    if (!moved) return;
+
+    const slides = block.querySelectorAll(opts.get('slideSelector'));
+    if (!slides.length) return;
+    // base the move on the slide we started from, not the scroll midpoint, so a
+    // short flick is enough to advance one slide in the drag direction
+    const startIndex = getCurrentSlideIndexFromScroll(
+      { scrollLeft: startScrollLeft }, slides,
+    );
+    let target = startIndex;
+    if (lastDelta <= -SWITCH_THRESHOLD) target = startIndex + 1;
+    else if (lastDelta >= SWITCH_THRESHOLD) target = startIndex - 1;
+    // showSlide wraps out-of-range indices, so the loop is closed end-to-end
+    showSlide(block, target, 'smooth');
+  };
+
+  container.addEventListener('pointerup', endDrag);
+  container.addEventListener('pointercancel', endDrag);
+
+  // a drag that crossed a link shouldn't also trigger navigation
+  container.addEventListener('click', (e) => {
+    if (moved) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, true);
+}
+
+/**
  * Binds indicator clicks, prev/next buttons, and IntersectionObserver to sync active state.
  * @param {Element} block - Root block element
  * @param {Object} options - Selector/dataset options
@@ -192,6 +271,8 @@ function bindEvents(block, options = {}) {
   block.querySelectorAll(opts.get('slideSelector')).forEach((slide) => {
     slideObserver.observe(slide);
   });
+
+  bindMouseDrag(block, opts);
 }
 
 /**

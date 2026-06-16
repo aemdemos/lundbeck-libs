@@ -1,22 +1,70 @@
-/* carousel design tokens */
-:root { /* @boilerplate */
-  --carousel-content-margin: 68px; /* @boilerplate */
-  --carousel-content-margin-desktop: 92px; /* @boilerplate */
-  --carousel-content-padding: var(--spacing-s); /* @boilerplate */
-  --carousel-content-color: white; /* @boilerplate */
-  --carousel-content-background: rgb(19 19 19 / 75%); /* @boilerplate */
-  --carousel-indicators-gap: 6px 12px; /* @boilerplate */
-  --carousel-indicators-padding: 12px; /* @boilerplate */
-  --carousel-indicator-size: 24px; /* @boilerplate */
-  --carousel-indicator-background: #dadada; /* @boilerplate */
-  --carousel-indicator-active-background: var(--text-color); /* @boilerplate */
-  --carousel-nav-inset: 12px; /* @boilerplate */
-  --carousel-nav-inset-desktop: var(--spacing-m); /* @boilerplate */
-  --carousel-nav-button-size: 44px; /* @boilerplate */
-  --carousel-nav-button-background: rgb(19 19 19 / 25%); /* @boilerplate */
-  --carousel-nav-button-hover-background: rgb(19 19 19 / 75%); /* @boilerplate */
-  --carousel-nav-arrow-size: 12px; /* @boilerplate */
-  --carousel-nav-arrow-thickness: 2px; /* @boilerplate */
-  --carousel-nav-arrow-offset: 2px; /* @boilerplate */
-  --carousel-transition-duration: var(--transition-duration); /* @boilerplate */
+/* carousel design tokens — quote-card style; mobile-first defaults, desktop
+   overrides live in the width >= 768px block of carousel.css */
+:root { /* @libs */
+  /* card */
+  --carousel-card-bg: var(--card-bg-light); /* @libs */
+  --carousel-card-bg-dark: var(--brand-teal); /* @libs */
+  --carousel-card-radius: 12px; /* @libs */
+  --carousel-card-padding-block: 36px; /* @libs */
+  --carousel-card-padding-inline: 24px; /* @libs */
+  --carousel-card-padding: var(--carousel-card-padding-block) var(--carousel-card-padding-inline); /* @libs */
+  --carousel-card-padding-desktop: 0; /* @libs */
+  --carousel-card-content-padding-desktop: 48px; /* @libs */
+  --carousel-card-gap: 24px; /* @libs */
+
+  /* desktop column split: quote text vs photo */
+  --carousel-content-width-desktop: 55%; /* @libs */
+  --carousel-image-width-desktop: 45%; /* @libs */
+
+  /* quote */
+  --carousel-quote-color: var(--brand-teal); /* @libs */
+  --carousel-quote-color-dark: var(--background-color); /* @libs */
+  --carousel-quote-font-size: var(--heading-font-size-xl); /* @libs */
+  --carousel-quote-line-height: 1.375; /* @libs */
+  --carousel-quote-font-weight: var(--font-weight-bold); /* @libs */
+
+  /* decorative quote-mark icon (customer brand SVG, square) */
+  --carousel-quote-icon-size: 45px; /* @libs */
+
+  /* divider */
+  --carousel-divider-color: #f16464; /* @libs */
+  --carousel-divider-width: 50px; /* @libs */
+  --carousel-divider-height: 4px; /* @libs */
+  --carousel-divider-gap: 16px; /* @libs */
+
+  /* attribution + disclaimer */
+  --carousel-name-color: var(--text-color); /* @libs */
+  --carousel-name-color-dark: var(--background-color); /* @libs */
+  --carousel-name-font-size: var(--body-font-size-ms); /* @libs */
+  --carousel-disclaimer-font-size: var(--body-font-size-xs); /* @libs */
+  --carousel-disclaimer-line-height: 1.3; /* @libs */
+
+  /* "watch story" / cta link */
+  --carousel-link-color: var(--link-color); /* @libs */
+  --carousel-link-color-dark: var(--background-color); /* @libs */
+  --carousel-link-font-size: var(--body-font-size-s); /* @libs */
+  --carousel-link-arrow-gap: 8px; /* @libs */
+  --carousel-link-arrow-size: 7px; /* @libs */
+  --carousel-link-arrow-thickness: 2px; /* @libs */
+
+  /* dot indicators — rose dots in both variants (matches source) */
+  --carousel-indicators-gap: 12px; /* @libs */
+  --carousel-indicators-padding: 24px 0 0; /* @libs */
+  --carousel-indicator-size: 13px; /* @libs */
+  --carousel-indicator-background: #efefef; /* @libs */
+  --carousel-indicator-active-background: var(--brand-rose); /* @libs */
+  --carousel-indicator-active-background-dark: var(--brand-rose); /* @libs */
+
+  /* prev / next nav buttons — overlaid on the slide; light variant uses a rose
+     prev arrow + white next arrow, dark variant uses white for both */
+  --carousel-nav-inset: 12px; /* @libs */
+  --carousel-nav-button-size: 36px; /* @libs */
+  --carousel-nav-arrow-size: 12px; /* @libs */
+  --carousel-nav-arrow-thickness: 2px; /* @libs */
+  --carousel-nav-arrow-color-prev: var(--brand-rose); /* @libs */
+  --carousel-nav-arrow-color-next: var(--background-color); /* @libs */
+  --carousel-nav-arrow-color-dark: var(--background-color); /* @libs */
+
+  /* motion */
+  --carousel-transition-duration: 0.3s; /* @libs */
 }

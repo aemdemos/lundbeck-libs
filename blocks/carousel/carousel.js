@@ -9,8 +9,20 @@ function createSlide(row, slideIndex, carouselId) {
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
   slide.classList.add('carousel-slide');
 
-  row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
-    column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+  // A column whose only meaningful content is an image is the slide's media;
+  // any other column is text content. This lets authors put the quote/text and
+  // the photo in either order without a hidden convention.
+  row.querySelectorAll(':scope > div').forEach((column) => {
+    const isImageOnly = column.querySelector('picture')
+      && !column.querySelector('h1, h2, h3, h4, h5, h6, p:not(:has(picture)), ul, ol');
+    column.classList.add(isImageOnly ? 'carousel-slide-image' : 'carousel-slide-content');
+    if (isImageOnly) {
+      // Authors may supply two pictures: the first is the desktop crop, an
+      // optional second is the mobile crop shown below the quote on small screens.
+      const pictures = column.querySelectorAll('picture');
+      pictures[0]?.classList.add('carousel-slide-image-desktop');
+      if (pictures.length > 1) pictures[1].classList.add('carousel-slide-image-mobile');
+    }
     slide.append(column);
   });
 
