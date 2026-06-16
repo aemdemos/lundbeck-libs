@@ -106,18 +106,18 @@
 }
 
 /* fallback font for proxima-nova */
-@font-face {
-  font-family: proxima-nova-fallback;
-  font-weight: 400;
-  size-adjust: 98%;
-  src: local('Arial');
+@font-face { /* @libs */
+  font-family: proxima-nova-fallback; /* @libs */
+  font-weight: 400; /* @libs */
+  size-adjust: 98%; /* @libs */
+  src: local('Arial'); /* @libs */
 }
 
-@font-face {
-  font-family: proxima-nova-fallback;
-  font-weight: 700;
-  size-adjust: 98%;
-  src: local('Arial Bold'), local('Arial-BoldMT'), local('Arial');
+@font-face { /* @libs */
+  font-family: proxima-nova-fallback; /* @libs */
+  font-weight: 700; /* @libs */
+  size-adjust: 98%; /* @libs */
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Arial'); /* @libs */
 }
 
 @media (width >= 900px) { /* @libs */

@@ -1,51 +1,51 @@
 @import url('./table-tokens.css');
 
-.table.block {
-  width: 100%;
-  overflow-x: auto;
+.table.block { /* @libs */
+  width: 100%; /* @libs */
+  overflow-x: auto; /* @libs */
 }
 
-.table.block table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: collapse;
-  font-family: var(--body-font-family);
-  font-size: var(--body-font-size-s);
-  line-height: 1.5;
-  color: var(--text-color);
+.table.block table { /* @libs */
+  width: 100%; /* @libs */
+  max-width: 100%; /* @libs */
+  border-collapse: collapse; /* @libs */
+  font-family: var(--body-font-family); /* @libs */
+  font-size: var(--body-font-size-s); /* @libs */
+  line-height: 1.5; /* @libs */
+  color: var(--text-color); /* @libs */
 }
 
 .table.block table th,
-.table.block table td {
-  padding: var(--table-cell-padding-block) var(--table-cell-padding-inline);
-  text-align: left;
-  vertical-align: top;
+.table.block table td { /* @libs */
+  padding: var(--table-cell-padding-block) var(--table-cell-padding-inline); /* @libs */
+  text-align: left; /* @libs */
+  vertical-align: top; /* @libs */
 }
 
 /* header band — compact teal gradient strip with bold teal label */
-.table.block table thead tr {
-  background-image: var(--table-header-bg);
+.table.block table thead tr { /* @libs */
+  background-image: var(--table-header-bg); /* @libs */
 }
 
-.table.block table th {
-  padding: var(--table-header-padding);
-  font-size: var(--table-header-font-size);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--table-header-line-height);
-  color: var(--table-header-text-color);
+.table.block table th { /* @libs */
+  padding: var(--table-header-padding); /* @libs */
+  font-size: var(--table-header-font-size); /* @libs */
+  font-weight: var(--font-weight-bold); /* @libs */
+  line-height: var(--table-header-line-height); /* @libs */
+  color: var(--table-header-text-color); /* @libs */
 }
 
-.table.block table tbody tr {
-  border-bottom: var(--table-row-border-width) solid var(--table-border-color);
+.table.block table tbody tr { /* @libs */
+  border-bottom: var(--table-row-border-width) solid var(--table-border-color); /* @libs */
 }
 
 .table table th p,
-.table table td p {
-  margin: 0;
+.table table td p { /* @libs */
+  margin: 0; /* @libs */
 }
 
-.table table td p + p {
-  margin-top: 0.25em;
+.table table td p + p { /* @libs */
+  margin-top: 0.25em; /* @libs */
 }
 
 /* accent variant — author writes e.g. "Table (accent 2)" to color column 2 */
@@ -54,28 +54,28 @@
 .table.block.accent-3 table tbody td:nth-child(3),
 .table.block.accent-4 table tbody td:nth-child(4),
 .table.block.accent-5 table tbody td:nth-child(5),
-.table.block.accent-6 table tbody td:nth-child(6) {
-  color: var(--table-accent-color);
+.table.block.accent-6 table tbody td:nth-child(6) { /* @libs */
+  color: var(--table-accent-color); /* @libs */
 }
 
 /* no header variant */
-.table.block.no-header table tbody tr:first-child {
-  border-top: var(--table-row-border-width) solid var(--table-border-color);
+.table.block.no-header table tbody tr:first-child { /* @libs */
+  border-top: var(--table-row-border-width) solid var(--table-border-color); /* @libs */
 }
 
 /* striped variant */
-.table.block.striped tbody tr:nth-child(odd) {
-  background-color: var(--overlay-background-color);
+.table.block.striped tbody tr:nth-child(odd) { /* @libs */
+  background-color: var(--overlay-background-color); /* @libs */
 }
 
 /* bordered variant */
 .table.block.bordered table th,
-.table.block.bordered table td {
-  border: var(--table-row-border-width) solid var(--table-border-color);
+.table.block.bordered table td { /* @libs */
+  border: var(--table-row-border-width) solid var(--table-border-color); /* @libs */
 }
 
-@media (width >= 768px) {
-  .table.block table td {
-    padding: var(--table-cell-padding-block-desktop) var(--table-cell-padding-inline);
+@media (width >= 768px) { /* @libs */
+  .table.block table td { /* @libs */
+    padding: var(--table-cell-padding-block-desktop) var(--table-cell-padding-inline); /* @libs */
   }
 }
