@@ -219,6 +219,40 @@ export function decorateButtons(main) {
   });
 }
 
+/**
+ * Turns an author-typed start marker `[class-name]` in RTE text into a
+ * `<span class="class-name">` that wraps from the marker to the end of its
+ * containing block element. Lets authors apply utility classes (e.g.
+ * hide-mobile / hide-desktop) without a span tag in markdown.
+ * @param {HTMLElement} main The container element to scan
+ */
+export function decorateBracketSpans(main) {
+  const marker = /\[([^[\]]+)\]/;
+  main.querySelectorAll('p, li, h1, h2, h3, h4, h5, h6').forEach((el) => {
+    const node = [...el.childNodes].find(
+      (n) => n.nodeType === Node.TEXT_NODE && marker.test(n.nodeValue),
+    );
+    if (!node) return;
+    const match = node.nodeValue.match(marker);
+    const className = toClassName(match[1].trim());
+    if (!className) return;
+
+    const span = document.createElement('span');
+    span.className = className;
+    // text after the marker stays with the leading text node
+    node.nodeValue = node.nodeValue.slice(match.index + match[0].length);
+    // move the marker's node and everything after it into the span
+    let sibling = node;
+    const toWrap = [];
+    while (sibling) {
+      toWrap.push(sibling);
+      sibling = sibling.nextSibling;
+    }
+    el.append(span);
+    span.append(...toWrap);
+  });
+}
+
 /* === SECTIONS === */
 
 /** Metadata keys consumed by {@link applySectionBackgroundDecorations} (not mirrored as data-*). */
@@ -364,6 +398,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateBracketSpans(main);
   decorateButtons(main);
   a11yLinks(main);
 }

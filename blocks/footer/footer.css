@@ -19,7 +19,7 @@ footer .footer p {
   margin: 0;
 }
 
-/* === Section 0: Teal Legal Links Strip === */
+/* === Teal Legal Links Strip === */
 footer .footer .footer-legal-strip {
   background-color: var(--brand-teal);
   padding: var(--footer-legal-strip-padding);
@@ -55,31 +55,20 @@ footer .footer .footer-legal-strip a:hover {
   color: var(--brand-teal-light);
 }
 
-/* === Section 1: Main Footer === */
+/* === Main Footer === */
 footer .footer .footer-main {
+  max-width: var(--footer-max-width);
+  margin: 0 auto;
   padding: var(--footer-main-padding);
   color: var(--footer-text-color);
 }
 
-/* Two-column layout */
-footer .footer .footer-main-inner {
-  max-width: var(--footer-max-width);
-  margin: 0 auto;
+footer .footer .footer-main > div {
   padding: var(--footer-main-inline-padding);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
 }
 
-/* Left column: copyright + disclaimer */
-footer .footer .footer-main-left {
-  flex: 1 1 0;
-  min-width: 0;
-  padding-right: var(--footer-left-padding-right);
-}
-
-footer .footer .footer-main-left p {
+/* copyright + disclaimer paragraphs */
+footer .footer .footer-main p {
   color: var(--footer-text-color);
   font-size: var(--body-font-size-xs);
   line-height: var(--footer-disclaimer-line-height);
@@ -87,59 +76,90 @@ footer .footer .footer-main-left p {
   margin: 0;
 }
 
-/* Spacing between copyright and disclaimer paragraphs */
-footer .footer .footer-main-left p + p {
+footer .footer .footer-main p + p {
   margin-top: var(--footer-paragraph-gap);
 }
 
-/* Right column: phone + social + logo — right-aligned */
-footer .footer .footer-main-right {
-  flex: 0 0 auto;
-  text-align: right;
+/* mobile-only phone block (above the columns) */
+footer .footer .footer-main .default-content-wrapper {
+  margin-bottom: var(--footer-social-row-gap);
 }
 
-/* Social + brand logo row — right-aligned */
-footer .footer .footer-social-row {
+/* phone label + button on one horizontal line */
+footer .footer .footer-main .footer-phone-row {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  gap: var(--footer-phone-label-gap);
+}
+
+footer .footer .footer-main .footer-phone-row p {
+  margin: 0;
+}
+
+/* keep the authored bold label at body size (not the small disclaimer size) */
+footer .footer .footer-main .footer-phone-row p:first-child {
+  font-size: var(--body-font-size-s);
+  white-space: nowrap;
+}
+
+footer .footer .footer-main .footer-phone-row .button-wrapper {
+  margin: 0;
+}
+
+/* social icons + brand logo on one horizontal line */
+footer .footer .footer-main .footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: var(--footer-social-icon-gap);
   margin-top: var(--footer-social-row-gap);
 }
 
-footer .footer .footer-social-icons {
+footer .footer .footer-main .footer-social-row p {
+  margin: 0;
+}
+
+footer .footer .footer-main .footer-social-row a {
   display: inline-flex;
   align-items: center;
-  gap: var(--footer-social-icon-gap);
 }
 
-footer .footer .footer-social-icons a {
-  display: inline-flex;
-  align-items: center;
-  transition: opacity 0.2s ease;
-}
-
-footer .footer .footer-social-icons a:hover {
-  opacity: 0.7;
-}
-
-footer .footer .footer-social-icons img {
+footer .footer .footer-main .footer-social-row img {
   width: var(--footer-social-icon-size);
   height: var(--footer-social-icon-size);
+  display: block;
 }
 
-footer .footer .footer-brand-logo {
-  display: inline-flex;
-  align-items: center;
-  margin: -5px 0 0 var(--footer-logo-offset);
-}
-
-footer .footer .footer-brand-logo img {
+/* brand logo is wider than the social icons */
+footer .footer .footer-main .footer-social-row img[alt*="Lundbeck" i],
+footer .footer .footer-main .footer-social-row img[alt*="logo" i] {
   width: var(--footer-logo-width);
   height: auto;
 }
 
+/* === Columns layout === */
+footer .footer .footer-main .columns > div {
+  gap: 0;
+}
+
 @media (width >= 768px) {
-  footer .footer .footer-main-inner {
+  /* override the boilerplate columns stack (which only rows at 900px) */
+  footer .footer .footer-main .columns > div {
     flex-direction: row;
+    align-items: flex-start;
+    gap: var(--footer-paragraph-gap);
+  }
+
+  footer .footer .footer-main .columns > div > div {
+    flex: 1;
+  }
+
+  footer .footer .footer-main .columns > div > div:first-child {
+    padding-right: var(--footer-left-padding-right);
+  }
+
+  /* right column: phone + social + logo right-aligned */
+  footer .footer .footer-main .columns > div > div:last-child .footer-phone-row,
+  footer .footer .footer-main .columns > div > div:last-child .footer-social-row {
+    justify-content: flex-end;
   }
 }

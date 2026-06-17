@@ -377,6 +377,25 @@ main img { /* @libs */
   width: 100%; /* @libs */
 }
 
+/* responsive visibility utilities (authorable via [hide-mobile] / [hide-desktop] bracket spans) */
+.hide-desktop {
+  display: revert;
+}
+
+.hide-mobile {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .hide-desktop {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: revert;
+  }
+}
+
 /* sections */
 main > .section { /* @libs */
   margin: 0; /* @libs */

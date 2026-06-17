@@ -1,32 +1,9 @@
-import { getMetadata, DOMPURIFY } from '../../scripts/aem.js';
-import { ensureDOMPurify } from '../../scripts/scripts.js';
+import { getMetadata } from '../../scripts/aem.js';
+import { loadFragment } from '../fragment/fragment.js';
 
 /**
- * Fetches footer fragment HTML with dual-fetch pattern.
- * @returns {Promise<Element|null>} container element with footer sections
- */
-async function fetchFooterFragment() {
-  const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta
-    ? new URL(footerMeta, window.location).pathname
-    : '/footer';
-
-  let resp = await fetch('/footer.plain.html');
-  if (!resp.ok) {
-    resp = await fetch(`${footerPath}.plain.html`);
-  }
-  if (!resp.ok) return null;
-
-  await ensureDOMPurify();
-  const raw = await resp.text();
-  const container = document.createElement('div');
-  container.innerHTML = window.DOMPurify.sanitize(raw, DOMPURIFY);
-  return container;
-}
-
-/**
- * Builds the teal legal-links bar from the first section div.
- * @param {Element} section - first div from footer fragment
+ * Builds the teal legal-links bar from the first section of the footer fragment.
+ * @param {Element} section - first decorated section from the fragment
  * @returns {Element} decorated teal strip element
  */
 function buildLegalLinksBar(section) {
@@ -36,8 +13,7 @@ function buildLegalLinksBar(section) {
   const inner = document.createElement('div');
   inner.className = 'footer-legal-strip-inner';
 
-  const links = section.querySelectorAll('a');
-  links.forEach((link) => {
+  section.querySelectorAll('a').forEach((link) => {
     const a = document.createElement('a');
     a.textContent = link.textContent.trim();
     a.href = link.getAttribute('href') || '#';
@@ -60,71 +36,41 @@ function buildLegalLinksBar(section) {
 }
 
 /**
- * Builds the main footer area from the second section div.
- * @param {Element} section - second div from footer fragment
- * @returns {Element} decorated main footer element
+ * Groups the phone label paragraph and the phone button paragraph into a single
+ * row so they sit on the same horizontal line (they are authored on separate
+ * lines so the link can be buttonized).
+ * @param {Element} container - element whose child paragraphs hold the phone content
  */
-function buildMainFooter(section) {
-  const main = document.createElement('div');
-  main.className = 'footer-main';
+function groupPhoneRow(container) {
+  const buttonP = [...container.children].find(
+    (el) => el.tagName === 'P' && el.querySelector('a.button'),
+  );
+  if (!buttonP) return;
 
-  const inner = document.createElement('div');
-  inner.className = 'footer-main-inner';
-
-  const leftCol = document.createElement('div');
-  leftCol.className = 'footer-main-left';
-
-  const rightCol = document.createElement('div');
-  rightCol.className = 'footer-main-right';
-
-  const items = section.querySelectorAll(':scope > p, :scope > a');
-  const socialLinks = [];
-  let brandLogoLink = null;
-
-  items.forEach((item) => {
-    const link = item.tagName === 'A' ? item : item.querySelector('a');
-    const img = item.querySelector('img');
-
-    if (link && img) {
-      const alt = (img.getAttribute('alt') || '').toLowerCase();
-      if (alt.includes('lundbeck') || alt.includes('logo')) {
-        brandLogoLink = link.cloneNode(true);
-      } else {
-        socialLinks.push(link.cloneNode(true));
-      }
-    } else if (!img && item.textContent.trim()) {
-      const cp = document.createElement('p');
-      cp.textContent = item.textContent.trim();
-      leftCol.append(cp);
-    }
-  });
-
-  const socialRow = document.createElement('div');
-  socialRow.className = 'footer-social-row';
-
-  if (socialLinks.length) {
-    const socialContainer = document.createElement('div');
-    socialContainer.className = 'footer-social-icons';
-    socialLinks.forEach((link) => {
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      socialContainer.append(link);
-    });
-    socialRow.append(socialContainer);
+  const labelP = buttonP.previousElementSibling;
+  const row = document.createElement('div');
+  row.className = 'footer-phone-row';
+  buttonP.before(row);
+  if (labelP && labelP.tagName === 'P' && !labelP.querySelector('img')) {
+    row.append(labelP);
   }
+  row.append(buttonP);
+}
 
-  if (brandLogoLink) {
-    brandLogoLink.className = 'footer-brand-logo';
-    brandLogoLink.target = '_blank';
-    brandLogoLink.rel = 'noopener noreferrer';
-    socialRow.append(brandLogoLink);
-  }
+/**
+ * Groups consecutive image paragraphs (social icons + brand logo) into one row.
+ * @param {Element} container - element whose child paragraphs hold the icons/logo
+ */
+function groupSocialRow(container) {
+  const imgParas = [...container.children].filter(
+    (el) => el.tagName === 'P' && el.querySelector('img'),
+  );
+  if (!imgParas.length) return;
 
-  rightCol.append(socialRow);
-  inner.append(leftCol);
-  inner.append(rightCol);
-  main.append(inner);
-  return main;
+  const row = document.createElement('div');
+  row.className = 'footer-social-row';
+  imgParas[0].before(row);
+  imgParas.forEach((p) => row.append(p));
 }
 
 /**
@@ -132,14 +78,36 @@ function buildMainFooter(section) {
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-  const doc = await fetchFooterFragment();
-  if (!doc) return;
+  const footerMeta = getMetadata('footer');
+  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const fragment = await loadFragment(footerPath);
+  if (!fragment) return;
 
   block.textContent = '';
 
-  const sections = doc.querySelectorAll(':scope > div');
-  if (sections.length >= 2) {
-    block.append(buildLegalLinksBar(sections[0]));
-    block.append(buildMainFooter(sections[1]));
+  const sections = [...fragment.querySelectorAll(':scope > .section')];
+  if (!sections.length) return;
+
+  // first section: teal legal-links strip
+  block.append(buildLegalLinksBar(sections[0]));
+
+  // remaining sections: decorated main content (responsive phone text + columns block)
+  const main = document.createElement('div');
+  main.className = 'footer-main';
+  sections.slice(1).forEach((section) => {
+    while (section.firstElementChild) main.append(section.firstElementChild);
+  });
+
+  // mobile-only phone block (shown above the columns on small screens)
+  const mobilePhone = main.querySelector(':scope > .default-content-wrapper');
+  if (mobilePhone) groupPhoneRow(mobilePhone);
+
+  // desktop right column inside the columns block: phone row + social/logo row
+  const rightCell = main.querySelector('.columns > div > div:last-child');
+  if (rightCell) {
+    groupPhoneRow(rightCell);
+    groupSocialRow(rightCell);
   }
+
+  block.append(main);
 }

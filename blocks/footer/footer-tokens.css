@@ -20,10 +20,12 @@
   --footer-left-padding-right: 30px;
   --footer-paragraph-gap: 16px;
 
+  /* phone row */
+  --footer-phone-label-gap: 11px;
+
   /* social + logo */
   --footer-social-row-gap: 27px;
   --footer-social-icon-size: 32px;
   --footer-social-icon-gap: 8px;
   --footer-logo-width: 160px;
-  --footer-logo-offset: 19px;
 }
