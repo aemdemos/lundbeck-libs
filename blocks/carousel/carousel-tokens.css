@@ -63,8 +63,11 @@
   --carousel-testimonial-nav-button-size: 36px;
   --carousel-testimonial-nav-arrow-color: var(--brand-rose);
 
-  /* image */
+  /* image — fixed height so multiple stacked images fit the card instead of
+     growing it. Reference vyepti.com slide is a compact ~320px-tall card. */
   --carousel-testimonial-image-ratio: 451 / 380;
   --carousel-testimonial-image-flex: 42%;
+  --carousel-testimonial-image-height: 280px;
+  --carousel-testimonial-image-height-desktop: 380px;
   --carousel-testimonial-content-flex: 50%;
 }

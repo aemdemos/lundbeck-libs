@@ -169,9 +169,20 @@
   background-color: var(--carousel-testimonial-surface);
 }
 
+/* Image cell holds 1–5 images. They share a fixed-height row and each fits (cover),
+   so the card stays compact rather than growing to the sum of natural image heights. */
 .carousel.testimonial .carousel-slide .carousel-slide-image {
+  display: flex;
   width: 100%;
+  height: var(--carousel-testimonial-image-height);
   line-height: 0;
+}
+
+.carousel.testimonial .carousel-slide .carousel-slide-image p {
+  margin: 0;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
 }
 
 .carousel.testimonial .carousel-slide .carousel-slide-image picture {
@@ -304,11 +315,8 @@
   .carousel.testimonial .carousel-slide .carousel-slide-image {
     flex: 0 0 var(--carousel-testimonial-image-flex);
     max-width: var(--carousel-testimonial-image-flex);
+    height: var(--carousel-testimonial-image-height-desktop);
     order: 2;
-  }
-
-  .carousel.testimonial .carousel-slide .carousel-slide-image img {
-    aspect-ratio: var(--carousel-testimonial-image-ratio);
   }
 
   .carousel.testimonial .carousel-slide .carousel-slide-content {
