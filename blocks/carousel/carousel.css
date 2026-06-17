@@ -188,30 +188,28 @@
   }
 }
 
-/* Testimonial variant — patient story quote over a full-bleed image. Token-driven;
-   brand sites refine visuals via the --carousel-testimonial-* tokens. */
+/* Testimonial variant — light card: quote on one side, patient photo on the other
+   filling the full card height. Token-driven; brand sites refine via --carousel-testimonial-* tokens. */
 .carousel.testimonial .carousel-slide {
   display: flex;
-  align-items: flex-end;
-  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   min-height: 0;
-  height: var(--carousel-testimonial-slide-height);
+  background-color: var(--carousel-testimonial-surface);
   border-radius: var(--carousel-testimonial-radius);
   overflow: hidden;
 }
 
-/* Image fills the entire slide as a background. */
+/* Image fills its area full-height (its colored backdrop is baked into the photo). */
 .carousel.testimonial .carousel-slide .carousel-slide-image {
-  position: absolute;
-  inset: 0;
-  display: flex;
+  width: 100%;
+  height: var(--carousel-testimonial-image-height);
   line-height: 0;
 }
 
 .carousel.testimonial .carousel-slide .carousel-slide-image p {
   margin: 0;
-  flex: 1 1 0;
-  min-width: 0;
   height: 100%;
 }
 
@@ -228,15 +226,14 @@
   object-fit: cover;
 }
 
-/* Quote sits in a translucent panel overlaid on the image. */
+/* Quote panel — solid (no overlay), so text is fully legible. */
 .carousel.testimonial .carousel-slide .carousel-slide-content {
   position: relative;
-  z-index: 1;
   width: auto;
   margin: 0;
   padding: var(--carousel-testimonial-content-padding);
   color: var(--text-color);
-  background-color: var(--carousel-testimonial-panel-background);
+  background-color: var(--carousel-testimonial-surface);
 }
 
 /* Optional decorative quote icon above the heading. Deferred asset: hidden by default,
@@ -338,17 +335,26 @@
 }
 
 @media (width >= 768px) {
+  /* Side-by-side: quote left, photo right at full card height. */
   .carousel.testimonial .carousel-slide {
-    align-items: center;
+    flex-direction: row;
+    align-items: stretch;
     height: var(--carousel-testimonial-slide-height-desktop);
   }
 
-  /* Quote panel: fixed-width box inset from the left, vertically centered over the image. */
+  .carousel.testimonial .carousel-slide .carousel-slide-image {
+    flex: 0 0 var(--carousel-testimonial-image-flex);
+    max-width: var(--carousel-testimonial-image-flex);
+    height: 100%;
+    order: 2;
+  }
+
   .carousel.testimonial .carousel-slide .carousel-slide-content {
-    flex: 0 0 var(--carousel-testimonial-panel-width-desktop);
-    max-width: var(--carousel-testimonial-panel-width-desktop);
-    margin-left: var(--carousel-testimonial-panel-inset-desktop);
+    flex: 1 1 0;
+    order: 1;
     padding: var(--carousel-testimonial-content-padding-desktop);
-    border-radius: var(--carousel-testimonial-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
