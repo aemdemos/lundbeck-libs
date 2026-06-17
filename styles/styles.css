@@ -438,6 +438,18 @@ a.button:focus::after { /* @libs */
   opacity: var(--button-icon-opacity-hover); /* @libs */
 }
 
+/* explicit authored icon (e.g. :search:) replaces the default arrow */
+a.button:has(.icon)::after { /* @libs */
+  content: none; /* @libs */
+}
+
+a.button .icon { /* @libs */
+  width: 1em; /* @libs */
+  height: 1em; /* @libs */
+  margin-left: var(--button-icon-gap); /* @libs */
+  vertical-align: middle; /* @libs */
+}
+
 main img { /* @libs */
   max-width: 100%; /* @libs */
   width: auto; /* @libs */
