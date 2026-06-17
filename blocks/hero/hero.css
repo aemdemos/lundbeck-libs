@@ -103,19 +103,7 @@ main > .section.hero-container {
   object-position: center;
 }
 
-.hero-panel-light .hero-panel-content {
-  padding: 20px 20px;
-  padding-top:10px;
-}
 
-/* Default for tablet+ before desktop override */
-.hero-panel-dark .hero-panel-bg img {
-  object-position: 50% 12%;
-}
-
-.hero-panel-light .hero-panel-bg img {
-  object-position: 55% bottom;
-}
 
 .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(2) {
   font-size: var(--hero-light-hero-font-size) !important;
@@ -293,7 +281,27 @@ main > .section.hero-container {
   right: auto;
   margin: 0;
   padding: 0;
+   bottom: 35px;
 }
+
+  .hero-panel-dark .hero-panel-bg img {
+    object-position: 50% 50%;
+  }
+
+  .hero-panel-light .hero-panel-content {
+  padding: 20px;
+  padding-top:10px;
+}
+
+
+.hero-panel-light .hero-panel-bg img {
+  object-position: 55% bottom;
+  object-fit: cover;
+}
+  
+    .hero.hero-dual .hero-panel-light a {
+    padding: 19px 23px 19px 32px;
+  }
 
 
 @media (width >= 600px) {
@@ -305,26 +313,6 @@ main > .section.hero-container {
     min-height: var(--hero-single-min-height-tablet);
   }
 }
-
-/* Mobile: dark panel stretches to fill, light panel uses cover to preserve proportions */
-
-  .hero-panel-dark .hero-panel-bg img {
-    object-position: 50% 50%;
-  }
-
-  .hero-panel-light .hero-panel-bg img {
-    object-fit: cover;
-    object-position: 70% center;
-  }
-
-
-  .hero.hero-dual .hero-panel-cta-wrap {
-    bottom: 35px;
-  }
-  
-    .hero.hero-dual .hero-panel-light a {
-    padding: 19px 23px 19px 32px;
-  }
 
 
 @media (width >= 768px) {
@@ -447,7 +435,7 @@ main > .section.hero-container {
   }
 }
 
-@media (min-width: 1400px) {
+@media (width >= 1400px) {
   .hero.hero-dual .hero-panel-dark .hero-panel-description > p {
    line-height: var(--hero-body-line-height-l);
   }
@@ -507,12 +495,10 @@ main > .section.hero-container {
   .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(3) {
     width: 100%;
   }
-}
 
-@media (width > 1600px) {
-  .hero.hero-dual .hero-panel-cta-wrap  {
+ .hero.hero-dual .hero-panel-cta-wrap  {
     margin-right: 25%;
-  }
+}
 }
 
 /* ═══════════════════════════════════════════════════
@@ -569,7 +555,6 @@ main > .section.hero-container {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 var(--hero-single-padding-x);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -671,7 +656,7 @@ main > .section.hero-container {
   color: var(--hero-text-color-light);
 }
 
-@media (min-width: 480px) {
+@media (width >= 480px) {
  .section.single-light .hero > div:last-of-type, .section.single-dark .hero > div:last-of-type
  { justify-content: center;
 }
@@ -701,7 +686,7 @@ main > .section.hero-container {
 
   .section.single-light .hero h1,
   .section.single-dark .hero h1 {
-    font-size: var(--hero-single-heading-font-size-desktop);
+  font-size: var(--hero-single-heading-font-size-m);
     margin:0;
   }
 
@@ -723,10 +708,6 @@ main > .section.hero-container {
     right: 40px;
     bottom: 20px;
   }
-
-  .section.single-light .hero h1, .section.single-dark .hero h1 {
-  font-size: var(--hero-single-heading-font-size-m);
-}
 
 .section.single-light .hero > div:last-of-type a, .section.single-dark .hero > div:last-of-type a {
   margin-top:24px;
@@ -755,7 +736,6 @@ main > .section.hero-container {
 
 
 @media (width >= 1200px) {
-
   .section.single-light .hero,
   .section.single-dark .hero {
     min-height: 450px;
