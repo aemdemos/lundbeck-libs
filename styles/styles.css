@@ -438,7 +438,15 @@ a.button:focus::after { /* @libs */
   opacity: var(--button-icon-opacity-hover); /* @libs */
 }
 
-/* explicit authored icon (e.g. :search:) replaces the default arrow */
+/* explicit authored icon (e.g. :search:) replaces the default arrow and uses
+   flex gap so spacing sits between icon and text on whichever side it's authored */
+a.button:has(.icon) { /* @libs */
+  display: inline-flex; /* @libs */
+  gap: var(--button-icon-gap); /* @libs */
+  align-items: center; /* @libs */
+  justify-content: center; /* @libs */
+}
+
 a.button:has(.icon)::after { /* @libs */
   content: none; /* @libs */
 }
@@ -446,8 +454,6 @@ a.button:has(.icon)::after { /* @libs */
 a.button .icon { /* @libs */
   width: 1em; /* @libs */
   height: 1em; /* @libs */
-  margin-left: var(--button-icon-gap); /* @libs */
-  vertical-align: middle; /* @libs */
 }
 
 main img { /* @libs */
