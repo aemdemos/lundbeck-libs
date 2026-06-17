@@ -19,27 +19,27 @@ main > .section.hero-container {
    SINGLE-PANEL MODE (legacy — 1 image row + 1 text row)
    ═══════════════════════════════════════════════════ */
 
-.hero:not(.hero-dual) {
+.hero.single {
   position: relative;
   min-height: var(--hero-single-min-height);
   overflow: hidden;
 }
 
 /* Image row - positioned to fill entire hero as background */
-.hero:not(.hero-dual) > div:first-child {
+.hero.single > div:first-child {
   position: absolute;
   inset: 0;
   z-index: var(--hero-z-bg);
 }
 
-.hero:not(.hero-dual) > div:first-child > div,
-.hero:not(.hero-dual) > div:first-child p {
+.hero.single > div:first-child > div,
+.hero.single > div:first-child p {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.hero:not(.hero-dual) img {
+.hero.single img {
   display: block;
   width: 100%;
   height: 100%;
@@ -48,7 +48,7 @@ main > .section.hero-container {
 }
 
 /* Content row - sits above the background image */
-.hero:not(.hero-dual) > div:last-of-type {
+.hero.single > div:last-of-type {
   position: relative;
   z-index: var(--hero-z-content);
   max-width: var(--max-width-site);
@@ -65,11 +65,6 @@ main > .section.hero-container {
 /* ═══════════════════════════════════════════════════
    DUAL-PANEL MODE (two-slide split hero — vyepti.com split-banner parity)
    ═══════════════════════════════════════════════════ */
-
-.hero-dual {
-  position: relative;
-  overflow: hidden;
-}
 
 .hero-panels {
   display: flex;
@@ -105,7 +100,7 @@ main > .section.hero-container {
 
 
 
-.hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(2) {
+.hero .hero-panel-light .hero-panel-description > p:nth-child(2) {
   font-size: var(--hero-light-hero-font-size) !important;
   padding-bottom: var(--hero-body-gap);
   font-family: var(--hero-font-family-display);
@@ -139,7 +134,7 @@ main > .section.hero-container {
   font-weight: inherit;
 }
 
-.hero:not(.hero-dual) > div:last-of-type p {
+.hero.single > div:last-of-type p {
   color: var(--text-color);
   font-size: var(--body-font-size-m);
   font-weight: 400;
@@ -148,8 +143,8 @@ main > .section.hero-container {
 }
 
 /* CTA link - teal outline pill button with arrow */
-.hero:not(.hero-dual) > div:last-of-type a,
-.hero.hero-dual .hero-panel-light a {
+.hero.single > div:last-of-type a,
+.hero .hero-panel-light a {
   display: inline-block;
   padding: var(--button-padding);
   background-color: var(--background-color);
@@ -162,7 +157,7 @@ main > .section.hero-container {
   margin: var(--hero-body-gap) 0 0;
 }
 
-.hero.hero-dual .hero-panel-light .hero-panel-cta-wrap a {
+.hero .hero-panel-light .hero-panel-cta-wrap a {
   margin: 0;
   width: auto;
   max-width: none;
@@ -194,13 +189,13 @@ main > .section.hero-container {
   max-width: 100%;
 }
 
-.hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(1) {
+.hero .hero-panel-light .hero-panel-description > p:nth-child(1) {
   padding-bottom: 0;
 }
 
 
 /* Dark panel — white Nunito-style stack (#split-image-col-wrapper-1) */
-.hero.hero-dual .hero-panel-dark .hero-panel-description > p {
+.hero .hero-panel-dark .hero-panel-description > p {
   color: var(--hero-text-color-light);
   font-family: var(--hero-font-family-display);
   font-size: var(--hero-dark-font-size);
@@ -209,7 +204,7 @@ main > .section.hero-container {
   line-height: var(--hero-body-line-height-m);
 }
 
-.hero.hero-dual .hero-panel-dark .hero-panel-description > p:last-of-type {
+.hero .hero-panel-dark .hero-panel-description > p:last-of-type {
   font-size: var(--hero-dark-hero-font-size);
   font-weight: var(--heading-font-weight);
   line-height: 1;
@@ -217,7 +212,7 @@ main > .section.hero-container {
 }
 
 /* Light panel — teal headline + centered subcopy (#split-image-col-wrapper-2) */
-.hero.hero-dual .hero-panel-light .hero-panel-description > p {
+.hero .hero-panel-light .hero-panel-description > p {
   color: var(--brand-teal);
   font-size: var(--hero-light-font-size);
   font-weight: var(--font-weight-bold);
@@ -225,8 +220,8 @@ main > .section.hero-container {
   padding-bottom: var(--hero-eyebrow-gap);
 }
 
-.hero:not(.hero-dual) > div:last-of-type a::after,
-.hero.hero-dual .hero-panel-light a::after {
+.hero.single > div:last-of-type a::after,
+.hero .hero-panel-light a::after {
   content: "";
   display: inline-block;
   width: var(--hero-cta-arrow-width);
@@ -239,10 +234,10 @@ main > .section.hero-container {
   background-position: center;
 }
 
-.hero:not(.hero-dual) > div:last-of-type a:hover,
-.hero:not(.hero-dual) > div:last-of-type a:focus,
-.hero.hero-dual .hero-panel-light a:hover,
-.hero.hero-dual .hero-panel-light a:focus {
+.hero.single > div:last-of-type a:hover,
+.hero.single > div:last-of-type a:focus,
+.hero .hero-panel-light a:hover,
+.hero .hero-panel-light a:focus {
   background-color: var(--brand-teal-light);
 }
 
@@ -263,7 +258,7 @@ main > .section.hero-container {
   }
 }
 
-.hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(3) {
+.hero .hero-panel-light .hero-panel-description > p:nth-child(3) {
   color: var(--text-color) !important;
   font-size: var(--hero-light-body-font-size);
   font-weight: 400;
@@ -276,7 +271,7 @@ main > .section.hero-container {
 
 
 /* CTA band — absolute bottom, centered (vyepti #split-image-col-wrapper-2 .cmp-teaser__action-container) */
-.hero.hero-dual .hero-panel-cta-wrap {
+.hero .hero-panel-cta-wrap {
   position: absolute;
   right: auto;
   margin: 0;
@@ -299,17 +294,17 @@ main > .section.hero-container {
   object-fit: cover;
 }
   
-    .hero.hero-dual .hero-panel-light a {
+    .hero .hero-panel-light a {
     padding: 19px 23px 19px 32px;
   }
 
 
 @media (width >= 600px) {
-  .hero:not(.hero-dual) {
+  .hero.single {
     min-height: var(--hero-single-min-height-tablet);
   }
 
-  .hero:not(.hero-dual) > div:last-of-type {
+  .hero.single > div:last-of-type {
     min-height: var(--hero-single-min-height-tablet);
   }
 }
@@ -317,19 +312,19 @@ main > .section.hero-container {
 
 @media (width >= 768px) {
   /* Single-panel desktop */
-  .hero:not(.hero-dual) {
+  .hero.single {
     min-height: unset;
     aspect-ratio: var(--hero-aspect-ratio);
   }
 
-  .hero:not(.hero-dual) > div:last-of-type {
+  .hero.single > div:last-of-type {
     min-height: unset;
     padding: 60px 32px;
   }
 
-  .hero:not(.hero-dual) h3,
-  .hero:not(.hero-dual) h1,
-  .hero:not(.hero-dual) > div:last-of-type p {
+  .hero.single h3,
+  .hero.single h1,
+  .hero.single > div:last-of-type p {
     width: 55%;
   }
 
@@ -346,25 +341,25 @@ main > .section.hero-container {
     padding: 20px;
   }
 
-  .hero.hero-dual .hero-panel-cta-wrap {
+  .hero .hero-panel-cta-wrap {
     bottom: 50px;
   }
 
-  .hero.hero-dual .hero-panel-dark .hero-panel-description > p {
+  .hero .hero-panel-dark .hero-panel-description > p {
     font-size: var(--hero-dark-font-size-desktop);
     line-height: var(--hero-body-line-height);
   }
 
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p {
+  .hero .hero-panel-light .hero-panel-description > p {
     font-size: var(--hero-light-font-size-desktop);
   }
 
-  .hero.hero-dual .hero-panel-dark .hero-panel-description > p:last-of-type {
+  .hero .hero-panel-dark .hero-panel-description > p:last-of-type {
     font-size: var(--hero-dark-hero-font-size-desktop);
     line-height: 32px;
   }
 
-  .hero:not(.hero-dual) .actor-portrayal {
+  .hero.single .actor-portrayal {
     bottom: 34px;
     right: 67px;
   }
@@ -405,13 +400,13 @@ main > .section.hero-container {
 
 
 @media (width >= 1024px) {
-  .hero.hero-dual .hero-panel-cta-wrap {
+  .hero .hero-panel-cta-wrap {
     bottom: 60px;
   }
 }
 
 @media (width >= 991px) and (width <= 1200px) {
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(3) {
+  .hero .hero-panel-light .hero-panel-description > p:nth-child(3) {
     width: 60%;
   }
 }
@@ -430,13 +425,13 @@ main > .section.hero-container {
         padding:40px;
       }
 
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p {
+  .hero .hero-panel-light .hero-panel-description > p {
     font-size: var(--hero-light-font-size-wide);
   }
 }
 
 @media (width >= 1400px) {
-  .hero.hero-dual .hero-panel-dark .hero-panel-description > p {
+  .hero .hero-panel-dark .hero-panel-description > p {
    line-height: var(--hero-body-line-height-l);
   }
 }
@@ -447,32 +442,32 @@ main > .section.hero-container {
     padding-top: 38px;
   }
 
-  .hero.hero-dual .hero-panel-dark .hero-panel-description > p {
+  .hero .hero-panel-dark .hero-panel-description > p {
     font-size: var(--hero-dark-font-size-wide);
     line-height: 1.5;
   }
 
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(1) {
+  .hero .hero-panel-light .hero-panel-description > p:nth-child(1) {
     line-height: 1.5;
     margin-bottom: 0;
   }
 
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(2) {
+  .hero .hero-panel-light .hero-panel-description > p:nth-child(2) {
     font-size: var(--hero-light-hero-font-size-xl) !important;
     line-height: .9;
   }
 
-  .hero.hero-dual .hero-panel-dark .hero-panel-description > p:last-of-type {
+  .hero .hero-panel-dark .hero-panel-description > p:last-of-type {
     font-size: var(--hero-dark-hero-font-size-xl);
     line-height: 1;
   }
 
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(3) {
+  .hero .hero-panel-light .hero-panel-description > p:nth-child(3) {
     line-height: 24px;
     font-size: 18px;
   }
 
-    .hero.hero-dual .hero-panel .actor-portrayal sub {
+    .hero .hero-panel .actor-portrayal sub {
     font-size: var(--hero-caption-sub-font-size-xl);
   }
 }
@@ -484,19 +479,19 @@ main > .section.hero-container {
     margin-left: 0;
   }
 
-  .hero.hero-dual .hero-panel-dark .hero-panel-description > p {
+  .hero .hero-panel-dark .hero-panel-description > p {
     margin-left:25%;
   }
 
-    .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(2) {
+    .hero .hero-panel-light .hero-panel-description > p:nth-child(2) {
     line-height: 60px !important;
   }
 
-  .hero.hero-dual .hero-panel-light .hero-panel-description > p:nth-child(3) {
+  .hero .hero-panel-light .hero-panel-description > p:nth-child(3) {
     width: 100%;
   }
 
- .hero.hero-dual .hero-panel-cta-wrap  {
+ .hero .hero-panel-cta-wrap  {
     margin-right: 25%;
 }
 }

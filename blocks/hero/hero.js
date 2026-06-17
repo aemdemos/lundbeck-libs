@@ -10,6 +10,7 @@ function applyAccentColor(block) {
 }
 
 function decorateSinglePanel(block) {
+  block.classList.add('single');
   applyAccentColor(block);
 
   const contentDiv = block.querySelector(':scope > div:last-child');
@@ -21,7 +22,6 @@ function decorateSinglePanel(block) {
 }
 
 function decorateDualPanel(block, rows) {
-  block.classList.add('hero-dual');
   const panels = [];
 
   rows.forEach((row, index) => {
