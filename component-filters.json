@@ -51,6 +51,12 @@
     ]
   },
   {
+    "id": "carousel-testimonial",
+    "components": [
+      "carousel-testimonial-item"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "columns-row"

@@ -1,9 +1,24 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation, getBlockId } from '../../scripts/scripts.js';
 import { createSliderControls, initSlider, showSlide } from '../../scripts/slider.js';
 
 export { showSlide };
 
-function createSlide(row, slideIndex, carouselId) {
+/**
+ * Optimizes every author image within a cell into a responsive <picture>.
+ * Used by the testimonial variant, where a slide may hold up to 5 distinct images.
+ * @param {Element} cell - The slide image cell
+ * @param {boolean} eager - Whether the first image should load eagerly (LCP)
+ */
+function optimizeCellImages(cell, eager) {
+  cell.querySelectorAll('picture > img').forEach((img, idx) => {
+    const optimized = createOptimizedPicture(img.src, img.alt, eager && idx === 0, [{ width: '750' }]);
+    moveInstrumentation(img, optimized.querySelector('img'));
+    img.closest('picture').replaceWith(optimized);
+  });
+}
+
+function createSlide(row, slideIndex, carouselId, isTestimonial) {
   const slide = document.createElement('li');
   slide.dataset.slideIndex = slideIndex;
   slide.setAttribute('id', `carousel-${carouselId}-slide-${slideIndex}`);
@@ -11,6 +26,9 @@ function createSlide(row, slideIndex, carouselId) {
 
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
+    if (isTestimonial && colIdx === 0) {
+      optimizeCellImages(column, slideIndex === 0);
+    }
     slide.append(column);
   });
 
@@ -29,6 +47,7 @@ export default async function decorate(block) {
   block.setAttribute('role', 'region');
   block.setAttribute('aria-roledescription', 'Carousel');
 
+  const isTestimonial = block.classList.contains('testimonial');
   const rows = block.querySelectorAll(':scope > div');
   const isSingleSlide = rows.length < 2;
 
@@ -48,7 +67,7 @@ export default async function decorate(block) {
   }
 
   rows.forEach((row, idx) => {
-    const slide = createSlide(row, idx, blockId);
+    const slide = createSlide(row, idx, blockId, isTestimonial);
     moveInstrumentation(row, slide);
     slidesWrapper.append(slide);
     row.remove();

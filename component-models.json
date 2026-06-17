@@ -147,6 +147,34 @@
     ]
   },
   {
+    "id": "carousel-testimonial",
+    "fields": []
+  },
+  {
+    "id": "carousel-testimonial-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image (add up to 5 in the image cell)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "label": "Content (icon, title, text, link)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {

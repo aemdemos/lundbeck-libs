@@ -26,6 +26,35 @@
           ]
         }
       }
+    },
+    {
+      "title": "Carousel (testimonial)",
+      "id": "carousel-testimonial",
+      "model": "carousel-testimonial",
+      "filter": "carousel-testimonial",
+      "plugins": {
+        "da": {
+          "name": "carousel (testimonial)",
+          "rows": 0,
+          "columns": 0
+        }
+      }
+    },
+    {
+      "title": "Testimonial Slide",
+      "id": "carousel-testimonial-item",
+      "model": "carousel-testimonial-item",
+      "plugins": {
+        "da": {
+          "rows": 1,
+          "columns": 2,
+          "fields": [
+            { "name": "image", "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[src]" },
+            { "name": "imageAlt", "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[alt]" },
+            { "name": "content", "selector": "div:nth-child(2)" }
+          ]
+        }
+      }
     }
   ],
   "models": [
@@ -52,12 +81,44 @@
           "valueType": "string"
         }
       ]
+    },
+    {
+      "id": "carousel-testimonial",
+      "fields": []
+    },
+    {
+      "id": "carousel-testimonial-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image (add up to 5 in the image cell)",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt"
+        },
+        {
+          "component": "richtext",
+          "name": "content",
+          "label": "Content (icon, title, text, link)",
+          "valueType": "string"
+        }
+      ]
     }
   ],
   "filters": [
     {
       "id": "carousel",
       "components": ["carousel-item"]
+    },
+    {
+      "id": "carousel-testimonial",
+      "components": ["carousel-testimonial-item"]
     }
   ]
 }

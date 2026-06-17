@@ -178,6 +178,44 @@
           }
         },
         {
+          "title": "Carousel (testimonial)",
+          "id": "carousel-testimonial",
+          "model": "carousel-testimonial",
+          "filter": "carousel-testimonial",
+          "plugins": {
+            "da": {
+              "name": "carousel (testimonial)",
+              "rows": 0,
+              "columns": 0
+            }
+          }
+        },
+        {
+          "title": "Testimonial Slide",
+          "id": "carousel-testimonial-item",
+          "model": "carousel-testimonial-item",
+          "plugins": {
+            "da": {
+              "rows": 1,
+              "columns": 2,
+              "fields": [
+                {
+                  "name": "image",
+                  "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[src]"
+                },
+                {
+                  "name": "imageAlt",
+                  "selector": "div:nth-child(1)>p:nth-child(1)>picture>img[alt]"
+                },
+                {
+                  "name": "content",
+                  "selector": "div:nth-child(2)"
+                }
+              ]
+            }
+          }
+        },
+        {
           "title": "Columns",
           "id": "columns",
           "model": "columns",
