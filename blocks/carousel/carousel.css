@@ -334,6 +334,11 @@
   height: var(--carousel-testimonial-nav-button-size);
 }
 
+/* Testimonial's next arrow sits over the image, where white reads better. */
+.carousel.testimonial .carousel-navigation-buttons button.slide-next {
+  color: var(--carousel-testimonial-nav-arrow-next-color);
+}
+
 @media (width >= 768px) {
   .carousel.testimonial .carousel-slide {
     flex-direction: row;
