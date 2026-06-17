@@ -2,7 +2,7 @@
 :root { /* @boilerplate */
   --carousel-content-margin: 68px; /* @boilerplate */
   --carousel-content-margin-desktop: 92px; /* @boilerplate */
-  --carousel-content-padding: var(--spacing-s); /* @boilerplate */
+  --carousel-content-padding: 16px;
   --carousel-content-color: white; /* @boilerplate */
   --carousel-content-background: rgb(19 19 19 / 75%); /* @boilerplate */
   --carousel-indicators-gap: 6px 12px; /* @boilerplate */
@@ -11,7 +11,7 @@
   --carousel-indicator-background: #dadada; /* @boilerplate */
   --carousel-indicator-active-background: var(--text-color); /* @boilerplate */
   --carousel-nav-inset: 12px; /* @boilerplate */
-  --carousel-nav-inset-desktop: var(--spacing-m); /* @boilerplate */
+  --carousel-nav-inset-desktop: 24px;
   --carousel-nav-button-size: 44px; /* @boilerplate */
   --carousel-nav-button-background: rgb(19 19 19 / 25%); /* @boilerplate */
   --carousel-nav-button-hover-background: rgb(19 19 19 / 75%); /* @boilerplate */
@@ -25,7 +25,7 @@
   --carousel-radius: 6px;
   --carousel-surface: var(--card-bg-light);
   --carousel-card-text-color: var(--text-color);
-  --carousel-card-content-padding: var(--spacing-m);
+  --carousel-card-content-padding: 24px 32px;
   --carousel-card-image-flex: 50%;
   --carousel-card-image-height: 260px;
   --carousel-card-image-height-desktop: 360px;
@@ -34,23 +34,23 @@
   /* testimonial variant — tokenized from poc-vyepti / vyepti.com; brand sites override via tokens.
      Icon URLs are intentionally empty (none): brand sites set them; absent = graceful CSS fallback. */
   --carousel-testimonial-radius: 6px;
-  --carousel-testimonial-gap-section: var(--spacing-l, 40px);
+  --carousel-testimonial-gap-section: 40px;
   --carousel-testimonial-surface: var(--card-bg-light);
-  --carousel-testimonial-content-padding: 0 38px 16px;
-  --carousel-testimonial-content-padding-desktop: 0 30px 16px 60px;
+  --carousel-testimonial-content-padding: 24px 24px 16px;
+  --carousel-testimonial-content-padding-desktop: 0 40px 0 56px;
 
   /* heading (quote) */
   --carousel-testimonial-heading-color: var(--brand-teal);
   --carousel-testimonial-heading-size: var(--heading-font-size-xl);
   --carousel-testimonial-heading-weight: 800;
   --carousel-testimonial-heading-line-height: 1.2;
-  --carousel-testimonial-heading-margin: 0 0 var(--spacing-s);
+  --carousel-testimonial-heading-margin: 0 0 16px;
 
   /* coral divider after the quote (vyepti.com computed: #f16464, 50x4) */
   --carousel-testimonial-divider-color: #f16464;
   --carousel-testimonial-divider-width: 50px;
   --carousel-testimonial-divider-height: 4px;
-  --carousel-testimonial-divider-gap: var(--spacing-s);
+  --carousel-testimonial-divider-gap: 16px;
 
   /* attribution / disclaimer */
   --carousel-testimonial-attribution-size: var(--body-font-size-s);
@@ -73,6 +73,7 @@
   /* nav buttons */
   --carousel-testimonial-nav-button-size: 36px;
   --carousel-testimonial-nav-arrow-color: var(--brand-rose);
+  --carousel-testimonial-nav-inset: 16px;
 
   /* image — fixed height so multiple stacked images fit the card instead of
      growing it. Reference vyepti.com slide is a compact ~320px-tall card. */

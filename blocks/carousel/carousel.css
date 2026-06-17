@@ -170,6 +170,9 @@
   .carousel .carousel-slide .carousel-slide-content {
     flex: 1 1 0;
     width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 
@@ -308,6 +311,12 @@
   background-color: var(--carousel-testimonial-indicator-color);
 }
 
+/* Keep the arrows at the outer edges of the card so they don't sit over the text. */
+.carousel.testimonial .carousel-navigation-buttons {
+  left: var(--carousel-testimonial-nav-inset);
+  right: var(--carousel-testimonial-nav-inset);
+}
+
 .carousel.testimonial .carousel-navigation-buttons button {
   width: var(--carousel-testimonial-nav-button-size);
   height: var(--carousel-testimonial-nav-button-size);
@@ -342,5 +351,8 @@
     flex: 0 0 var(--carousel-testimonial-content-flex);
     order: 1;
     padding: var(--carousel-testimonial-content-padding-desktop);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
