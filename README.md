@@ -1,13 +1,16 @@
 # Your Project's Title...
+
 Your project's description...
 
 ## Environments
-- Preview: https://main--ise-boilerplate--aemdemos.aem.page/
-- Live: https://main--ise-boilerplate--aemdemos.aem.live/
+
+- Preview: https://main--lundbeck-libs--aemdemos.aem.page/
+- Live: https://main--lundbeck-libs--aemdemos.aem.live/
 
 ## Documentation
 
 Before using the aem-block-collection, we recommand you to go through the documentation on https://www.aem.live/docs/ and more specifically:
+
 1. [Developer Tutorial](https://www.aem.live/developer/ue-tutorial)
 1. [Creating Blocks](https://www.aem.live/developer/universal-editor-blocks) and [Content Modelling](https://www.aem.live/developer/component-model-definitions)
 1. [The Anatomy of a Project](https://www.aem.live/developer/anatomy-of-a-project)
@@ -33,7 +36,6 @@ They are included in this command, which is run automatically via a github actio
 ```sh
 npm run lint
 ```
-
 
 ## Local development
 

@@ -190,8 +190,9 @@ export function decorateButtons(main) {
     const p = a.closest('p');
     const text = a.textContent.trim();
 
-    // quick structural checks
-    if (a.querySelector('img') || p.textContent.trim() !== text) return;
+    // quick structural checks — skip links wrapping a real content image, but
+    // allow decorated icons (e.g. :search: → span.icon > img) inside buttons.
+    if (a.querySelector('img:not(.icon img)') || p.textContent.trim() !== text) return;
 
     // skip URL display links
     try {
