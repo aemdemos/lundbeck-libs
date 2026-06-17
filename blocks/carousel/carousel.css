@@ -112,40 +112,52 @@
   z-index: 1; /* @boilerplate */
 }
 
+/* Bare angle arrows — no circle/background. Color comes from currentColor:
+   prev = brand red, next = white. */
 /* stylelint-disable-next-line no-descending-specificity */
-.carousel .carousel-navigation-buttons button { /* @boilerplate */
-  position: relative; /* @boilerplate */
-  width: var(--carousel-nav-button-size); /* @boilerplate */
-  height: var(--carousel-nav-button-size); /* @boilerplate */
-  margin: 0; /* @boilerplate */
-  border-radius: 50%; /* @boilerplate */
-  padding: 0; /* @boilerplate */
-  background-color: var(--carousel-nav-button-background); /* @boilerplate */
-  transition: background-color var(--carousel-transition-duration); /* @boilerplate */
+.carousel .carousel-navigation-buttons button {
+  position: relative;
+  width: var(--carousel-nav-button-size);
+  height: var(--carousel-nav-button-size);
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+  transition: opacity var(--carousel-transition-duration);
+}
+
+.carousel .carousel-navigation-buttons button.slide-prev {
+  color: var(--carousel-nav-arrow-prev-color);
+}
+
+.carousel .carousel-navigation-buttons button.slide-next {
+  color: var(--carousel-nav-arrow-next-color);
 }
 
 .carousel .carousel-navigation-buttons button:hover,
-.carousel .carousel-navigation-buttons button:focus-visible { /* @boilerplate */
-  background-color: var(--carousel-nav-button-hover-background); /* @boilerplate */
+.carousel .carousel-navigation-buttons button:focus-visible {
+  background-color: transparent;
+  opacity: 0.7;
 }
 
-.carousel .carousel-navigation-buttons button::after { /* @boilerplate */
-  display: block; /* @boilerplate */
-  content: ''; /* @boilerplate */
-  border: var(--carousel-nav-arrow-thickness) solid; /* @boilerplate */
-  border-bottom: 0; /* @boilerplate */
-  border-left: 0; /* @boilerplate */
-  height: var(--carousel-nav-arrow-size); /* @boilerplate */
-  width: var(--carousel-nav-arrow-size); /* @boilerplate */
-  position: absolute; /* @boilerplate */
-  top: 50%; /* @boilerplate */
-  left: calc(50% + var(--carousel-nav-arrow-offset)); /* @boilerplate */
-  transform: translate(-50%, -50%) rotate(-135deg); /* @boilerplate */
+.carousel .carousel-navigation-buttons button::after {
+  display: block;
+  content: '';
+  border: var(--carousel-nav-arrow-thickness) solid;
+  border-bottom: 0;
+  border-left: 0;
+  height: var(--carousel-nav-arrow-size);
+  width: var(--carousel-nav-arrow-size);
+  position: absolute;
+  top: 50%;
+  left: calc(50% + var(--carousel-nav-arrow-offset));
+  transform: translate(-50%, -50%) rotate(-135deg);
 }
 
-.carousel .carousel-navigation-buttons button.slide-next::after { /* @boilerplate */
-  transform: translate(-50%, -50%) rotate(45deg); /* @boilerplate */
-  left: calc(50% - var(--carousel-nav-arrow-offset)); /* @boilerplate */
+.carousel .carousel-navigation-buttons button.slide-next::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+  left: calc(50% - var(--carousel-nav-arrow-offset));
 }
 
 @media (width >= 600px) {
@@ -320,18 +332,6 @@
 .carousel.testimonial .carousel-navigation-buttons button {
   width: var(--carousel-testimonial-nav-button-size);
   height: var(--carousel-testimonial-nav-button-size);
-  background-color: transparent;
-}
-
-.carousel.testimonial .carousel-navigation-buttons button:hover,
-.carousel.testimonial .carousel-navigation-buttons button:focus-visible {
-  background-color: transparent;
-  opacity: 0.7;
-}
-
-/* Tint the CSS-drawn arrow (graceful fallback when no chevron asset is supplied) */
-.carousel.testimonial .carousel-navigation-buttons button::after {
-  color: var(--carousel-testimonial-nav-arrow-color);
 }
 
 @media (width >= 768px) {
