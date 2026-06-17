@@ -20,20 +20,50 @@
   --carousel-nav-arrow-offset: 2px; /* @boilerplate */
   --carousel-transition-duration: var(--transition-duration); /* @boilerplate */
 
-  /* testimonial variant — tokenized from poc-vyepti; brand sites override via tokens */
+  /* testimonial variant — tokenized from poc-vyepti / vyepti.com; brand sites override via tokens.
+     Icon URLs are intentionally empty (none): brand sites set them; absent = graceful CSS fallback. */
   --carousel-testimonial-radius: 6px;
-  --carousel-testimonial-gap-section: 40px;
+  --carousel-testimonial-gap-section: var(--spacing-l, 40px);
+  --carousel-testimonial-surface: var(--card-bg-light);
   --carousel-testimonial-content-padding: 0 38px 16px;
   --carousel-testimonial-content-padding-desktop: 0 30px 16px 60px;
-  --carousel-testimonial-surface: var(--card-bg-light);
+
+  /* heading (quote) */
   --carousel-testimonial-heading-color: var(--brand-teal);
-  --carousel-testimonial-divider-color: var(--brand-secondary);
+  --carousel-testimonial-heading-size: var(--heading-font-size-xl);
+  --carousel-testimonial-heading-weight: 800;
+  --carousel-testimonial-heading-line-height: 1.2;
+  --carousel-testimonial-heading-margin: 0 0 var(--spacing-s);
+
+  /* coral divider after the quote (vyepti.com computed: #f16464, 50x4) */
+  --carousel-testimonial-divider-color: #f16464;
   --carousel-testimonial-divider-width: 50px;
   --carousel-testimonial-divider-height: 4px;
+  --carousel-testimonial-divider-gap: var(--spacing-s);
+
+  /* attribution / disclaimer */
+  --carousel-testimonial-attribution-size: var(--body-font-size-s);
+  --carousel-testimonial-disclaimer-size: var(--body-font-size-xs);
+  --carousel-testimonial-text-color: var(--text-color);
+
+  /* link */
+  --carousel-testimonial-link-color: var(--link-color);
+  --carousel-testimonial-link-hover-color: var(--link-hover-color);
+  --carousel-testimonial-link-weight: 700;
+
+  /* quote icon above heading — deferred asset (none until a brand supplies it) */
+  --carousel-testimonial-quote-icon: none;
   --carousel-testimonial-icon-size: 44px;
+
+  /* indicators (ring style) */
   --carousel-testimonial-indicator-size: 13px;
   --carousel-testimonial-indicator-color: var(--brand-rose);
+
+  /* nav buttons */
   --carousel-testimonial-nav-button-size: 36px;
+  --carousel-testimonial-nav-arrow-color: var(--brand-rose);
+
+  /* image */
   --carousel-testimonial-image-ratio: 451 / 380;
   --carousel-testimonial-image-flex: 42%;
   --carousel-testimonial-content-flex: 50%;

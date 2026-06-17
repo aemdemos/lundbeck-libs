@@ -196,19 +196,64 @@
   background-color: transparent;
 }
 
-.carousel.testimonial .carousel-slide-content h2 {
-  color: var(--carousel-testimonial-heading-color);
+/* Optional decorative quote icon above the heading. Deferred asset: hidden by default,
+   so the box never shows a broken/empty image. A brand site opts in by setting both
+   --carousel-testimonial-quote-icon (a url()) and --carousel-testimonial-quote-icon-display: block. */
+.carousel.testimonial .carousel-slide-content h2::before {
+  content: '';
+  display: var(--carousel-testimonial-quote-icon-display, none);
+  width: var(--carousel-testimonial-icon-size);
+  height: var(--carousel-testimonial-icon-size);
+  margin-bottom: var(--spacing-xs, 8px);
+  background-image: var(--carousel-testimonial-quote-icon);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
+.carousel.testimonial .carousel-slide-content h2 {
+  color: var(--carousel-testimonial-heading-color);
+  font-size: var(--carousel-testimonial-heading-size);
+  font-weight: var(--carousel-testimonial-heading-weight);
+  line-height: var(--carousel-testimonial-heading-line-height);
+  margin: var(--carousel-testimonial-heading-margin);
+}
+
+/* Coral divider after the quote. CSS-drawn (no asset needed). */
 .carousel.testimonial .carousel-slide-content h2::after {
   content: '';
   display: block;
   width: var(--carousel-testimonial-divider-width);
   height: var(--carousel-testimonial-divider-height);
-  margin-top: var(--spacing-s);
+  margin-top: var(--carousel-testimonial-divider-gap);
   background-color: var(--carousel-testimonial-divider-color);
 }
 
+/* Attribution paragraph (name + role) directly after the divider */
+.carousel.testimonial .carousel-slide-content h2 + p {
+  font-size: var(--carousel-testimonial-attribution-size);
+  color: var(--carousel-testimonial-text-color);
+}
+
+/* Disclaimer (emphasised small print) */
+.carousel.testimonial .carousel-slide-content p em {
+  font-size: var(--carousel-testimonial-disclaimer-size);
+  color: var(--carousel-testimonial-text-color);
+  font-style: normal;
+}
+
+/* Link / call-to-action */
+.carousel.testimonial .carousel-slide-content a {
+  color: var(--carousel-testimonial-link-color);
+  font-weight: var(--carousel-testimonial-link-weight);
+  transition: color var(--carousel-transition-duration);
+}
+
+.carousel.testimonial .carousel-slide-content a:hover,
+.carousel.testimonial .carousel-slide-content a:focus-visible {
+  color: var(--carousel-testimonial-link-hover-color);
+}
+
+/* Author-supplied per-slide icon image, if present in content */
 .carousel.testimonial .carousel-slide-content .icon img,
 .carousel.testimonial .carousel-slide-content p > img {
   width: var(--carousel-testimonial-icon-size);
@@ -236,6 +281,18 @@
 .carousel.testimonial .carousel-navigation-buttons button {
   width: var(--carousel-testimonial-nav-button-size);
   height: var(--carousel-testimonial-nav-button-size);
+  background-color: transparent;
+}
+
+.carousel.testimonial .carousel-navigation-buttons button:hover,
+.carousel.testimonial .carousel-navigation-buttons button:focus-visible {
+  background-color: transparent;
+  opacity: 0.7;
+}
+
+/* Tint the CSS-drawn arrow (graceful fallback when no chevron asset is supplied) */
+.carousel.testimonial .carousel-navigation-buttons button::after {
+  color: var(--carousel-testimonial-nav-arrow-color);
 }
 
 @media (width >= 768px) {
