@@ -20,6 +20,17 @@
   --carousel-nav-arrow-offset: 2px; /* @boilerplate */
   --carousel-transition-duration: var(--transition-duration); /* @boilerplate */
 
+  /* default carousel — clean card layout (image beside content on a light surface)
+     instead of the boilerplate dark-overlay hero. */
+  --carousel-radius: 6px;
+  --carousel-surface: var(--card-bg-light);
+  --carousel-card-text-color: var(--text-color);
+  --carousel-card-content-padding: var(--spacing-m);
+  --carousel-card-image-flex: 50%;
+  --carousel-card-image-height: 260px;
+  --carousel-card-image-height-desktop: 360px;
+  --carousel-card-heading-color: var(--brand-teal);
+
   /* testimonial variant — tokenized from poc-vyepti / vyepti.com; brand sites override via tokens.
      Icon URLs are intentionally empty (none): brand sites set them; absent = graceful CSS fallback. */
   --carousel-testimonial-radius: 6px;
