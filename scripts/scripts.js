@@ -663,7 +663,6 @@ async function loadEager(doc) {
  */
 async function loadLazy(doc) {
   autolinkModals(doc);
-  loadCSS(`${window.hlx.codeBasePath}/styles/span-tags.css`);
 
   const main = doc.querySelector('main');
   await loadSections(main);
