@@ -54,10 +54,12 @@
   --hero-cta-arrow-width: 22px;
   --hero-cta-arrow-height: 9px;
 
-  /* single-light / single-dark variants */
+  /* legacy single-panel (.hero.single) layout */
   --hero-aspect-ratio: 2880 / 1116;
-  --hero-single-min-height-mobile: 620px;
-  --hero-single-min-height-desktop: 470px;
+  --hero-single-min-height: 350px;
+  --hero-single-min-height-tablet: 400px;
+
+  /* single-light / single-dark variants */
   --hero-single-content-width: 46%;
   --hero-single-padding-x: 24px;
   --hero-single-padding-x-desktop: 40px;
