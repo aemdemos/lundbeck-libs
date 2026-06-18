@@ -529,14 +529,14 @@ async function loadLazy(doc) {
   loadFonts();
 
   console.log('Trying to get metadata entrance modal')
-  const entranceModal = getMetadata('entrance modal');
+  const entranceModal = getMetadata('entrance-modal');
   if (entranceModal) {
     // eslint-disable-next-line no-console
-    console.log('entrance modal:', entranceModal);
+    console.log('entrance-modal:', entranceModal);
     import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`)
       .then(({ openModal }) => openModal(entranceModal));
   } else {
-    console.log('entrance model not found')
+    console.log('entrance-modal not found')
   }
 }
 
