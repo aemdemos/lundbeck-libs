@@ -1,3 +1,5 @@
+@import url('./header-tokens.css');
+
 /* header layout */
 header {
     height: 128px;
@@ -39,7 +41,7 @@ header .nav-tools {
 header .nav-tool-link {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 8px;
   color: var(--brand-teal);
   font-size: 20px;
   font-weight: 800;
@@ -118,7 +120,7 @@ header .nav-search-form button:hover {
 /* ===== ROW 2: Navigation Links ===== */
 
 header .nav-links-container {
-  max-width: 540px;
+  max-width: var(--header-nav-max-width-mobile);
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -389,7 +391,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     align-items: center;
     gap: 10%;
     padding: 10px 16px 0;
-    max-width: 540px;
+    max-width: var(--header-nav-max-width-mobile);
     margin-right: auto;
     margin-left: auto;
   }
@@ -490,7 +492,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     justify-content: space-between;
     gap: 8px;
     padding: 18px 14px;
-    max-width: 540px;
+    max-width: var(--header-nav-max-width-mobile);
     margin-right: auto;
     margin-left: auto;
   }
@@ -564,7 +566,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     padding-right: 15px;
     flex-direction: row;
     flex-wrap: nowrap;
-     max-width: 540px;
+     max-width: var(--header-nav-max-width-mobile);
      margin-right: auto;
     margin-left: auto;
 }
@@ -783,20 +785,20 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
 
 @media (width >= 768px) {
  header .nav-utility-container{
-  max-width: 720px;
+  max-width: var(--header-nav-max-width-tablet);
    justify-content: flex-end;
  }
 
  header .nav-links-container {
-  max-width: 720px;
+  max-width: var(--header-nav-max-width-tablet);
  }
 
  header nav.nav-mobile-open .nav-mobile-tools {
-    max-width: 720px;
+    max-width: var(--header-nav-max-width-tablet);
  }
 
  header nav.nav-mobile-open .nav-mobile-header {
-  max-width: 720px;
+  max-width: var(--header-nav-max-width-tablet);
  }
 
  header .nav-utility-links {
@@ -829,20 +831,20 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
   }
 
   header .nav-links-container {
-    max-width: 1140px;
+    max-width: var(--header-nav-max-width-desktop);
     margin: 0 auto;
     padding: 0 32px;
   }
 
   header .nav-brand-container {
-    max-width: 960px;
+    max-width: var(--header-nav-max-width-desktop);
   }
 
   header .nav-links-list {
     display: flex;
     flex-direction: row;
     align-items: end;
-    gap: 0;
+    gap: 15px;
   }
 
   header .nav-links-list > li {
@@ -852,7 +854,6 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     border-bottom: 0;
     font-size: 16px;
     font-weight: 600;
-    white-space: nowrap;
     color: var(--brand-teal);
   }
 
@@ -941,17 +942,21 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     color: #e1f0f6;
     font-size: 14px;
     line-height: 1;
-    padding: 0;
+    padding: 14px 0 0 0;
   }
 
   header .nav-utility-container {
     place-content: center space-between;
     padding: 0 24px;
-    max-width: 960px;
+    max-width: var(--header-nav-max-width-desktop);
   }
 
   header .nav-utility-tagline {
     display: block;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 22px;
+    padding-bottom: 10px;
   }
 
   header .nav-utility-links {
@@ -1029,27 +1034,31 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     white-space: nowrap;
   }
 
+  header .nav-search-form {
+    max-width: 134px;
+  }
+
   header .nav-brand-row {
     height: auto;
     max-width: unset;
     margin: unset;
-    padding-top: 18px;
   }
 
   header .nav-brand {
     display: block;
     gap: 0;
+    padding: 20px 13px 13px 0;
   }
 
   header .nav-brand img {
-    width: 130px;
+    width: 112px;
   }
 
   header .nav-tools {
     padding-top: 0;
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
   }
 }
 
@@ -1060,7 +1069,28 @@ header .nav-search {
 }
 
   header .nav-brand-container {
-    max-width: 1140px;
+    max-width: var(--header-nav-max-width-max);
+  }
+
+  header .nav-utility-container {
+    max-width: var(--header-nav-max-width-max);
+  }
+
+ header .nav-brand img {
+  width: 130px;
+ }
+
+  header .nav-links-list {
+    gap:0;
+  }
+
+  header .nav-search-form {
+   max-width: unset;
+  }
+
+  header .nav-links-container {
+    max-width: var(--header-nav-max-width-max);
+    width: 99.5%;
   }
 
   /* Social icons */
@@ -1095,5 +1125,6 @@ header .nav-utility-social-link:hover img {
 
  header .nav-links-list > li {
   margin-left: 38px;
+  white-space: nowrap;
  }
 }

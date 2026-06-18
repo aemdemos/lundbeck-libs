@@ -1,5 +1,8 @@
 /* header design tokens (layout only; colors/typography use global tokens) */
 :root { /* @boilerplate */
   --nav-height: 200px;
-  --header-nav-max-width: 1264px;
+  --header-nav-max-width-mobile: 540px;
+  --header-nav-max-width-tablet: 720px;
+  --header-nav-max-width-desktop: 960px;
+  --header-nav-max-width-max: 1140px;
 }
