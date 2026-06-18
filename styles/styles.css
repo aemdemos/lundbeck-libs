@@ -389,9 +389,6 @@ button:disabled:hover { /* @libs */
 }
 
 /* responsive visibility utilities (authorable via [hide-mobile] / [hide-desktop] bracket spans) */
-.hide-desktop {
-  display: revert;
-}
 
 .hide-mobile {
   display: none;
