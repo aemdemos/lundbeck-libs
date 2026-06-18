@@ -6,12 +6,22 @@
   font-size: 0.75em;
 }
 
-.hide-in-mobile {
+.hide-mobile {
   display: none;
 }
 
 @media (width >= 600px) {
-  .hide-in-mobile {
+  .hide-mobile {
     display: inline;
+  }
+}
+
+.hide-desktop {
+  display: inline;
+}
+
+@media (width >= 600px) {
+  .hide-desktop {
+    display: none;
   }
 }
