@@ -33,3 +33,47 @@
     order: unset; /* @boilerplate */
   }
 }
+
+/* stats-callout variant — vyepti study/survey results callouts.
+   Teal headings, large red italic "X fewer" numbers, centered copy. */
+main .columns.stats-callout > div > div {
+  text-align: center;
+  align-items: flex-start;
+}
+
+main .columns.stats-callout h2,
+main .columns.stats-callout h4 {
+  color: var(--brand-teal);
+}
+
+main .columns.stats-callout h4 {
+  font-size: var(--heading-font-size-l);
+}
+
+main .columns.stats-callout h1 {
+  margin: 0.2em 0;
+  font-style: italic;
+  font-size: var(--heading-font-size-xxl);
+  color: var(--brand-rose);
+}
+
+main .columns.stats-callout h1 em {
+  font-style: italic;
+}
+
+/* bold is teal only in the results blocks (comparison line + survey lead phrases);
+   intro-block bold (e.g. "1072 people", "94 people…") stays black, as in the source */
+main .columns.stats-callout:has(h1) strong,
+main .columns.stats-callout:has(img) strong {
+  color: var(--brand-teal);
+}
+
+main .columns.stats-callout p {
+  margin: 0.4em 0;
+}
+
+@media (width >= 900px) {
+  main .columns.stats-callout > div {
+    align-items: flex-start;
+  }
+}

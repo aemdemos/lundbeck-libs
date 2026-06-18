@@ -619,6 +619,24 @@ main .section.dark a.button.secondary:focus { /* @libs */
   color: var(--button-on-dark-secondary-hover-color); /* @libs */
 }
 
+/* section metadata - stats-callout (light-blue→white gradient, rounded top corners)
+   Source: vyepti.com clinical-study-results and real-life-impact callouts.
+   The light-blue background color is authored on the section metadata
+   (background-color) and applied inline via applySectionBackgroundDecorations();
+   this rule layers the white fade + rounded corners on top of it. */
+main .section.stats-callout {
+  background-image: linear-gradient(180deg, #e8f3f5 20%, #fff 53%, #fff 100%);
+  border-radius: 23px 23px 0 0;
+  margin: 0;
+  padding: var(--section-padding-vertical) 0;
+  text-align: center;
+}
+
+main .section.stats-callout h2,
+main .section.stats-callout h4 {
+  color: var(--brand-teal);
+}
+
 @media (width >= 992px) { /* @libs */
   header { /* @libs */
     height: calc(var(--nav-height) + 23px); /* @libs */
