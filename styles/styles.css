@@ -203,6 +203,7 @@ body.appear { /* @libs */
 
 .color-secondary {
   color: var(--brand-secondary);
+
   --link-color: var(--brand-secondary);
 }
 
