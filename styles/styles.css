@@ -201,6 +201,11 @@ body.appear { /* @libs */
   display: block; /* @libs */
 }
 
+.color-secondary {
+  color: var(--brand-secondary);
+  --link-color: var(--brand-secondary);
+}
+
 header { /* @libs */
   height: var(--header-height); /* @libs */
 }
@@ -377,6 +382,25 @@ button:disabled:hover { /* @libs */
   border-color: var(--button-disabled-border-color); /* @libs */
   color: var(--button-disabled-color); /* @libs */
   cursor: unset; /* @libs */
+}
+
+/* responsive visibility utilities (authorable via [hide-mobile] / [hide-desktop] bracket spans) */
+.hide-desktop {
+  display: revert;
+}
+
+.hide-mobile {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .hide-desktop {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: revert;
+  }
 }
 
 /* secondary — outline / ghost (default for unclassified link buttons) */
