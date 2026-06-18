@@ -633,9 +633,37 @@ main .section.stats-callout {
   text-align: center;
 }
 
+/* Content caps centered within the full-width gradient box. Uses the project
+   breakpoints (600/900/1200) mapped to the source's container widths:
+   <600 fluid, 600+ = 540, 900+ = 960, 1200+ = 1140. */
+main .section.stats-callout > div:not(.bg-image) {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
 main .section.stats-callout h2,
 main .section.stats-callout h4 {
   color: var(--brand-teal);
+}
+
+@media (width >= 600px) {
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 540px;
+  }
+}
+
+@media (width >= 900px) {
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 960px;
+  }
+}
+
+@media (width >= 1200px) {
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 1140px;
+  }
 }
 
 @media (width >= 992px) { /* @libs */
