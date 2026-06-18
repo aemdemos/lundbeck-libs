@@ -72,19 +72,17 @@ main .columns.stats-callout p {
   margin: 0.4em 0;
 }
 
-/* survey results block (image + text rows): small circular patient photo on the
-   left, left-aligned text on the right, with an enlarged lead paragraph. */
+/* survey results block (image + text rows): small circular patient photo with an
+   enlarged lead paragraph. Mobile-first: photo centered on top, centered text. */
 main .columns.stats-callout:has(img) > div {
-  gap: 2rem;
-}
-
-main .columns.stats-callout:has(img) > div > div {
-  text-align: left;
+  gap: 1.5rem;
+  align-items: center;
 }
 
 main .columns.stats-callout:has(img) .columns-img-col {
   flex: 0 0 auto;
   max-width: 230px;
+  margin: 0 auto;
 }
 
 main .columns.stats-callout:has(img) .columns-img-col img {
@@ -104,7 +102,17 @@ main .columns.stats-callout:has(img) > div > div:not(.columns-img-col) > p:first
     align-items: flex-start;
   }
 
+  /* desktop: photo left, text left-aligned beside it */
   main .columns.stats-callout:has(img) > div {
+    gap: 2rem;
     align-items: center;
+  }
+
+  main .columns.stats-callout:has(img) .columns-img-col {
+    margin: 0;
+  }
+
+  main .columns.stats-callout:has(img) > div > div:not(.columns-img-col) {
+    text-align: left;
   }
 }

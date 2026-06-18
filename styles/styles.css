@@ -625,9 +625,10 @@ main .section.dark a.button.secondary:focus { /* @libs */
    (background-color) and applied inline via applySectionBackgroundDecorations();
    this rule layers the white fade + rounded corners on top of it. */
 main .section.stats-callout {
+  max-width: var(--max-width-site);
+  margin: 0 auto;
   background-image: linear-gradient(180deg, #e8f3f5 20%, #fff 53%, #fff 100%);
   border-radius: 23px 23px 0 0;
-  margin: 0;
   padding: var(--section-padding-vertical) 0;
   text-align: center;
 }
