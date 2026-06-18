@@ -1,4 +1,8 @@
 /* header layout */
+header {
+    height: 128px;
+  }
+
 header .nav-wrapper {
   width: 100%;
   z-index: 10;
@@ -168,13 +172,9 @@ header .nav-brand img {
   height: auto;
 }
 
-/* Tools area */
-header .nav-tools {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding-top: 18px;
-}
+  header .nav-tools {
+    display: none;
+  }
 
 header .nav-tool-link {
   display: flex;
@@ -419,14 +419,6 @@ header .nav-mobile-footer {
 
 /* ===== Responsive: mobile layout ===== */
 @media (width < 992px) {
-  header {
-    height: 128px;
-  }
-
-  header .nav-tools {
-    display: none;
-  }
-
   header .nav-links-row {
     display: none;
     position: fixed;
@@ -942,7 +934,11 @@ header .nav-mobile-footer {
 
   header .nav-tools {
     padding-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
   }
+
 
   header .nav-links-list > li {
     margin-left: 39px;
