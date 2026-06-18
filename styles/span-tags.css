@@ -1,4 +1,6 @@
-.color-red {
+.color-red
+{
+  --link-color: red;
   color: red;
 }
 
