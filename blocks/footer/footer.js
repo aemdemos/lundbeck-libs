@@ -58,7 +58,23 @@ function groupPhoneRow(container) {
 }
 
 /**
- * Groups consecutive image paragraphs (social icons + brand logo) into one row.
+ * Detects the brand logo by its shape: social icons are square, the brand
+ * wordmark is markedly wider than tall. Uses the authored width/height
+ * attributes so it works without the image loading and without depending on
+ * alt text or DOM position.
+ * @param {HTMLImageElement} img
+ * @returns {boolean}
+ */
+function isBrandLogo(img) {
+  const w = parseInt(img.getAttribute('width'), 10);
+  const h = parseInt(img.getAttribute('height'), 10);
+  if (!w || !h) return false;
+  return w / h >= 1.8;
+}
+
+/**
+ * Groups consecutive image paragraphs (social icons + brand logo) into one row
+ * and tags the brand-logo paragraph so CSS can size/position it independently.
  * @param {Element} container - element whose child paragraphs hold the icons/logo
  */
 function groupSocialRow(container) {
@@ -70,7 +86,10 @@ function groupSocialRow(container) {
   const row = document.createElement('div');
   row.className = 'footer-social-row';
   imgParas[0].before(row);
-  imgParas.forEach((p) => row.append(p));
+  imgParas.forEach((p) => {
+    if (isBrandLogo(p.querySelector('img'))) p.classList.add('footer-brand-logo');
+    row.append(p);
+  });
 }
 
 /**

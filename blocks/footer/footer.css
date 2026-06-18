@@ -85,10 +85,11 @@ footer .footer .footer-main .default-content-wrapper {
   margin-bottom: var(--footer-social-row-gap);
 }
 
-/* phone label + button on one horizontal line */
+/* phone label + button on one horizontal line — opposite edges on mobile */
 footer .footer .footer-main .footer-phone-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--footer-phone-label-gap);
 }
 
@@ -129,11 +130,15 @@ footer .footer .footer-main .footer-social-row img {
   display: block;
 }
 
-/* brand logo is wider than the social icons */
-footer .footer .footer-main .footer-social-row img[alt*="Lundbeck" i],
-footer .footer .footer-main .footer-social-row img[alt*="logo" i] {
+/* brand logo (tagged in footer.js by its wide aspect ratio) is wider than the social icons */
+footer .footer .footer-main .footer-social-row .footer-brand-logo img {
   width: var(--footer-logo-width);
   height: auto;
+}
+
+/* mobile: social icons grouped left, brand logo pushed to the right edge */
+footer .footer .footer-main .footer-social-row .footer-brand-logo {
+  margin-left: auto;
 }
 
 /* === Columns layout === */
@@ -157,9 +162,14 @@ footer .footer .footer-main .columns > div {
     padding-right: var(--footer-left-padding-right);
   }
 
-  /* right column: phone + social + logo right-aligned */
+  /* right column: phone + social + logo grouped at the right edge */
   footer .footer .footer-main .columns > div > div:last-child .footer-phone-row,
   footer .footer .footer-main .columns > div > div:last-child .footer-social-row {
     justify-content: flex-end;
+  }
+
+  /* logo sits snug with the icons on desktop (no edge push) */
+  footer .footer .footer-main .footer-social-row .footer-brand-logo {
+    margin-left: 0;
   }
 }
