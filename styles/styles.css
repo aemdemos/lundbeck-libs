@@ -58,7 +58,8 @@
   --error-color: #c02c57; /* @boilerplate */
   --section-divider-width: 1px; /* @libs */
   --section-divider-color: var(--link-hover-color); /* @libs */
-
+  --section-padding: 24px;
+  
   /* fonts */
   --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
   --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
@@ -478,11 +479,11 @@ main img { /* @libs */
 /* sections */
 main > .section { /* @libs */
   margin: 0; /* @libs */
-  padding-bottom: 24px; /* @libs */
 }
 
 main > .section.divider > div:last-child { /* @libs */
   border-bottom: var(--section-divider-width) solid var(--section-divider-color); /* @libs */
+  padding-bottom: var(--section-padding);
 }
 
 main > .section > div { /* @libs */
