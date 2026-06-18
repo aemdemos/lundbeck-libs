@@ -506,15 +506,14 @@ main > .section.hero-container {
 .section.single-dark .hero {
   position: relative;
   display: block;
-  min-height: var(--hero-single-min-height-mobile);
   overflow: hidden;
 }
 
-/* Background image row fills the whole hero */
+/* Image row flows in normal document flow — its rendered height drives the
+   hero height (matches source .cmp-teaser wrapping an img-fluid height:auto) */
 .section.single-light .hero > div:first-child,
 .section.single-dark .hero > div:first-child {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: var(--hero-z-bg);
 }
 
@@ -523,17 +522,15 @@ main > .section.hero-container {
 .section.single-light .hero > div:first-child p,
 .section.single-dark .hero > div:first-child p {
   width: 100%;
-  height: 100%;
   margin: 0;
 }
 
+/* Image drives height: width:100% + height:auto = intrinsic ratio per breakpoint */
 .section.single-light .hero img,
 .section.single-dark .hero img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 70% center;
+  height: auto;
 }
 
 /* Content overlay — left-aligned, vertically centered (overrides legacy bottom anchor) */
@@ -545,7 +542,6 @@ main > .section.hero-container {
   box-sizing: border-box;
   max-width: var(--hero-single-content-max-width);
   width: 100%;
-  min-height: var(--hero-single-min-height-mobile);
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -663,10 +659,11 @@ main > .section.hero-container {
 }
 
 @media (width >= 768px) {
+  /* Cancel legacy .hero.single fixed aspect-ratio — section variant is image-driven */
   .section.single-light .hero,
   .section.single-dark .hero {
-    min-height: var(--hero-single-min-height-desktop);
     aspect-ratio: auto;
+    min-height: 0;
   }
 
   .section.single-light .hero > div:last-of-type,
@@ -731,11 +728,6 @@ main > .section.hero-container {
 
 
 @media (width >= 1200px) {
-  .section.single-light .hero,
-  .section.single-dark .hero {
-    min-height: 450px;
-  }
-
   .section.single-light .hero > div:last-of-type,
   .section.single-dark .hero > div:last-of-type {
      max-width: 1140px;
