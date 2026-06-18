@@ -13,6 +13,7 @@ import {
   toClassName,
   loadScript,
 } from './aem.js';
+import { decorateSpanTags } from './span-tags.js';
 
 /** Max sections/children to process (CWE-770). */
 const MAX_SECTIONS = 100;
@@ -367,6 +368,7 @@ export function decorateMain(main) {
   decorateBlocks(main);
   decorateButtons(main);
   a11yLinks(main);
+  decorateSpanTags(main);
 }
 
 /**
@@ -489,6 +491,7 @@ async function loadEager(doc) {
  */
 async function loadLazy(doc) {
   autolinkModals(doc);
+  loadCSS(`${window.hlx.codeBasePath}/styles/span-tags.css`);
 
   const main = doc.querySelector('main');
   await loadSections(main);

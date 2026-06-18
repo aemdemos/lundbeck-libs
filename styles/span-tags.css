@@ -1,0 +1,17 @@
+.color-red {
+  color: red;
+}
+
+.size-s {
+  font-size: 0.75em;
+}
+
+.hide-in-mobile {
+  display: none;
+}
+
+@media (width >= 600px) {
+  .hide-in-mobile {
+    display: inline;
+  }
+}
