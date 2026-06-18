@@ -118,9 +118,9 @@ header .nav-search-form button:hover {
 /* ===== ROW 2: Navigation Links ===== */
 
 header .nav-links-container {
-  max-width: 1140px;
+  max-width: 540px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 15px;
 }
 
 header .nav-links-list {
@@ -277,10 +277,6 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     margin-left: auto;  
   }
 
-  header nav.nav-mobile-open .nav-links-row .nav-links-container {
-    padding: 0;
-  }
-
   header nav.nav-mobile-open .nav-links-row .nav-links-list {
     flex-direction: column;
     align-items: stretch;
@@ -393,6 +389,9 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     align-items: center;
     gap: 10%;
     padding: 10px 16px 0;
+    max-width: 540px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   header .nav-mobile-search {
@@ -491,6 +490,9 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     justify-content: space-between;
     gap: 8px;
     padding: 18px 14px;
+    max-width: 540px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   header .nav-mobile-tool-pill {
@@ -782,7 +784,29 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
 @media (width >= 768px) {
  header .nav-utility-container{
   max-width: 720px;
+   justify-content: flex-end;
  }
+
+ header .nav-links-container {
+  max-width: 720px;
+ }
+
+ header nav.nav-mobile-open .nav-mobile-tools {
+    max-width: 720px;
+ }
+
+ header nav.nav-mobile-open .nav-mobile-header {
+  max-width: 720px;
+ }
+
+ header .nav-utility-links {
+  width: auto;                 /* stop filling the whole bar */
+    gap: 20px;
+ }
+
+  header .nav-utility-dropdown {
+    width: auto;  
+  }
 
  header .nav-brand-container {
   max-width: 720px;
