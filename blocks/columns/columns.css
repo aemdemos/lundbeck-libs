@@ -51,6 +51,7 @@ main .columns.stats-callout h4 {
 }
 
 main .columns.stats-callout h1 {
+  max-width: none;
   margin: 0.2em 0;
   font-style: italic;
   font-size: var(--heading-font-size-xxl);
