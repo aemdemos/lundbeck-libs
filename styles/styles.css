@@ -56,6 +56,8 @@
   --link-hover-color: #7ebcc6; /* @libs */
   --overlay-background-color: #e1f0f6; /* @libs */
   --error-color: #c02c57; /* @boilerplate */
+  --section-divider-width: 1px; /* @libs */
+  --section-divider-color: var(--link-hover-color); /* @libs */
 
   /* fonts */
   --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
@@ -477,6 +479,10 @@ main img { /* @libs */
 main > .section { /* @libs */
   margin: 0; /* @libs */
   padding-bottom: 24px; /* @libs */
+}
+
+main > .section.divider > div:last-child { /* @libs */
+  border-bottom: var(--section-divider-width) solid var(--section-divider-color); /* @libs */
 }
 
 main > .section > div { /* @libs */

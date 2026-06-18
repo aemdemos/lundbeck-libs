@@ -32,4 +32,18 @@
     flex: 1; /* @boilerplate */
     order: unset; /* @boilerplate */
   }
+
+  .columns.divider.columns-2-cols > div {
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .columns.divider.columns-2-cols > div > :first-child {
+    padding-inline-end: var(--columns-divider-spacing);
+  }
+
+  .columns.divider.columns-2-cols > div > :nth-child(2) {
+    border-inline-start: var(--columns-divider-width) solid var(--columns-divider-color);
+    padding-inline-start: var(--columns-divider-spacing);
+  }
 }
