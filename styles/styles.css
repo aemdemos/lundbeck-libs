@@ -619,13 +619,17 @@ main .section.dark a.button.secondary:focus { /* @libs */
   color: var(--button-on-dark-secondary-hover-color); /* @libs */
 }
 
-/* section metadata - stats-callout (light-blue→white gradient, rounded top corners)
+/* section metadata - stats-callout (light-blue→white gradient, rounded top corners).
    Source: vyepti.com clinical-study-results and real-life-impact callouts.
-   The light-blue background color is authored on the section metadata
-   (background-color) and applied inline via applySectionBackgroundDecorations();
-   this rule layers the white fade + rounded corners on top of it. */
+   The light-blue background-color is authored on the section metadata and applied
+   inline via applySectionBackgroundDecorations(); this rule layers the white fade
+   + rounded corners on top.
+   The gradient box (section) is a centered rounded card that hugs its content.
+   Its max-width is responsive at every breakpoint so the box shrinks with the
+   content — using project breakpoints (600/900/1200) mapped to the source's
+   container widths: <600 fluid, 600+ = 540, 900+ = 960, 1200+ = 1140. */
 main .section.stats-callout {
-  max-width: var(--max-width-site);
+  max-width: calc(100% - 32px);
   margin: 0 auto;
   background-image: linear-gradient(180deg, #e8f3f5 20%, #fff 53%, #fff 100%);
   border-radius: 23px 23px 0 0;
@@ -633,9 +637,7 @@ main .section.stats-callout {
   text-align: center;
 }
 
-/* Content caps centered within the full-width gradient box. Uses the project
-   breakpoints (600/900/1200) mapped to the source's container widths:
-   <600 fluid, 600+ = 540, 900+ = 960, 1200+ = 1140. */
+/* Content fills the box (no separate cap) so text never spills outside it. */
 main .section.stats-callout > div:not(.bg-image) {
   width: 100%;
   max-width: 100%;
@@ -649,19 +651,19 @@ main .section.stats-callout h4 {
 }
 
 @media (width >= 600px) {
-  main .section.stats-callout > div:not(.bg-image) {
-    max-width: 540px;
+  main .section.stats-callout {
+    max-width: min(540px, calc(100% - 32px));
   }
 }
 
 @media (width >= 900px) {
-  main .section.stats-callout > div:not(.bg-image) {
-    max-width: 960px;
+  main .section.stats-callout {
+    max-width: min(960px, calc(100% - 48px));
   }
 }
 
 @media (width >= 1200px) {
-  main .section.stats-callout > div:not(.bg-image) {
+  main .section.stats-callout {
     max-width: 1140px;
   }
 }
