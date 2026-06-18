@@ -5,10 +5,6 @@
   flex-direction: column; /* @boilerplate */
 }
 
-.columns img { /* @boilerplate */
-  width: 100%; /* @boilerplate */
-}
-
 .columns > div > div { /* @boilerplate */
   order: 1; /* @boilerplate */
 }
