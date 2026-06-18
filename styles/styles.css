@@ -637,8 +637,10 @@ main .section.stats-callout {
   text-align: center;
 }
 
-/* Content fills the box (no separate cap) so text never spills outside it. */
+/* Content fills the box (no separate cap) so text never spills outside it.
+   box-sizing keeps the 15px gutters inside the 100% width instead of adding to it. */
 main .section.stats-callout > div:not(.bg-image) {
+  box-sizing: border-box;
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
