@@ -403,36 +403,29 @@ export function decorateColonIcons(element) {
 }
 
 /**
- * Returns the leading icon in a list item (direct child or inside strong/em).
+ * Returns the leading icon in a list item, searching recursively through
+ * leading strong/em/a wrappers at any depth (e.g. em > strong > span.icon).
  * @param {HTMLLIElement} li List item element
  * @returns {HTMLSpanElement|null}
  */
 function getLeadingListIcon(li) {
-  let node = li.firstChild;
-  while (node) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      if (node.textContent.trim()) return null;
-      node = node.nextSibling;
-    } else if (node.nodeType === Node.ELEMENT_NODE) {
-      if (node.matches('span.icon')) return node;
-      if (node.matches('strong, em')) {
-        const icon = node.querySelector(':scope > span.icon');
-        if (icon) {
-          let sibling = node.firstChild;
-          while (sibling && sibling !== icon) {
-            if (sibling.nodeType === Node.TEXT_NODE && sibling.textContent.trim()) return null;
-            if (sibling.nodeType === Node.ELEMENT_NODE && !sibling.matches('span.icon')) return null;
-            sibling = sibling.nextSibling;
-          }
-          return icon;
-        }
+  function findIcon(container) {
+    let node = container.firstChild;
+    while (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (node.textContent.trim()) return null;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.matches('span.icon')) return node;
+        if (node.matches('strong, em, a')) return findIcon(node);
+        return null;
+      } else {
+        return null;
       }
-      return null;
-    } else {
-      return null;
+      node = node.nextSibling;
     }
+    return null;
   }
-  return null;
+  return findIcon(li);
 }
 
 /**
@@ -442,7 +435,7 @@ function getLeadingListIcon(li) {
  */
 export function iconsToBullets(element) {
   const lists = [...element.querySelectorAll(
-    'ul:has(> li > .icon, > li > :is(strong, em) > .icon)',
+    'ul:has(> li > .icon, > li > :is(strong, em, a) > .icon, > li > :is(strong, em) > :is(strong, em) > .icon)',
   )].slice(0, MAX_ICON_BULLET_LISTS);
 
   lists.forEach((ul) => {
@@ -461,6 +454,26 @@ export function iconsToBullets(element) {
         img.width = 24;
         img.height = 24;
       }
+
+      // Ensure icon is a direct child of li (extracts it from strong/em/a wrappers)
+      if (icon.parentElement !== li) {
+        li.insertBefore(icon, li.firstChild);
+      }
+
+      // Wrap all remaining siblings in a single span so flex gap only applies once
+      const after = [];
+      let sibling = icon.nextSibling;
+      while (sibling) {
+        after.push(sibling);
+        sibling = sibling.nextSibling;
+      }
+      if (after.length > 0) {
+        const textSpan = document.createElement('span');
+        textSpan.className = 'icon-bullet-text';
+        after.forEach((n) => textSpan.append(n));
+        li.append(textSpan);
+      }
+
       decorated += 1;
     });
 
