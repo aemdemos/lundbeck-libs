@@ -654,7 +654,7 @@ main .section.stats-callout h4 {
 
 @media (width >= 600px) {
   main .section.stats-callout {
-    max-width: min(540px, calc(100% - 32px));
+    max-width: min(720px, calc(100% - 32px));
   }
 }
 
