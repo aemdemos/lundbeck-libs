@@ -43,7 +43,7 @@ main .columns.stats-callout > div > div {
 
 main .columns.stats-callout h2,
 main .columns.stats-callout h4 {
-  color: var(--brand-teal);
+  color: var(--brand-primary);
 }
 
 main .columns.stats-callout h4 {
@@ -55,7 +55,7 @@ main .columns.stats-callout h1 {
   margin: 0.2em 0;
   font-style: italic;
   font-size: var(--heading-font-size-xxl);
-  color: var(--brand-rose);
+  color: var(--brand-secondary);
 }
 
 main .columns.stats-callout h1 em {
@@ -66,7 +66,7 @@ main .columns.stats-callout h1 em {
    intro-block bold (e.g. "1072 people", "94 people…") stays black, as in the source */
 main .columns.stats-callout:has(h1) strong,
 main .columns.stats-callout:has(img) strong {
-  color: var(--brand-teal);
+  color: var(--brand-primary);
 }
 
 main .columns.stats-callout p {
@@ -98,9 +98,20 @@ main .columns.stats-callout:has(img) > div > div:not(.columns-img-col) > p:first
   line-height: 1.3;
 }
 
-@media (width >= 900px) {
+/* Source (Bootstrap) breakpoint: the survey rows and intro/comparison columns
+   switch from stacked to side-by-side at 768px (col-md/col-lg on the source).
+   The base columns block only flips to a row at 900px, so the variant flips
+   its own flex-direction here to match the source. */
+@media (width >= 768px) {
   main .columns.stats-callout > div {
+    flex-direction: row;
     align-items: flex-start;
+    gap: var(--columns-gap);
+  }
+
+  main .columns.stats-callout > div > div {
+    flex: 1;
+    order: unset;
   }
 
   /* desktop: photo left, text left-aligned beside it */
