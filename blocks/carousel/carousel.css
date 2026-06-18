@@ -109,7 +109,7 @@
   display: flex; /* @boilerplate */
   align-items: center; /* @boilerplate */
   justify-content: space-between; /* @boilerplate */
-  z-index: 1; /* @boilerplate */
+  z-index: 2; /* above .carousel-slide-content (z-index: 1) so arrows stay clickable */
 }
 
 /* Bare angle arrows — no circle/background. Color comes from currentColor:
