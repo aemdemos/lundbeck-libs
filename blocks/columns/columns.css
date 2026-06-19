@@ -44,15 +44,6 @@
   }
 }
 
-/* TODO: replace with global background tokens */
-.columns > div > div.color-primary {
-  background-color: var(--color-primary, #2a7f8f);
-}
-
-.columns > div > div.color-secondary {
-  background-color: var(--color-secondary, #6a9a3a);
-}
-
 /* stats-callout variant — vyepti study/survey results callouts.
    Teal headings, large red italic "X fewer" numbers, centered copy. */
 main .columns.stats-callout > div > div {
