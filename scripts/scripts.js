@@ -237,7 +237,7 @@ export function decorateButtons(main) {
 /* === SECTIONS === */
 
 /** Metadata keys consumed by {@link applySectionBackgroundDecorations} (not mirrored as data-*). */
-const SECTION_BACKGROUND_META_KEYS = new Set(['background-color', 'background-image']);
+const SECTION_BACKGROUND_META_KEYS = new Set(['background', 'background-color', 'background-image']);
 
 /**
  * Rejects values that could break out of a single CSS declaration when set via inline style.
@@ -281,13 +281,16 @@ function metaStringValue(value) {
  * Sets inline background-color and optionally prepends a decorative .bg-image layer.
  * Reads from the section-metadata config (local/plain delivery) or, when absent, from the
  * `data-background-*` attributes that DA delivery sets directly on the section element.
- * Keys match section model fields and {@link readBlockConfig}: `background-color`, `background-image`.
+ * Keys match section model fields and {@link readBlockConfig}: `background`, `background-color`, `background-image`.
  * @param {HTMLElement} section
  * @param {Record<string, unknown>} [meta]
  */
 function applySectionBackgroundDecorations(section, meta = {}) {
   const color = (metaStringValue(meta['background-color'])
-    || section.dataset.backgroundColor || '').trim();
+    || metaStringValue(meta.background)
+    || section.dataset.backgroundColor
+    || section.dataset.background
+    || '').trim();
   if (color && isSafeBackgroundColorValue(color)) {
     section.style.setProperty('background-color', color);
   }
