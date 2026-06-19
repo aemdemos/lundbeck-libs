@@ -496,6 +496,31 @@ main img { /* @libs */
 .icon img { /* @libs */
   height: 100%; /* @libs */
   width: 100%; /* @libs */
+  object-fit: contain; /* @libs */
+}
+
+/* icon bullet lists — :has() prevents FOUC before JS adds .icon-bullets */
+main ul:has(> li > .icon, > li > :is(strong, em, a) > .icon) { /* @libs */
+  list-style: none; /* @libs */
+  margin: 0; /* @libs */
+  padding: 0; /* @libs */
+}
+
+main ul.icon-bullets > li,
+main li.icon-bullet-item { /* @libs */
+  display: flex; /* @libs */
+  align-items: flex-start; /* @libs */
+  gap: 12px; /* @libs */
+  list-style: none; /* @libs */
+}
+
+main .icon-bullet-text { /* @libs */
+  flex: 1; /* @libs */
+}
+
+main .icon.icon-bullet { /* @libs */
+  flex-shrink: 0; /* @libs */
+  margin-top: 0.15em; /* @libs */
 }
 
 /* sections */

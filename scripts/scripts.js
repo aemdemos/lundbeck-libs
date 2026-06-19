@@ -378,6 +378,147 @@ export function decorateSections(main) {
 
 /* === END SECTIONS === */
 
+/** Max lists / items to process for icon bullets (CWE-770). */
+const MAX_ICON_BULLET_LISTS = 50;
+const MAX_ICON_BULLET_ITEMS = 100;
+const MAX_COLON_ICON_TEXT_NODES = 200;
+
+/** Safe icon name from colon notation (e.g. :search:, :mic-30-desktop:). */
+const COLON_ICON_NAME = /^[a-z0-9-]+$/;
+
+/**
+ * Replaces :icon-name: text with <span class="icon icon-name"> when the pipeline
+ * did not (e.g. icon SVG added in code but content not re-published).
+ * @param {Element} element Container element
+ */
+export function decorateColonIcons(element) {
+  const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+  const textNodes = [];
+  let node = walker.nextNode();
+  let count = 0;
+
+  while (node && count < MAX_COLON_ICON_TEXT_NODES) {
+    if (node.textContent.includes(':')
+      && !node.parentElement?.closest('script, style, .icon')) {
+      textNodes.push(node);
+      count += 1;
+    }
+    node = walker.nextNode();
+  }
+
+  textNodes.forEach((textNode) => {
+    const { textContent } = textNode;
+    const parts = textContent.split(/:([a-z0-9-]+):/i);
+    if (parts.length < 3) return;
+
+    const fragment = document.createDocumentFragment();
+    parts.forEach((part, index) => {
+      if (index % 2 === 0) {
+        if (part) fragment.append(document.createTextNode(part));
+      } else if (COLON_ICON_NAME.test(part)) {
+        const span = document.createElement('span');
+        span.className = `icon icon-${part.toLowerCase()}`;
+        fragment.append(span);
+      } else {
+        fragment.append(document.createTextNode(`:${part}:`));
+      }
+    });
+    textNode.replaceWith(fragment);
+  });
+}
+
+/**
+ * Returns the leading icon in a list item, searching recursively through
+ * leading strong/em/a wrappers at any depth (e.g. em > strong > span.icon).
+ * @param {HTMLLIElement} li List item element
+ * @returns {HTMLSpanElement|null}
+ */
+function getLeadingListIcon(li) {
+  function findIcon(container) {
+    let node = container.firstChild;
+    while (node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (node.textContent.trim()) return null;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.matches('span.icon')) return node;
+        if (node.matches('strong, em, a')) return findIcon(node);
+        return null;
+      } else {
+        return null;
+      }
+      node = node.nextSibling;
+    }
+    return null;
+  }
+  return findIcon(li);
+}
+
+/**
+ * Turns list items that start with an icon into icon-bullet lists.
+ * Run after {@link decorateIcons}. Scoped to lists that match the icon-bullet pattern.
+ * @param {Element} element Container element
+ */
+export function iconsToBullets(element) {
+  const lists = [...element.querySelectorAll(
+    'ul:has(> li > .icon, > li > :is(strong, em, a) > .icon, > li > :is(strong, em) > :is(strong, em) > .icon)',
+  )].slice(0, MAX_ICON_BULLET_LISTS);
+
+  lists.forEach((ul) => {
+    const items = [...ul.querySelectorAll(':scope > li')].slice(0, MAX_ICON_BULLET_ITEMS);
+    let decorated = 0;
+
+    items.forEach((li) => {
+      const icon = getLeadingListIcon(li);
+      if (!icon) return;
+
+      icon.classList.add('icon-bullet');
+      li.classList.add('icon-bullet-item');
+      const img = icon.querySelector('img');
+      if (img) {
+        img.loading = 'eager';
+        img.width = 24;
+        img.height = 24;
+      }
+
+      // Ensure icon is a direct child of li (extracts it from strong/em/a wrappers)
+      if (icon.parentElement !== li) {
+        li.insertBefore(icon, li.firstChild);
+      }
+
+      // Wrap all remaining siblings in a single span so flex gap only applies once
+      const after = [];
+      let sibling = icon.nextSibling;
+      while (sibling) {
+        after.push(sibling);
+        sibling = sibling.nextSibling;
+      }
+      if (after.length > 0) {
+        const textSpan = document.createElement('span');
+        textSpan.className = 'icon-bullet-text';
+        after.forEach((n) => textSpan.append(n));
+        li.append(textSpan);
+      }
+
+      decorated += 1;
+    });
+
+    if (decorated > 0 && decorated === items.length) {
+      ul.classList.add('icon-bullets');
+    }
+  });
+}
+
+/**
+ * Decorates icons and applies icon-bullet styling to qualifying lists.
+ * @param {Element} element Container element
+ * @param {string} [prefix] Optional prefix for icon src
+ */
+export function decorateIconsAndBullets(element, prefix = '') {
+  decorateColonIcons(element);
+  decorateIcons(element, prefix);
+  iconsToBullets(element);
+}
+
 /* === SPAN TAGS ===
  * Bracket syntax: [[class1,class2]text] → <span class="class1 class2">text</span>
  * Only alphanumeric, hyphen, and underscore are allowed in class names.
@@ -560,7 +701,7 @@ export function decorateSpanTags(element) {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
-  decorateIcons(main);
+  decorateIconsAndBullets(main);
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
