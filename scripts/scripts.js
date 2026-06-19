@@ -237,7 +237,7 @@ export function decorateButtons(main) {
 /* === SECTIONS === */
 
 /** Metadata keys consumed by {@link applySectionBackgroundDecorations} (not mirrored as data-*). */
-const SECTION_BACKGROUND_META_KEYS = new Set(['background-color', 'background-image']);
+const SECTION_BACKGROUND_META_KEYS = new Set(['background', 'background-color', 'background-image']);
 
 /**
  * Rejects values that could break out of a single CSS declaration when set via inline style.
@@ -279,17 +279,24 @@ function metaStringValue(value) {
 
 /**
  * Sets inline background-color and optionally prepends a decorative .bg-image layer.
- * Keys match section model fields and {@link readBlockConfig}: `background-color`, `background-image`.
+ * Reads from the section-metadata config (local/plain delivery) or, when absent, from the
+ * `data-background-*` attributes that DA delivery sets directly on the section element.
+ * Keys match section model fields and {@link readBlockConfig}: `background`, `background-color`, `background-image`.
  * @param {HTMLElement} section
- * @param {Record<string, unknown>} meta
+ * @param {Record<string, unknown>} [meta]
  */
-function applySectionBackgroundDecorations(section, meta) {
-  const color = metaStringValue(meta['background-color']).trim();
+function applySectionBackgroundDecorations(section, meta = {}) {
+  const color = (metaStringValue(meta['background-color'])
+    || metaStringValue(meta.background)
+    || section.dataset.backgroundColor
+    || section.dataset.background
+    || '').trim();
   if (color && isSafeBackgroundColorValue(color)) {
     section.style.setProperty('background-color', color);
   }
 
-  const imageUrl = metaStringValue(meta['background-image']).trim();
+  const imageUrl = (metaStringValue(meta['background-image'])
+    || section.dataset.backgroundImage || '').trim();
   if (!imageUrl || !isAllowedBackgroundImageUrl(imageUrl)) return;
 
   const bg = document.createElement('div');
@@ -344,7 +351,8 @@ export function decorateSections(main) {
     section.setAttribute('data-section-status', 'initialized');
     section.style.display = 'none';
 
-    // Process section metadata
+    // Process section metadata. Local/plain delivery ships a div.section-metadata table;
+    // DA delivery instead converts it into data-* attributes on the section itself.
     const sectionMeta = section.querySelector('div.section-metadata');
     if (sectionMeta) {
       const meta = readBlockConfig(sectionMeta);
@@ -362,6 +370,8 @@ export function decorateSections(main) {
       });
       applySectionBackgroundDecorations(section, meta);
       sectionMeta.parentNode.remove();
+    } else {
+      applySectionBackgroundDecorations(section);
     }
   }
 }
