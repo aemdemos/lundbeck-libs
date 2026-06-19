@@ -1,4 +1,7 @@
 import {
+  buildBlock,
+  decorateBlock,
+  loadBlock,
   loadHeader,
   loadFooter,
   decorateIcons,
@@ -134,6 +137,18 @@ function autolinkModals(doc) {
       openModal(origin.href);
     }
   });
+}
+
+/**
+ * Autoblocks injected during loadLazy (non-critical, not authored in DA).
+ */
+async function buildLazyAutoBlocks() {
+  if (!document.querySelector('.back-to-top')) {
+    const block = buildBlock('back-to-top', '');
+    document.body.append(block);
+    decorateBlock(block);
+    await loadBlock(block);
+  }
 }
 
 /**
@@ -700,6 +715,7 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  await buildLazyAutoBlocks();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
