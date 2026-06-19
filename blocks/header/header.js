@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateBlock, loadBlock } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 function toggleAllNavSections(sections, expanded = false) {
@@ -29,37 +29,22 @@ function closeOnClickOutside(e) {
 }
 
 /**
- * Builds the search form (form controls in JS per EDS convention)
- * @returns {HTMLElement} search form element
+ * Builds a search block instance (uses the shared blocks/search block) and
+ * loads its CSS + JS. Wrapped in a .nav-search container for header layout.
+ * @returns {HTMLElement} wrapper containing the (async-decorated) search block
  */
-function buildSearchForm() {
+function buildSearchBlock() {
   const searchWrapper = document.createElement('div');
   searchWrapper.className = 'nav-search';
 
-  const form = document.createElement('form');
-  form.className = 'nav-search-form';
-  form.setAttribute('role', 'search');
-  form.action = '/search';
-  form.method = 'get';
+  const searchBlock = document.createElement('div');
+  searchBlock.className = 'search block';
+  searchBlock.dataset.blockName = 'search';
+  searchWrapper.append(searchBlock);
 
-  const input = document.createElement('input');
-  input.type = 'search';
-  input.name = 'q';
-  input.placeholder = 'Search';
-  input.setAttribute('aria-label', 'Search');
-  input.autocomplete = 'off';
+  decorateBlock(searchBlock);
+  loadBlock(searchBlock);
 
-  const btn = document.createElement('button');
-  btn.type = 'submit';
-  btn.setAttribute('aria-label', 'Search');
-
-  const searchIcon = document.createElement('span');
-  searchIcon.className = 'nav-search-icon';
-  searchIcon.setAttribute('aria-hidden', 'true');
-  btn.append(searchIcon);
-
-  form.append(input, btn);
-  searchWrapper.append(form);
   return searchWrapper;
 }
 
@@ -279,8 +264,8 @@ function decorateBrandRow(brandSection, toolsSection) {
     });
   }
 
-  // Search form (built in JS)
-  toolsWrapper.append(buildSearchForm());
+  // Search (shared blocks/search block)
+  toolsWrapper.append(buildSearchBlock());
   container.append(toolsWrapper);
   brandRow.append(container);
   return brandRow;
@@ -299,7 +284,7 @@ function decorateNavLinks(sectionsEl) {
   const mobileHeader = document.createElement('div');
   mobileHeader.className = 'nav-mobile-header';
 
-  const mobileSearch = buildSearchForm();
+  const mobileSearch = buildSearchBlock();
   mobileSearch.className = 'nav-mobile-search';
   mobileHeader.append(mobileSearch);
 
