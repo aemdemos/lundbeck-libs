@@ -25,7 +25,7 @@
             { "name": "backgroundImage3", "selector": "div:nth-child(3)>picture>img[src]" },
             { "name": "backgroundImage4", "selector": "div:nth-child(4)>picture>img[src]" },
             { "name": "backgroundImage5", "selector": "div:nth-child(5)>picture>img[src]" },
-            { "name": "backgroundImageAlt", "selector": "div:nth-child(6)>picture>img[alt]" },
+            { "name": "backgroundImageAlt", "selector": "div:nth-child(1)>picture>img[alt]" },
             { "name": "content", "selector": "div:nth-child(7)" }
           ]
         }

@@ -183,7 +183,7 @@
                 },
                 {
                   "name": "backgroundImageAlt",
-                  "selector": "div:nth-child(6)>picture>img[alt]"
+                  "selector": "div:nth-child(1)>picture>img[alt]"
                 },
                 {
                   "name": "content",
