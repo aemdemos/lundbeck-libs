@@ -56,7 +56,10 @@
   --link-hover-color: #7ebcc6; /* @libs */
   --overlay-background-color: #e1f0f6; /* @libs */
   --error-color: #c02c57; /* @boilerplate */
-
+  --section-divider-width: 1px; /* @libs */
+  --section-divider-color: var(--link-hover-color); /* @libs */
+  --section-padding: 24px;
+  
   /* fonts */
   --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
   --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
@@ -96,7 +99,8 @@
   /* fixed-width / code */
   --fixed-font-family: menlo, consolas, monospace; /* @libs */
 
-  /* button tokens */
+  /* button tokens — shared */
+  --button-margin: 0; /* @libs */
   --button-border-radius: 100px; /* @libs */
   --button-border-width: 2px; /* @libs */
   --button-padding: 19px 25px; /* @libs */
@@ -104,18 +108,70 @@
   --button-font-weight: 700; /* @libs */
   --button-line-height: 1.25; /* @libs */
   --button-transition: 0.2s ease-in-out; /* @libs */
-  --button-background: var(--brand-teal); /* @libs */
-  --button-hover-background: var(--brand-teal-light); /* @libs */
-  --button-text-color: var(--background-color); /* @libs */
+
+  /* button icon (arrow on link buttons) */
+  --button-icon-width: 22px; /* @libs */
+  --button-icon-height: 10px; /* @libs */
+  --button-icon-gap: 8px; /* @libs */
+  --button-icon-opacity-hover: 0.5; /* @libs */
+  --button-icon-url: url("/icons/arrow-right.svg"); /* @libs */
+
+  /* primary — filled CTA */
+  --button-primary-background: var(--brand-secondary); /* @libs */
+  --button-primary-hover-background: var(--brand-secondary-dark); /* @libs */
+  --button-primary-color: var(--background-color); /* @libs */
+  --button-primary-border-color: var(--brand-secondary); /* @libs */
+  --button-primary-hover-border-color: var(--brand-secondary-dark); /* @libs */
+  --button-primary-hover-color: var(--background-color); /* @libs */
+
+  /* secondary — outline / ghost */
+  --button-secondary-background: transparent; /* @libs */
+  --button-secondary-hover-background: transparent; /* @libs */
+  --button-secondary-color: var(--brand-primary); /* @libs */
+  --button-secondary-border-color: var(--brand-primary); /* @libs */
+  --button-secondary-hover-color: var(--brand-primary-light); /* @libs */
+  --button-secondary-hover-border-color: var(--brand-primary-light); /* @libs */
+
+  /* accent — high-impact filled CTA */
+  --button-accent-background: var(--brand-primary); /* @libs */
+  --button-accent-hover-background: var(--brand-primary-light); /* @libs */
+  --button-accent-color: var(--background-color); /* @libs */
+  --button-accent-border-color: var(--brand-primary); /* @libs */
+  --button-accent-hover-border-color: var(--brand-primary-light); /* @libs */
+  --button-accent-hover-color: var(--background-color); /* @libs */
+
+  /* disabled (native button elements) */
   --button-disabled-background: var(--light-color); /* @libs */
+  --button-disabled-border-color: var(--light-color); /* @libs */
+  --button-disabled-color: var(--text-color-light); /* @libs */
+
+  /* on dark sections */
+  --button-on-dark-background: var(--background-color); /* @libs */
+  --button-on-dark-border-color: var(--background-color); /* @libs */
+  --button-on-dark-color: var(--brand-primary); /* @libs */
+  --button-on-dark-hover-opacity: 0.9; /* @libs */
+  --button-on-dark-secondary-background: transparent; /* @libs */
+  --button-on-dark-secondary-border-color: var(--background-color); /* @libs */
+  --button-on-dark-secondary-color: var(--background-color); /* @libs */
+  --button-on-dark-secondary-hover-background: var(--background-color); /* @libs */
+  --button-on-dark-secondary-hover-border-color: var(--background-color); /* @libs */
+  --button-on-dark-secondary-hover-color: var(--brand-primary); /* @libs */
 
 }
 
 /* fallback font for proxima-nova */
 @font-face { /* @libs */
   font-family: proxima-nova-fallback; /* @libs */
+  font-weight: 400; /* @libs */
   size-adjust: 98%; /* @libs */
   src: local('Arial'); /* @libs */
+}
+
+@font-face { /* @libs */
+  font-family: proxima-nova-fallback; /* @libs */
+  font-weight: 700; /* @libs */
+  size-adjust: 98%; /* @libs */
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Arial'); /* @libs */
 }
 
 @media (width >= 900px) { /* @libs */
@@ -146,6 +202,12 @@ body { /* @libs */
 
 body.appear { /* @libs */
   display: block; /* @libs */
+}
+
+.color-secondary {
+  color: var(--brand-secondary);
+
+  --link-color: var(--brand-secondary);
 }
 
 header { /* @libs */
@@ -272,92 +334,151 @@ a:hover { /* @libs */
   text-decoration: none; /* @libs */
 }
 
-/* buttons - primary (rose) */
+/* buttons — shared structure */
 a.button,
 button { /* @libs */
   box-sizing: border-box; /* @libs */
+  display: inline-block; /* @libs */
   max-width: 100%; /* @libs */
+  margin: var(--button-margin); /* @libs */
+  padding: var(--button-padding); /* @libs */
+  border: var(--button-border-width) solid transparent; /* @libs */
+  border-radius: var(--button-border-radius); /* @libs */
   font-family: var(--body-font-family); /* @libs */
+  font-size: var(--button-font-size); /* @libs */
   font-style: normal; /* @libs */
+  font-weight: var(--button-font-weight); /* @libs */
   line-height: var(--button-line-height); /* @libs */
   text-align: center; /* @libs */
+  text-decoration: none; /* @libs */
+  white-space: nowrap; /* @libs */
   cursor: pointer; /* @libs */
   overflow: hidden; /* @libs */
   text-overflow: ellipsis; /* @libs */
-  display: inline-block; /* @libs */
-  background-color: transparent; /* @libs */
-  color: var(--brand-teal); /* @libs */
-  font-weight: var(--font-weight-bold); /* @libs */
-  text-decoration: none; /* @libs */
   transition: var(--button-transition); /* @libs */
-  margin: 0; /* @libs */
-  white-space: nowrap; /* @libs */
-  font-size: var(--button-font-size); /* @libs */
-  border: var(--button-border-width) solid var(--brand-teal); /* @libs */
-  border-radius: var(--button-border-radius); /* @libs */
-  padding: var(--button-padding); /* @libs */
-}
-
-a.button:hover,
-a.button:focus { /* @libs */
-  border-color: var(--brand-teal-light); /* @libs */
-  color: var(--brand-teal-light); /* @libs */
-  text-decoration: none; /* @libs */
-  cursor: pointer; /* @libs */
 }
 
 a.button:focus { /* @libs */
   outline: 0; /* @libs */
 }
 
-button:hover { /* @libs */
-  background-color: var(--brand-rose-dark); /* @libs */
-  border-color: var(--brand-rose-dark); /* @libs */
+/* primary — filled CTA (native button elements default here) */
+a.button.primary,
+button { /* @libs */
+  background-color: var(--button-primary-background); /* @libs */
+  border-color: var(--button-primary-border-color); /* @libs */
+  color: var(--button-primary-color); /* @libs */
+}
+
+a.button.primary:hover,
+a.button.primary:focus,
+button:hover,
+button:focus { /* @libs */
+  background-color: var(--button-primary-hover-background); /* @libs */
+  border-color: var(--button-primary-hover-border-color); /* @libs */
+  color: var(--button-primary-hover-color); /* @libs */
   cursor: pointer; /* @libs */
 }
 
 button:disabled,
 button:disabled:hover { /* @libs */
-  background-color: var(--light-color); /* @libs */
-  border-color: var(--light-color); /* @libs */
-  color: var(--text-color-light); /* @libs */
+  background-color: var(--button-disabled-background); /* @libs */
+  border-color: var(--button-disabled-border-color); /* @libs */
+  color: var(--button-disabled-color); /* @libs */
   cursor: unset; /* @libs */
 }
 
+/* responsive visibility utilities (authorable via [hide-mobile] / [hide-desktop] bracket spans) */
+
+.hide-mobile {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .hide-desktop {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: revert;
+  }
+}
+
+/* secondary — outline / ghost (default for unclassified link buttons) */
+a.button.secondary,
+a.button:not(.primary, .accent),
+button.secondary { /* @libs */
+  background-color: var(--button-secondary-background); /* @libs */
+  border-color: var(--button-secondary-border-color); /* @libs */
+  color: var(--button-secondary-color); /* @libs */
+}
+
+a.button.secondary:hover,
+a.button.secondary:focus,
+a.button:not(.primary, .accent):hover,
+a.button:not(.primary, .accent):focus,
+button.secondary:hover,
+button.secondary:focus { /* @libs */
+  background-color: var(--button-secondary-hover-background); /* @libs */
+  border-color: var(--button-secondary-hover-border-color); /* @libs */
+  color: var(--button-secondary-hover-color); /* @libs */
+  text-decoration: none; /* @libs */
+  cursor: pointer; /* @libs */
+}
+
+/* accent — high-impact filled CTA */
+a.button.accent { /* @libs */
+  background-color: var(--button-accent-background); /* @libs */
+  border-color: var(--button-accent-border-color); /* @libs */
+  color: var(--button-accent-color); /* @libs */
+}
+
+a.button.accent:hover,
+a.button.accent:focus { /* @libs */
+  background-color: var(--button-accent-hover-background); /* @libs */
+  border-color: var(--button-accent-hover-border-color); /* @libs */
+  color: var(--button-accent-hover-color); /* @libs */
+  text-decoration: none; /* @libs */
+  cursor: pointer; /* @libs */
+}
+
+/* arrow icon on link buttons */
 a.button::after { /* @libs */
   content: ""; /* @libs */
   display: inline-block; /* @libs */
-  width: 18px; /* @libs */
-  height: 9px; /* @libs */
-  margin-left: 8px; /* @libs */
+  width: var(--button-icon-width); /* @libs */
+  height: var(--button-icon-height); /* @libs */
+  margin-left: var(--button-icon-gap); /* @libs */
   vertical-align: middle; /* @libs */
-  background-image: url("/icons/arrow-right.svg"); /* @libs */
-  background-size: contain; /* @libs */
-  background-repeat: no-repeat; /* @libs */
-  background-position: center; /* @libs */
+  background-color: currentcolor; /* @libs */
+  mask-image: var(--button-icon-url); /* @libs */
+  mask-size: contain; /* @libs */
+  mask-repeat: no-repeat; /* @libs */
+  mask-position: center; /* @libs */
   transition: var(--button-transition); /* @libs */
 }
 
 a.button:hover::after,
 a.button:focus::after { /* @libs */
-  opacity: 0.5; /* @libs */
+  opacity: var(--button-icon-opacity-hover); /* @libs */
 }
 
-/* buttons - secondary (teal outline / ghost) */
-a.button.secondary,
-button.secondary { /* @libs */
-  background-color: var(--background-color); /* @libs */
-  border: var(--button-border-width) solid var(--brand-teal); /* @libs */
-  color: var(--brand-teal); /* @libs */
+/* explicit authored icon (e.g. :search:) replaces the default arrow and uses
+   flex gap so spacing sits between icon and text on whichever side it's authored */
+a.button:has(.icon) { /* @libs */
+  display: inline-flex; /* @libs */
+  gap: var(--button-icon-gap); /* @libs */
+  align-items: center; /* @libs */
+  justify-content: center; /* @libs */
 }
 
-a.button.secondary:hover,
-a.button.secondary:focus,
-button.secondary:hover,
-button.secondary:focus { /* @libs */
-  background-color: var(--background-color); /* @libs */
-  border-color: var(--brand-teal-light); /* @libs */
-  color: var(--brand-teal-light); /* @libs */
+a.button:has(.icon)::after { /* @libs */
+  content: none; /* @libs */
+}
+
+a.button .icon { /* @libs */
+  width: 1em; /* @libs */
+  height: 1em; /* @libs */
 }
 
 main img { /* @libs */
@@ -380,7 +501,11 @@ main img { /* @libs */
 /* sections */
 main > .section { /* @libs */
   margin: 0; /* @libs */
-  padding-bottom: 24px; /* @libs */
+}
+
+main > .section.divider > div:last-child { /* @libs */
+  border-bottom: var(--section-divider-width) solid var(--section-divider-color); /* @libs */
+  padding-bottom: var(--section-padding);
 }
 
 main > .section > div { /* @libs */
@@ -490,31 +615,101 @@ main .section.dark a:hover { /* @libs */
   color: var(--brand-teal-light); /* @libs */
 }
 
-main .section.dark a.button { /* @libs */
-  background-color: var(--background-color); /* @libs */
-  border-color: var(--background-color); /* @libs */
-  color: var(--brand-teal); /* @libs */
+main .section.dark a.button.primary,
+main .section.dark a.button.accent,
+main .section.dark a.button:not(.secondary) { /* @libs */
+  background-color: var(--button-on-dark-background); /* @libs */
+  border-color: var(--button-on-dark-border-color); /* @libs */
+  color: var(--button-on-dark-color); /* @libs */
 }
 
-main .section.dark a.button:hover,
-main .section.dark a.button:focus { /* @libs */
-  background-color: var(--background-color); /* @libs */
-  border-color: var(--background-color); /* @libs */
-  color: var(--brand-teal); /* @libs */
-  opacity: 0.9; /* @libs */
+main .section.dark a.button.primary:hover,
+main .section.dark a.button.primary:focus,
+main .section.dark a.button.accent:hover,
+main .section.dark a.button.accent:focus,
+main .section.dark a.button:not(.secondary):hover,
+main .section.dark a.button:not(.secondary):focus { /* @libs */
+  background-color: var(--button-on-dark-background); /* @libs */
+  border-color: var(--button-on-dark-border-color); /* @libs */
+  color: var(--button-on-dark-color); /* @libs */
+  opacity: var(--button-on-dark-hover-opacity); /* @libs */
 }
 
 main .section.dark a.button.secondary { /* @libs */
-  background-color: transparent; /* @libs */
-  border-color: var(--background-color); /* @libs */
-  color: var(--background-color); /* @libs */
+  background-color: var(--button-on-dark-secondary-background); /* @libs */
+  border-color: var(--button-on-dark-secondary-border-color); /* @libs */
+  color: var(--button-on-dark-secondary-color); /* @libs */
 }
 
 main .section.dark a.button.secondary:hover,
 main .section.dark a.button.secondary:focus { /* @libs */
-  background-color: var(--background-color); /* @libs */
-  border-color: var(--background-color); /* @libs */
-  color: var(--brand-teal); /* @libs */
+  background-color: var(--button-on-dark-secondary-hover-background); /* @libs */
+  border-color: var(--button-on-dark-secondary-hover-border-color); /* @libs */
+  color: var(--button-on-dark-secondary-hover-color); /* @libs */
+}
+
+/* section metadata - stats-callout (light-blue→white gradient, rounded top corners).
+   Source: vyepti.com clinical-study-results and real-life-impact callouts.
+   The light-blue background-color is authored on the section metadata and applied
+   inline via applySectionBackgroundDecorations(); this rule layers the white fade
+   + rounded corners on top.
+   Box model measured from the live source:
+   - The gradient box (section) is ALWAYS full width (max-width 100%, no side
+     margin). It carries 15px side padding below 768px; at 768+ the inner
+     container owns the gutters so the section padding drops to 0.
+   - The inner content (.container equivalent) carries the responsive caps,
+     centered with margin auto: <576 fluid, 576+ = 540, 768+ = 720,
+     992+ = 960, 1200+ = 1140 (Bootstrap container widths), each with 15px gutters. */
+main .section.stats-callout {
+  max-width: 100%;
+  margin: 0;
+  background-image: linear-gradient(180deg, #e8f3f5 20%, #fff 53%, #fff 100%);
+  border-radius: 23px 23px 0 0;
+  padding: var(--section-padding-vertical) 15px;
+  text-align: center;
+}
+
+/* Inner content carries the responsive container caps, centered. box-sizing keeps
+   the 15px gutters inside the width instead of adding to it. */
+main .section.stats-callout > div:not(.bg-image) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+main .section.stats-callout h2,
+main .section.stats-callout h4 {
+  color: var(--brand-primary);
+}
+
+@media (width >= 576px) {
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 540px;
+  }
+}
+
+@media (width >= 768px) {
+  main .section.stats-callout {
+    padding: var(--section-padding-vertical) 0;
+  }
+
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 720px;
+  }
+}
+
+@media (width >= 992px) {
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 960px;
+  }
+}
+
+@media (width >= 1200px) {
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 1140px;
+  }
 }
 
 @media (width >= 992px) { /* @libs */
