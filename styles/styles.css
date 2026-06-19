@@ -58,20 +58,6 @@
   --error-color: #c02c57; /* @boilerplate */
   --section-divider-width: 1px; /* @libs */
   --section-divider-color: var(--link-hover-color); /* @libs */
-  --back-to-top-size: 36px; /* @libs */
-  --back-to-top-offset-right: 8px; /* @libs */
-  --back-to-top-offset-bottom: 60px; /* @libs */
-  --back-to-top-icon-bg: #e1f0f6; /* @libs */
-  --back-to-top-icon-radius: 50%; /* @libs */
-  --back-to-top-icon-padding: 1px; /* @libs */
-  --back-to-top-color: var(--brand-primary); /* @libs */
-  --back-to-top-z-index: 20; /* @libs */
-  --back-to-top-width: 35px;
-  --back-to-top-height: 55px;
-  --back-to-top-offset-right-new: 0;
-  --back-to-top-top: 300px;
-  --back-to-top-bottom: 140px;
-  --back-to-top-z-index-new: 100;
   --section-padding: 24px;
   
   /* fonts */
@@ -510,47 +496,6 @@ main img { /* @libs */
 .icon img { /* @libs */
   height: 100%; /* @libs */
   width: 100%; /* @libs */
-}
-
-/* Back-to-top button */
-.back-to-top {
-  position: fixed;
-  right: var(--back-to-top-offset-right-new);
-  top: var(--back-to-top-top);
-  z-index: var(--back-to-top-z-index-new);
-  width: var(--back-to-top-width);
-  height: var(--back-to-top-height);
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  overflow: visible;
-  background-color: transparent;
-  background-image: url('/icons/toptobottom.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.back-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.back-to-top:hover,
-.back-to-top:focus {
-  cursor: default;
-  background-color: transparent;
-  border-color: transparent;
-}
-
-@media (width >= 768px) {
-  .back-to-top {
-    top: auto;
-    bottom: var(--back-to-top-bottom);
-  }
 }
 
 /* sections */

@@ -1,4 +1,7 @@
 import {
+  buildBlock,
+  decorateBlock,
+  loadBlock,
   loadHeader,
   loadFooter,
   decorateIcons,
@@ -136,28 +139,16 @@ function autolinkModals(doc) {
   });
 }
 
-export function topToBottom() {
-  if (document.querySelector('.back-to-top')) return;
-
-  const SHOW_AFTER = 120; // px scrolled before the button appears
-
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'back-to-top';
-  button.setAttribute('aria-label', 'Back to top');
-
-  button.addEventListener('click', () => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-  });
-
-  const toggle = () => {
-    button.classList.toggle('visible', window.scrollY > SHOW_AFTER);
-  };
-
-  document.body.append(button);
-  toggle();
-  window.addEventListener('scroll', toggle, { passive: true });
+/**
+ * Autoblocks injected during loadLazy (non-critical, not authored in DA).
+ */
+async function buildLazyAutoBlocks() {
+  if (!document.querySelector('.back-to-top')) {
+    const block = buildBlock('back-to-top', '');
+    document.body.append(block);
+    decorateBlock(block);
+    await loadBlock(block);
+  }
 }
 
 /**
@@ -565,7 +556,6 @@ export function decorateMain(main) {
   decorateButtons(main);
   a11yLinks(main);
   decorateSpanTags(main);
-  topToBottom();
 }
 
 /**
@@ -724,6 +714,7 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  await buildLazyAutoBlocks();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
