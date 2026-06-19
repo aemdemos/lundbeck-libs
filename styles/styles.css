@@ -496,6 +496,7 @@ main img { /* @libs */
 .icon img { /* @libs */
   height: 100%; /* @libs */
   width: 100%; /* @libs */
+  object-fit: contain; /* @libs */
 }
 
 /* icon bullet lists — :has() prevents FOUC before JS adds .icon-bullets */
