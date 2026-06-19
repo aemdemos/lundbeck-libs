@@ -74,8 +74,8 @@ header .search .search-box {
   gap: 0;
   height: 42px;
   box-sizing: border-box;
-  background: #fff;
-  border: 1px solid rgb(72 72 72);
+  background: var(--header-white-text-color);
+  border: 1px solid var(--header-text-color);
   border-radius: 25px;
   overflow: hidden;
 }
@@ -90,14 +90,14 @@ header .search .search-box .search-input {
   outline: 0;
   background: transparent;
   padding: 8px 16px;
-  color: rgb(72 72 72);
+  color: var(--header-text-color);
   font-family: var(--body-font-family);
   font-size: var(--header-font-size-s);
   line-height: var(--header-line-height-l);
 }
 
 header .search .search-box .search-input::placeholder {
-  color: rgb(72 72 72);
+  color: var(--header-text-color);
 }
 
 /* search icon button (right half of the pill) */
@@ -255,7 +255,7 @@ header .nav-dropdown-menu li {
 header .nav-dropdown-menu a {
   display: block;
   padding: 6px 20px;
-  color: rgb(72 72 72);
+  color: var(--header-text-color);
   font-size: var(--header-font-size-xs);
   font-weight: var(--header-font-weight-s);
   line-height: var(--header-line-height-s);
@@ -388,7 +388,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     margin: 0;
     font-size: var(--header-font-size-xs);
     font-weight: var(--header-font-weight-xs);
-    color: rgb(72 72 72);
+    color: var(--header-text-color);
     line-height: var(--header-line-height-m);
     white-space: normal;
     display: block;
@@ -558,7 +558,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     color: var(--text-color);
     font-weight: var(--header-font-weight-medium);
     max-width: 160px;
-    border-left: 1px solid var(--text-color);
+    border-left: 1px solid var(--header-text-color);
     padding-left: 12px;
   }
 
@@ -721,13 +721,14 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     box-shadow: none;
     z-index: 200;
     text-align: center;
+    border-bottom: 5px solid #c02c57 !important;
   }
 
 
   header .nav-utility-dropdown-menu a {
     font-size: var(--header-font-size-s);
     font-weight: var(--header-font-weight-xs);
-    color: rgb(72 72 72);
+    color: var(--header-text-color);
     padding: 0 0 16px;
     display: block;
     white-space: normal;
@@ -882,6 +883,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     border-bottom: 5px solid #c02c57;
     border-radius: 0 0 4px 4px;
     margin: 0;
+    left: -26px;
   }
 
   header .nav-dropdown-menu a {
@@ -889,7 +891,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     margin: 0;
     font-size: 12.8px;
     font-weight: 600;
-    color: var(--white-text-color);
+    color: var(--header-text-color);
     line-height: var(--header-line-height-s);
     white-space: nowrap;
   }
@@ -938,7 +940,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
 
   header .nav-utility-link {
     display: inline;
-    color: var(--white-text-color);
+    color: var(--header-white-text-color);
     font-weight: var(--header-font-weight-s);
   }
 
@@ -963,7 +965,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
 
   header .nav-utility-dropdown-trigger[aria-expanded='true'] {
     background: none;
-    color: var(--white-text-color);
+    color: var(--header-white-text-color);
     padding: 0;
     margin: 0;
     width: auto;
@@ -971,14 +973,14 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
   }
 
   header .nav-utility-dropdown-trigger::after {
-    border-right: 1px solid var(--white-text-color);
+    border-right: 1px solid var(--header-white-text-color);
     border-bottom: 0;
-    border-top: 1px solid var(--white-text-color);
+    border-top: 1px solid var(--header-white-text-color);
     transform: translateY(-3px) rotate(135deg);
   }
 
   header .nav-utility-dropdown-trigger[aria-expanded='true']::after {
-    border-color: var(--white-text-color);
+    border-color: var(--header-white-text-color);
     transform: translateY(1px) rotate(-45deg);
   }
 
@@ -990,7 +992,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
     width: auto;
     min-width: 10rem;
     border-radius: 0 0 4px 4px;
-    background: var(--white-text-color);
+    background: var(--header-white-text-color);
     padding: 8px 40px 8px 0;
     box-shadow: 0 2px 8px rgb(46 50 51 / 50%);
     z-index: 20;

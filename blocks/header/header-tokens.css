@@ -5,7 +5,8 @@
   --header-nav-max-width-tablet: 690px;
   --header-nav-max-width-desktop: 930px;
   --header-nav-max-width-max: 1110px;
-  --white-text-color: #fff;
+  --header-white-text-color: #fff;
+  --header-text-color: #484848;
 
   /* font */
   --header-font-weight-xs: 500;
