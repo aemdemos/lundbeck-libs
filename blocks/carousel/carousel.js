@@ -1,22 +1,8 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation, getBlockId } from '../../scripts/scripts.js';
+import { buildPictureContentFromImageCell } from '../../scripts/utils.js';
 import { createSliderControls, initSlider, showSlide } from '../../scripts/slider.js';
 
 export { showSlide };
-
-/**
- * Optimizes every author image within a cell into a responsive <picture>.
- * Used by the testimonial variant, where a slide may hold up to 5 distinct images.
- * @param {Element} cell - The slide image cell
- * @param {boolean} eager - Whether the first image should load eagerly (LCP)
- */
-function optimizeCellImages(cell, eager) {
-  cell.querySelectorAll('picture > img').forEach((img, idx) => {
-    const optimized = createOptimizedPicture(img.src, img.alt, eager && idx === 0, [{ width: '750' }]);
-    moveInstrumentation(img, optimized.querySelector('img'));
-    img.closest('picture').replaceWith(optimized);
-  });
-}
 
 function createSlide(row, slideIndex, carouselId, isTestimonial) {
   const slide = document.createElement('li');
@@ -27,7 +13,18 @@ function createSlide(row, slideIndex, carouselId, isTestimonial) {
   row.querySelectorAll(':scope > div').forEach((column, colIdx) => {
     column.classList.add(`carousel-slide-${colIdx === 0 ? 'image' : 'content'}`);
     if (isTestimonial && colIdx === 0) {
-      optimizeCellImages(column, slideIndex === 0);
+      const eager = slideIndex === 0;
+      const firstImg = column.querySelector('picture > img');
+      column.replaceChildren(
+        buildPictureContentFromImageCell(column, {
+          eagerSingle: eager,
+          eagerArtDirection: eager,
+        }),
+      );
+      const newImg = column.querySelector('picture > img');
+      if (firstImg && newImg) {
+        moveInstrumentation(firstImg, newImg);
+      }
     }
     slide.append(column);
   });
