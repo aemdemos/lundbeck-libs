@@ -374,7 +374,7 @@ function parseSplitClasses(raw) {
 const SPLIT_INLINE_TAGS = new Set(['STRONG', 'EM', 'A', 'BR']);
 
 // eslint-disable-next-line sonarjs/slow-regex
-const SPLIT_OPEN_RE = /\[\[([a-z0-9,-]+)\]$/;
+const SPLIT_OPEN_RE = /\[\[([a-z0-9,-]+)\]\s*$/;
 
 // eslint-disable-next-line sonarjs/slow-regex
 const BRACKET_RE = /\[\[[^\]]+\]([^\]]*)\]/g;
@@ -396,13 +396,14 @@ function applySplitBoundaryPass(el) {
       // Pattern A: "prefix[[classes]" <inline>content</inline> "]suffix"
       const openMatch = prev.nodeValue.match(SPLIT_OPEN_RE);
       const classes = openMatch ? parseSplitClasses(openMatch[1]) : [];
-      if (openMatch && classes.length && next.nodeValue.startsWith(']')) {
+      const closeMatch = openMatch && classes.length ? next.nodeValue.match(/^\s*\]/) : null;
+      if (closeMatch) {
         const span = document.createElement('span');
         span.className = classes.join(' ');
         span.appendChild(mid);
         el.insertBefore(span, next);
         prev.nodeValue = prev.nodeValue.slice(0, -openMatch[0].length);
-        next.nodeValue = next.nodeValue.slice(1);
+        next.nodeValue = next.nodeValue.slice(closeMatch[0].length);
       }
     } else if (!isPrevText && mid.nodeType === Node.TEXT_NODE && !isNextText && next.children.length === 0) {
       // Pattern B: <inline>prefix[[</inline> "classes" <inline>]content]</inline>
