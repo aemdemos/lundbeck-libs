@@ -1,4 +1,7 @@
 import {
+  buildBlock,
+  decorateBlock,
+  loadBlock,
   loadHeader,
   loadFooter,
   decorateIcons,
@@ -134,6 +137,18 @@ function autolinkModals(doc) {
       openModal(origin.href);
     }
   });
+}
+
+/**
+ * Autoblocks injected during loadLazy (non-critical, not authored in DA).
+ */
+async function buildLazyAutoBlocks() {
+  if (!document.querySelector('.back-to-top')) {
+    const block = buildBlock('back-to-top', '');
+    document.body.append(block);
+    decorateBlock(block);
+    await loadBlock(block);
+  }
 }
 
 /**
@@ -381,7 +396,7 @@ function parseSplitClasses(raw) {
 const SPLIT_INLINE_TAGS = new Set(['STRONG', 'EM', 'A', 'BR']);
 
 // eslint-disable-next-line sonarjs/slow-regex
-const SPLIT_OPEN_RE = /\[\[([a-z0-9,-]+)\]$/;
+const SPLIT_OPEN_RE = /\[\[([a-z0-9,-]+)\]\s*$/;
 
 // eslint-disable-next-line sonarjs/slow-regex
 const BRACKET_RE = /\[\[[^\]]+\]([^\]]*)\]/g;
@@ -403,13 +418,14 @@ function applySplitBoundaryPass(el) {
       // Pattern A: "prefix[[classes]" <inline>content</inline> "]suffix"
       const openMatch = prev.nodeValue.match(SPLIT_OPEN_RE);
       const classes = openMatch ? parseSplitClasses(openMatch[1]) : [];
-      if (openMatch && classes.length && next.nodeValue.startsWith(']')) {
+      const closeMatch = openMatch && classes.length ? next.nodeValue.match(/^\s*\]/) : null;
+      if (closeMatch) {
         const span = document.createElement('span');
         span.className = classes.join(' ');
         span.appendChild(mid);
         el.insertBefore(span, next);
         prev.nodeValue = prev.nodeValue.slice(0, -openMatch[0].length);
-        next.nodeValue = next.nodeValue.slice(1);
+        next.nodeValue = next.nodeValue.slice(closeMatch[0].length);
       }
     } else if (!isPrevText && mid.nodeType === Node.TEXT_NODE && !isNextText && next.children.length === 0) {
       // Pattern B: <inline>prefix[[</inline> "classes" <inline>]content]</inline>
@@ -706,9 +722,16 @@ async function loadLazy(doc) {
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  await buildLazyAutoBlocks();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
+
+  const entranceModal = getMetadata('entrance-modal');
+  if (entranceModal) {
+    import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`)
+      .then(({ openModal }) => openModal(entranceModal));
+  }
 }
 
 /**
