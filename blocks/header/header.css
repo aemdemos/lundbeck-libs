@@ -55,9 +55,86 @@ header .nav-tool-icon {
   height: 36px;
 }
 
-/* Search form */
+/* Search (shared blocks/search block, styled to match vyepti.com pill) */
 header .nav-search {
   flex-shrink: 0;
+}
+
+/* the search block fills its wrapper; results overlay below the pill */
+header .search.block {
+  position: relative;
+  margin: 0;
+}
+
+/* pill: white rounded box, search icon on the right, input on the left */
+header .search .search-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0;
+  height: 42px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid rgb(72 72 72);
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+header .search .search-box .search-input {
+  grid-column: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  padding: 8px 16px;
+  color: rgb(72 72 72);
+  font-family: var(--body-font-family);
+  font-size: var(--header-font-size-s);
+  line-height: var(--header-line-height-l);
+}
+
+header .search .search-box .search-input::placeholder {
+  color: rgb(72 72 72);
+}
+
+/* search icon button (right half of the pill) */
+header .search .search-box .icon-search {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+header .search .search-box .icon-search img {
+  width: 18px;
+  height: 18px;
+}
+
+/* results overlay below the pill (don't disturb header layout) */
+header .search .search-results {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  z-index: 50;
+  max-height: 70vh;
+  margin: 0;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 15%);
+}
+
+header .search .search-results:empty {
+  display: none;
 }
 
 /* ===== ROW 2: Navigation Links ===== */
@@ -925,7 +1002,7 @@ header nav.nav-mobile-open .nav-dropdown-menu a:hover {
   }
 
   header .nav-search .search-box {
-    max-width: 134px;
+    width: 200px;
   }
 
   header .nav-brand-row {
@@ -977,7 +1054,7 @@ header .nav-search {
   }
 
   header .nav-search .search-box {
-   max-width: unset;
+   width: 280px;
   }
 
   header .nav-links-container {
