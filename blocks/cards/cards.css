@@ -27,3 +27,24 @@
   aspect-ratio: var(--cards-image-aspect-ratio); /* @boilerplate */
   object-fit: var(--cards-image-object-fit); /* @boilerplate */
 }
+
+@media (width >= 900px) {
+  .cards.cards-2-cols > ul {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  .cards.cards-3-cols > ul {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+
+  /* 200%/300% resolves against the 50%/33% grid cell to match the 4-column card width */
+  .cards.cards-2-cols > ul > li {
+    width: calc((200% - 3 * var(--cards-grid-gap)) / 4);
+  }
+
+  .cards.cards-3-cols > ul > li {
+    width: calc((300% - 3 * var(--cards-grid-gap)) / 4);
+  }
+}
