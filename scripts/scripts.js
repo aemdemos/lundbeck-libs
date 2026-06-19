@@ -136,6 +136,30 @@ function autolinkModals(doc) {
   });
 }
 
+export function topToBottom() {
+  if (document.querySelector('.back-to-top')) return;
+
+  const SHOW_AFTER = 120; // px scrolled before the button appears
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'back-to-top';
+  button.setAttribute('aria-label', 'Back to top');
+
+  button.addEventListener('click', () => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  const toggle = () => {
+    button.classList.toggle('visible', window.scrollY > SHOW_AFTER);
+  };
+
+  document.body.append(button);
+  toggle();
+  window.addEventListener('scroll', toggle, { passive: true });
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -541,6 +565,7 @@ export function decorateMain(main) {
   decorateButtons(main);
   a11yLinks(main);
   decorateSpanTags(main);
+  topToBottom();
 }
 
 /**
