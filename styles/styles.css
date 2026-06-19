@@ -66,14 +66,12 @@
   --back-to-top-icon-padding: 1px; /* @libs */
   --back-to-top-color: var(--brand-primary); /* @libs */
   --back-to-top-z-index: 20; /* @libs */
-
-  /*new added*/
   --back-to-top-width: 35px;
   --back-to-top-height: 55px;
-  --back-to-top-offset-right: 0;
+  --back-to-top-offset-right-new: 0;
   --back-to-top-top: 300px;
   --back-to-top-bottom: 140px;
-  --back-to-top-z-index: 100;
+  --back-to-top-z-index-new: 100;
   --section-padding: 24px;
   
   /* fonts */
@@ -517,9 +515,9 @@ main img { /* @libs */
 /* Back-to-top button */
 .back-to-top {
   position: fixed;
-  right: var(--back-to-top-offset-right);
+  right: var(--back-to-top-offset-right-new);
   top: var(--back-to-top-top);
-  z-index: var(--back-to-top-z-index);
+  z-index: var(--back-to-top-z-index-new);
   width: var(--back-to-top-width);
   height: var(--back-to-top-height);
   padding: 0;
