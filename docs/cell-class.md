@@ -2,7 +2,7 @@
 
 Lets authors apply a CSS class to a block cell `div` by placing a `[classname]` code snippet as the first element of that cell. The snippet is consumed during decoration and does not appear in the rendered page.
 
-This is a separate system from the span-tags `[[double-bracket]]` syntax. Single brackets authored as **inline code** (backtick) target the parent cell div; double brackets authored as plain text target inline text spans within a paragraph or heading.
+This is a separate system from the span-tags `[[double-bracket]]` syntax. Single brackets formatted as **inline code** via the DA toolbar target the parent cell div; double brackets authored as plain text target inline text spans within a paragraph or heading.
 
 ---
 
@@ -10,14 +10,13 @@ This is a separate system from the span-tags `[[double-bracket]]` syntax. Single
 
 ### 1.1 Syntax
 
-In a DA document, type the class name in single square brackets and apply **inline code** formatting (backtick). Place it as the very first line of the cell — before any other content:
+In DA, type the class name wrapped in square brackets as the very first line of the cell — before any other content. Then select the full text including the brackets and click the **Toggle inline code** (`<>`) button in the DA toolbar:
 
-```
-`[color-primary]`
-Symptoms are typically first seen in the first week of treatment.
-```
+1. Type `[color-primary]` as the first line of the cell
+2. Select the full text `[color-primary]`
+3. Click the **`<>`** (Toggle inline code) button in the DA toolbar
 
-The `` `[color-primary]` `` line is removed during decoration. The rendered result is:
+Place it before any other content in the cell. The `[color-primary]` line is removed during decoration. The rendered result is:
 
 ```html
 <div class="color-primary">
@@ -29,30 +28,20 @@ The `` `[color-primary]` `` line is removed during decoration. The rendered resu
 
 The code snippet must be the **first element** in the cell. A code snippet elsewhere in the cell is not matched and the cell is left unchanged.
 
-✅ First line of the cell — matched and removed:
-```
-`[color-primary]`
-Cell content follows here.
-```
+✅ First line of the cell — matched and removed: the inline code `[color-primary]` appears before any other content in the cell.
 
-❌ Not the first element — ignored:
-```
-Cell content starts here.
-`[color-primary]`
-```
+❌ Not the first element — ignored: any other content appears before the inline code `[color-primary]`.
 
 ### 1.3 Class name rules
 
 Only letters, digits, hyphens, and underscores are accepted. Invalid names are silently ignored and the cell is left unchanged.
 
-```
-✅ `[color-primary]`
-✅ `[hide-mobile]`
-✅ `[stats_callout]`
-❌ `[color primary]`    — space not allowed
-❌ `[color@primary]`   — special character not allowed
-❌ `[]`                — empty name not matched
-```
+✅ `[color-primary]` — letters and hyphens  
+✅ `[hide-mobile]` — letters and hyphens  
+✅ `[stats_callout]` — underscore allowed  
+❌ `[color primary]` — space not allowed  
+❌ `[color@primary]` — special character not allowed  
+❌ `[]` — empty name not matched
 
 ---
 
