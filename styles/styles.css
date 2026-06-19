@@ -56,7 +56,10 @@
   --link-hover-color: #7ebcc6; /* @libs */
   --overlay-background-color: #e1f0f6; /* @libs */
   --error-color: #c02c57; /* @boilerplate */
-
+  --section-divider-width: 1px; /* @libs */
+  --section-divider-color: var(--link-hover-color); /* @libs */
+  --section-padding: 24px;
+  
   /* fonts */
   --body-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
   --heading-font-family: proxima-nova, proxima-nova-fallback, sans-serif; /* @libs */
@@ -199,6 +202,12 @@ body { /* @libs */
 
 body.appear { /* @libs */
   display: block; /* @libs */
+}
+
+.color-secondary {
+  color: var(--brand-secondary);
+
+  --link-color: var(--brand-secondary);
 }
 
 header { /* @libs */
@@ -379,6 +388,22 @@ button:disabled:hover { /* @libs */
   cursor: unset; /* @libs */
 }
 
+/* responsive visibility utilities (authorable via [hide-mobile] / [hide-desktop] bracket spans) */
+
+.hide-mobile {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .hide-desktop {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: revert;
+  }
+}
+
 /* secondary — outline / ghost (default for unclassified link buttons) */
 a.button.secondary,
 a.button:not(.primary, .accent),
@@ -476,7 +501,11 @@ main img { /* @libs */
 /* sections */
 main > .section { /* @libs */
   margin: 0; /* @libs */
-  padding-bottom: 24px; /* @libs */
+}
+
+main > .section.divider > div:last-child { /* @libs */
+  border-bottom: var(--section-divider-width) solid var(--section-divider-color); /* @libs */
+  padding-bottom: var(--section-padding);
 }
 
 main > .section > div { /* @libs */

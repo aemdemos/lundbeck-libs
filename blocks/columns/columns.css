@@ -5,10 +5,6 @@
   flex-direction: column; /* @boilerplate */
 }
 
-.columns img { /* @boilerplate */
-  width: 100%; /* @boilerplate */
-}
-
 .columns > div > div { /* @boilerplate */
   order: 1; /* @boilerplate */
 }
@@ -31,6 +27,20 @@
   .columns > div > div { /* @boilerplate */
     flex: 1; /* @boilerplate */
     order: unset; /* @boilerplate */
+  }
+
+  .columns.divider.columns-2-cols > div {
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .columns.divider.columns-2-cols > div > :first-child {
+    padding-inline-end: var(--columns-divider-spacing);
+  }
+
+  .columns.divider.columns-2-cols > div > :nth-child(2) {
+    border-inline-start: var(--columns-divider-width) solid var(--columns-divider-color);
+    padding-inline-start: var(--columns-divider-spacing);
   }
 }
 
