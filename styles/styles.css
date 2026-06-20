@@ -523,6 +523,14 @@ main .icon.icon-bullet { /* @libs */
   margin-top: 0.15em; /* @libs */
 }
 
+.center {
+  text-align: center;
+
+  &.columns > div > div {
+    justify-content: center;
+  }
+}
+
 /* sections */
 main > .section { /* @libs */
   margin: 0; /* @libs */
@@ -539,24 +547,6 @@ main > .section > div { /* @libs */
   padding: 0 15px; /* @libs */
 }
 
-.section.center { /* @libs */
-  text-align: center; /* @libs */
-  padding-top: 20px; /* @libs */
-
-  h1 { /* @libs */
-    font-size: var(--heading-font-size-xxl); /* @libs */
-    max-width: unset; /* @libs */
-  }
-
-  p { /* @libs */
-    font-size: var(--body-font-size-m); /* @libs */
-
-    strong { /* @libs */
-      font-weight: 600; /* @libs */
-    }
-  }
-}
-
 @media (width >= 768px) { /* @libs */
   main > .section > div { /* @libs */
     max-width: 720px; /* @libs */
@@ -567,18 +557,6 @@ main > .section > div { /* @libs */
   main > .section > div { /* @libs */
     max-width: var(--max-width-site); /* @libs */
     padding: 0 32px; /* @libs */
-  }
-
-  .section.center { /* @libs */
-    text-align: left; /* @libs */
-
-    h1 { /* @libs */
-      font-size: var(--heading-font-size-xxl); /* @libs */
-    }
-
-    p { /* @libs */
-      font-size: var(--body-font-size-m); /* @libs */
-    }
   }
 }
 
@@ -744,14 +722,6 @@ main .section.stats-callout h4 {
 
   main .section.accent > div { /* @libs */
     gap: 30px; /* @libs */
-  }
-
-  .section.center { /* @libs */
-    text-align: left; /* @libs */
-
-    h1 { /* @libs */
-      max-width: var(--h1-max-width); /* @libs */
-    }
   }
 }
 
