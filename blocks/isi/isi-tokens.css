@@ -59,7 +59,7 @@
   }
 }
 
-@media (width >= 900px) { /* @boilerplate */
+@media (width >= 992px) { /* @boilerplate */
   :root { /* @boilerplate */
     --isi-toggle-right: var(--isi-toggle-right-desktop); /* @boilerplate */
   }

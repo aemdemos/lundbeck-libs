@@ -29,18 +29,6 @@ body.modal-open { /* @boilerplate */
   margin-top: var(--modal-content-margin-top); /* @boilerplate */
 }
 
-@media (width >= 900px) { /* @boilerplate */
-  .modal dialog { /* @boilerplate */
-    width: var(--modal-width-desktop); /* @boilerplate */
-  }
-
-  .modal dialog .modal-content { /* @boilerplate */
-    max-height: calc(100dvh - (2 * var(--header-height)) - 64px); /* @boilerplate */
-    padding: var(--modal-content-padding-desktop); /* @boilerplate */
-    padding-top: 0; /* @boilerplate */
-  }
-}
-
 .modal .close-button { /* @boilerplate */
   position: absolute; /* @boilerplate */
   top: 0; /* @boilerplate */
@@ -83,4 +71,16 @@ body.modal-open { /* @boilerplate */
 
 .modal dialog .section { /* @boilerplate */
   padding: 0; /* @boilerplate */
+}
+
+@media (width >= 992px) { /* @boilerplate */
+  .modal dialog { /* @boilerplate */
+    width: var(--modal-width-desktop); /* @boilerplate */
+  }
+
+  .modal dialog .modal-content { /* @boilerplate */
+    max-height: calc(100dvh - (2 * var(--header-height)) - 64px); /* @boilerplate */
+    padding: var(--modal-content-padding-desktop); /* @boilerplate */
+    padding-top: 0; /* @boilerplate */
+  }
 }

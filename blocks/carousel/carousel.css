@@ -160,34 +160,6 @@
   left: calc(50% - var(--carousel-nav-arrow-offset));
 }
 
-@media (width >= 600px) {
-  .carousel .carousel-navigation-buttons {
-    left: var(--carousel-nav-inset-desktop);
-    right: var(--carousel-nav-inset-desktop);
-  }
-}
-
-@media (width >= 768px) {
-  .carousel .carousel-slide {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .carousel .carousel-slide .carousel-slide-image {
-    flex: 0 0 var(--carousel-card-image-flex);
-    max-width: var(--carousel-card-image-flex);
-    height: var(--carousel-card-image-height-desktop);
-  }
-
-  .carousel .carousel-slide .carousel-slide-content {
-    flex: 1 1 0;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-}
-
 /* Testimonial variant — light card: quote on one side, patient photo on the other
    filling the full card height. Token-driven; brand sites refine via --carousel-testimonial-* tokens. */
 .carousel.testimonial .carousel-slide {
@@ -334,7 +306,33 @@
   color: var(--carousel-testimonial-nav-arrow-next-color);
 }
 
+@media (width >= 600px) {
+  .carousel .carousel-navigation-buttons {
+    left: var(--carousel-nav-inset-desktop);
+    right: var(--carousel-nav-inset-desktop);
+  }
+}
+
 @media (width >= 768px) {
+  .carousel .carousel-slide {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .carousel .carousel-slide .carousel-slide-image {
+    flex: 0 0 var(--carousel-card-image-flex);
+    max-width: var(--carousel-card-image-flex);
+    height: var(--carousel-card-image-height-desktop);
+  }
+
+  .carousel .carousel-slide .carousel-slide-content {
+    flex: 1 1 0;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   /* Side-by-side: quote left, photo right at full card height. */
   .carousel.testimonial .carousel-slide {
     flex-direction: row;

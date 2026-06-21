@@ -122,7 +122,7 @@
   left: calc(50% - var(--card-carousel-nav-arrow-offset)); /* @boilerplate */
 }
 
-@media (width >= 600px) { /* @boilerplate */
+@media (width >= 768px) { /* @boilerplate */
   .card-carousel .carousel-navigation-buttons { /* @boilerplate */
     left: var(--card-carousel-nav-inset-desktop); /* @boilerplate */
     right: var(--card-carousel-nav-inset-desktop); /* @boilerplate */

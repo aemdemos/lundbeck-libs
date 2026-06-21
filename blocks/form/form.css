@@ -24,25 +24,6 @@
   margin-top: var(--form-gap-tight); /* @boilerplate */
 }
 
-@media (width >= 600px) { /* @boilerplate */
-  .form fieldset { /* @boilerplate */
-    grid-template-columns: repeat(2, auto); /* @boilerplate  layout strategy: 2-up fields at tablet */
-    gap: var(--form-gap-tight) var(--form-field-gap); /* @boilerplate */
-  }
-
-  .form form > .selection-wrapper + .selection-wrapper,
-  .form form fieldset .field-wrapper + .field-wrapper,
-  .form form fieldset .selection-wrapper + .selection-wrapper { /* @boilerplate */
-    margin-top: 0; /* @boilerplate */
-  }
-}
-
-@media (width >= 900px) { /* @boilerplate */
-  .form fieldset { /* @boilerplate */
-    grid-template-columns: repeat(3, auto); /* @boilerplate  layout strategy: 3-up fields at desktop */
-  }
-}
-
 .form label,
 .form fieldset > legend { /* @boilerplate */
   margin-bottom: var(--form-gap-tight); /* @boilerplate */
@@ -102,9 +83,24 @@
   .form .button { /* @boilerplate */
     max-width: max-content; /* @boilerplate */
   }
+
+  .form fieldset { /* @boilerplate */
+    grid-template-columns: repeat(2, auto); /* @boilerplate  layout strategy: 2-up fields at tablet */
+    gap: var(--form-gap-tight) var(--form-field-gap); /* @boilerplate */
+  }
+
+  .form form > .selection-wrapper + .selection-wrapper,
+  .form form fieldset .field-wrapper + .field-wrapper,
+  .form form fieldset .selection-wrapper + .selection-wrapper { /* @boilerplate */
+    margin-top: 0; /* @boilerplate */
+  }
 }
 
 @media (width >= 900px) { /* @boilerplate */
+  .form fieldset { /* @boilerplate */
+    grid-template-columns: repeat(3, auto); /* @boilerplate  layout strategy: 3-up fields at desktop */
+  }
+
   .form input,
   .form select,
   .form textarea { /* @boilerplate */

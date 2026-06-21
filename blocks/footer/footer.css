@@ -15,7 +15,7 @@ footer .footer p { /* @boilerplate */
   margin: 0; /* @boilerplate */
 }
 
-@media (width >= 900px) { /* @boilerplate */
+@media (width >= 768px) { /* @boilerplate */
   footer .footer > div { /* @boilerplate */
     padding: var(--footer-padding-desktop); /* @boilerplate */
   }
