@@ -8,4 +8,5 @@
   --cards-card-body-margin: var(--spacing-s); /* @boilerplate */
   --cards-image-aspect-ratio: 4 / 3; /* @boilerplate */
   --cards-image-object-fit: cover; /* @boilerplate */
+  --cards-image-side-width: 30%;
 }

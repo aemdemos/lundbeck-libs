@@ -28,6 +28,35 @@
   object-fit: var(--cards-image-object-fit); /* @boilerplate */
 }
 
+.cards.image-left > ul > li,
+.cards.image-right > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.cards.image-left .cards-card-image,
+.cards.image-right .cards-card-image {
+  flex: 0 0 var(--cards-image-side-width);
+}
+
+.cards.image-left .cards-card-body,
+.cards.image-right .cards-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cards.image-left > ul > li img,
+.cards.image-right > ul > li img {
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: unset;
+}
+
+.cards.image-right .cards-card-image {
+  order: 1;
+}
+
 @media (width >= 992px) {
   .cards.cards-2-cols > ul {
     grid-template-columns: repeat(2, 1fr);
