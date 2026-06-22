@@ -30,11 +30,11 @@ const ALLOWED_TEXT_COLOR_CLASSES = new Set([
 ]);
 
 /** Older authored values / classes map to token-based colors */
-const LEGACY_TONE_TO_COLOR_CLASS = {
-  'section-title-tone-text': 'section-title-color-text',
-  'section-title-tone-muted': 'section-title-color-dark',
-  'section-title-tone-accent': 'section-title-color-link',
-};
+const LEGACY_TONE_TO_COLOR_CLASS = new Map([
+  ['section-title-tone-text', 'section-title-color-text'],
+  ['section-title-tone-muted', 'section-title-color-dark'],
+  ['section-title-tone-accent', 'section-title-color-link'],
+]);
 
 const SIZE_MAP = new Map([
   ['xxl', 'size-xxl'],
@@ -161,7 +161,7 @@ function normalizeTextColorClass(raw) {
   const t = raw.trim();
   if (!t) return '';
   const lowerFull = t.toLowerCase();
-  if (LEGACY_TONE_TO_COLOR_CLASS[lowerFull]) return LEGACY_TONE_TO_COLOR_CLASS[lowerFull];
+  if (LEGACY_TONE_TO_COLOR_CLASS.has(lowerFull)) return LEGACY_TONE_TO_COLOR_CLASS.get(lowerFull);
   if (ALLOWED_TEXT_COLOR_CLASSES.has(lowerFull)) return lowerFull;
   const compact = lowerFull.replace(/\s+/g, '');
   const withoutPrefix = compact.replace(/^section-title-color-/, '');
@@ -305,7 +305,7 @@ function applyConfig(state, config) {
 function findSubtitleRowIndex(rows) {
   let ri = 1;
   while (ri < rows.length) {
-    if (!isMetadataRow(rows[ri])) {
+    if (!isMetadataRow(rows.at(ri))) {
       return ri;
     }
     ri += 1;
@@ -319,7 +319,7 @@ function applyTitleMetaScan(rows, fromIdx, untilIdx, cfg) {
   let haveTextColor = hasValue(normalizeTextColorClass(getTextColorRawFromConfig(cfg)));
   let ri = fromIdx;
   while (ri < untilIdx) {
-    const raw = cellText(rows[ri]);
+    const raw = cellText(rows.at(ri));
     if (hasValue(raw)) {
       const color = normalizeTextColorClass(raw);
       const align = normalizeAlignment(raw);
@@ -341,7 +341,7 @@ function applyTitleMetaScan(rows, fromIdx, untilIdx, cfg) {
 
 function applySubtitleScan(rows, subIdx, cfg) {
   if (subIdx < 0) return;
-  const subRow = rows[subIdx];
+  const subRow = rows.at(subIdx);
   if (!subRow) return;
   const subScope = valueColumnScope(subRow);
   const subEl = subScope?.querySelector?.(HEADING_SELECTOR);
@@ -354,7 +354,7 @@ function applySubtitleScan(rows, subIdx, cfg) {
   }
   let ri = subIdx + 1;
   while (ri < rows.length && !hasValue(get(cfg, 'subtitle-size', 'subtitleSize'))) {
-    const raw = cellText(rows[ri]);
+    const raw = cellText(rows.at(ri));
     if (hasValue(raw) && normalizeSize(raw)) {
       cfg['subtitle-size'] = raw;
     }
@@ -375,8 +375,8 @@ function allowlistedTextColorFromClassList(block) {
   const list = [...block.classList];
   const fromNew = list.find((c) => ALLOWED_TEXT_COLOR_CLASSES.has(c) && c);
   if (fromNew) return fromNew;
-  const fromLegacy = list.find((c) => LEGACY_TONE_TO_COLOR_CLASS[c]);
-  return fromLegacy ? LEGACY_TONE_TO_COLOR_CLASS[fromLegacy] : '';
+  const fromLegacy = list.find((c) => LEGACY_TONE_TO_COLOR_CLASS.has(c));
+  return fromLegacy ? LEGACY_TONE_TO_COLOR_CLASS.get(fromLegacy) : '';
 }
 
 /**
@@ -468,7 +468,7 @@ export default function decorate(block) {
   if (!state.subHeadingEl) {
     const si = findSubtitleRowIndex(rows);
     if (si >= 0) {
-      const subVs = valueColumnScope(rows[si]);
+      const subVs = valueColumnScope(rows.at(si));
       state.subHeadingEl = subVs?.querySelector?.(HEADING_SELECTOR) ?? null;
     }
   }

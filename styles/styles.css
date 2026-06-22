@@ -174,22 +174,6 @@
   src: local('Arial Bold'), local('Arial-BoldMT'), local('Arial'); /* @libs */
 }
 
-@media (width >= 900px) { /* @libs */
-  :root { /* @libs */
-    /* heading sizes scale up on desktop */
-    --body-font-size-m: 24px; /* @libs */
-    --body-font-size-ms: 18px; /* @libs */
-    --body-font-size-s: 16px; /* @libs */
-    --body-font-size-xs: 14px; /* @libs */
-    --heading-font-size-xxl: 56px; /* @libs */
-    --heading-font-size-xl: 24px; /* @libs */
-    --heading-font-size-l: 24px; /* @libs */
-    --heading-font-size-m: 18px; /* @libs */
-    --heading-font-size-s: 18px; /* @libs */
-    --heading-font-size-xs: 16px; /* @libs */
-  }
-}
-
 body { /* @libs */
   display: none; /* @libs */
   margin: 0; /* @libs */
@@ -222,12 +206,6 @@ footer .footer { /* @libs */
 header .header[data-block-status="loaded"],
 footer .footer[data-block-status="loaded"] { /* @libs */
   visibility: visible; /* @libs */
-}
-
-@media (width >= 900px) { /* @libs */
-  body[data-breadcrumbs] { /* @libs */
-    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height)); /* @libs */
-  }
 }
 
 /* headings */
@@ -394,16 +372,6 @@ button:disabled:hover { /* @libs */
   display: none;
 }
 
-@media (width >= 768px) {
-  .hide-desktop {
-    display: none;
-  }
-
-  .hide-mobile {
-    display: revert;
-  }
-}
-
 /* secondary — outline / ghost (default for unclassified link buttons) */
 a.button.secondary,
 a.button:not(.primary, .accent),
@@ -547,19 +515,6 @@ main > .section > div { /* @libs */
   padding: 0 15px; /* @libs */
 }
 
-@media (width >= 768px) { /* @libs */
-  main > .section > div { /* @libs */
-    max-width: 720px; /* @libs */
-  }
-}
-
-@media (width >= 992px) { /* @libs */
-  main > .section > div { /* @libs */
-    max-width: var(--max-width-site); /* @libs */
-    padding: 0 32px; /* @libs */
-  }
-}
-
 /* section metadata - accent (light blue help strip) */
 main .section.accent { /* @libs */
   background-color: var(--accent-bg); /* @libs */
@@ -693,31 +648,58 @@ main .section.stats-callout h4 {
   }
 }
 
-@media (width >= 768px) {
-  main .section.stats-callout {
-    padding: var(--section-padding-vertical) 0;
+@media (width >= 768px) { /* @libs */
+  :root { /* @libs */
+    /* heading sizes scale up on desktop */
+    --body-font-size-m: 24px; /* @libs */
+    --body-font-size-ms: 18px; /* @libs */
+    --body-font-size-s: 16px; /* @libs */
+    --body-font-size-xs: 14px; /* @libs */
+    --heading-font-size-xxl: 56px; /* @libs */
+    --heading-font-size-xl: 24px; /* @libs */
+    --heading-font-size-l: 24px; /* @libs */
+    --heading-font-size-m: 18px; /* @libs */
+    --heading-font-size-s: 18px; /* @libs */
+    --heading-font-size-xs: 16px; /* @libs */
   }
 
-  main .section.stats-callout > div:not(.bg-image) {
-    max-width: 720px;
-  }
-}
+    .hide-desktop {
+      display: none;
+    }
+  
+    .hide-mobile {
+      display: revert;
+    }
 
-@media (width >= 992px) {
-  main .section.stats-callout > div:not(.bg-image) {
-    max-width: 960px;
-  }
-}
+    main .section.stats-callout {
+      padding: var(--section-padding-vertical) 0;
+    }
 
-@media (width >= 1200px) {
-  main .section.stats-callout > div:not(.bg-image) {
-    max-width: 1140px;
+    main > .section > div { /* @libs */
+      max-width: 720px; /* @libs */
+    }
+  
+    main .section.stats-callout > div:not(.bg-image) {
+      max-width: 720px;
+    }
   }
-}
 
 @media (width >= 992px) { /* @libs */
+  body[data-breadcrumbs] { /* @libs */
+    --header-height: calc(var(--nav-height) + var(--breadcrumbs-height)); /* @libs */
+  }
+  
   header { /* @libs */
     height: calc(var(--nav-height) + 23px); /* @libs */
+}
+
+main > .section > div { /* @libs */
+  max-width: var(--max-width-site); /* @libs */
+  padding: 0 32px; /* @libs */
+}
+
+main .section.stats-callout > div:not(.bg-image) {
+  max-width: 960px;
 }
 
   main .section.accent > div { /* @libs */
@@ -725,8 +707,12 @@ main .section.stats-callout h4 {
   }
 }
 
-@media (width >= 1180px) { /* @libs */
+@media (width >= 1200px) {
   header { /* @libs */
     height: var(--nav-height); /* @libs */
+  }
+
+  main .section.stats-callout > div:not(.bg-image) {
+    max-width: 1140px;
   }
 }

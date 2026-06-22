@@ -209,7 +209,7 @@ main .isi a:hover { /* @boilerplate */
 }
 
 /* ── Desktop ≥ 900px ─────────────────────────────────────────── */
-@media (width >= 900px) { /* @boilerplate */
+@media (width >= 992px) { /* @boilerplate */
   .isi-bar-content { /* @boilerplate */
     padding: 0 var(--isi-bar-content-padding-x-desktop); /* @boilerplate */
   }

@@ -549,9 +549,9 @@ function applySplitBoundaryPass(el) {
   const children = [...el.childNodes];
 
   for (let i = 0; i < children.length - 2; i += 1) {
-    const prev = children[i];
-    const mid = children[i + 1];
-    const next = children[i + 2];
+    const prev = children.at(i);
+    const mid = children.at(i + 1);
+    const next = children.at(i + 2);
 
     const isPrevText = prev.nodeType === Node.TEXT_NODE;
     // eslint-disable-next-line secure-coding/detect-object-injection
