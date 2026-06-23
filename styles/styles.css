@@ -504,6 +504,45 @@ main > .section { /* @libs */
   margin: 0; /* @libs */
 }
 
+main > .section > div:not(.bg-image) { /* @boilerplate */
+  max-width: var(--max-width-site); /* @boilerplate */
+  margin: auto; /* @boilerplate */
+  padding: 0 var(--spacing-m); /* @boilerplate */
+}
+
+/* Section metadata: background image sits behind content */
+main > .section:has(> .bg-image) { /* @boilerplate */
+  position: relative; /* @boilerplate */
+  overflow: hidden; /* @boilerplate */
+}
+
+main > .section:has(> .bg-image) > div:not(.bg-image) { /* @boilerplate */
+  position: relative; /* @boilerplate */
+  z-index: 1; /* @boilerplate */
+}
+
+main > .section > .bg-image { /* @boilerplate */
+  position: absolute; /* @boilerplate */
+  inset: 0; /* @boilerplate */
+  z-index: 0; /* @boilerplate */
+  pointer-events: none; /* @boilerplate */
+}
+
+main > .section > .bg-image picture,
+main > .section > .bg-image img { /* @boilerplate */
+  display: block; /* @boilerplate */
+  width: 100%; /* @boilerplate */
+  height: 100%; /* @boilerplate */
+}
+
+main > .section > .bg-image img { /* @boilerplate */
+  object-fit: cover; /* @boilerplate */
+}
+
+main > .section:first-of-type { /* @boilerplate */
+  margin-top: 0; /* @boilerplate */
+}
+
 main > .section.divider > div:last-child { /* @libs */
   border-bottom: var(--section-divider-width) solid var(--section-divider-color); /* @libs */
   padding-bottom: var(--section-padding);
@@ -696,6 +735,10 @@ main .section.stats-callout h4 {
 main > .section > div { /* @libs */
   max-width: var(--max-width-site); /* @libs */
   padding: 0 32px; /* @libs */
+}
+
+main > .section > div:not(.bg-image) { /* @boilerplate */
+  padding: 0 var(--spacing-l); /* @boilerplate */
 }
 
 main .section.stats-callout > div:not(.bg-image) {
