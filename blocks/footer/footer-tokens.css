@@ -1,81 +1,64 @@
-/* footer design tokens */
-:root { /* @boilerplate */
-  --footer-max-width: var(--max-width-site); /* @boilerplate */
-  --footer-background: var(--footer-background-color); /* @boilerplate */
-  --footer-text-color: var(--text-color-light); /* @boilerplate */
-  --footer-font-size: var(--body-font-size-m); /* @boilerplate */
+/* footer design tokens — values extracted from the https://www.vyepti.com/ footer */
+:root {
+  --footer-max-width: var(--max-width-site); /* 1140px content width */
+  --footer-background: var(--background-color); /* white body */
+  --footer-text-color: var(--text-color);
+  --footer-font-family: var(--body-font-family); /* proxima-nova */
+  --footer-font-size: var(--body-font-size-ms);
 
-  /* portable Avenir substitute (Nunito Sans) — matches the source glyph widths;
-     the local()-only avenir-* fallbacks otherwise drop to Arial off-Mac */
-  --footer-font-family: "Avenir LT W01_85 Heavy", "nunito sans", "Avenir Next", avenir, "Segoe UI", roboto, helvetica, arial, sans-serif; /* @boilerplate */
+  /* ===== top link bar (full-width teal band, centered white links) ===== */
+  --footer-linkbar-background: var(--brand-teal); /* #046183 */
+  --footer-linkbar-padding: 20px 0 22px;
+  --footer-link-color: #fff;
+  --footer-link-hover-color: var(--brand-teal-light); /* #7ebcc6 */
+  --footer-link-font-size: 16px;
+  --footer-link-font-weight: 600;
+  --footer-link-line-height: 22px;
+  --footer-link-gap: 40px; /* horizontal space between links */
+  --footer-link-mobile-gap: 10px; /* vertical gap when stacked on mobile */
+  --footer-transition: 0.2s ease;
 
-  /* mobile: large bottom padding matches the source (clears the fixed mobile UI) */
-  --footer-padding: 20px 15px 160px; /* @boilerplate */
-  --footer-padding-desktop: 30px 15px; /* @boilerplate */
+  /* ===== white body ===== */
+  --footer-body-padding: 40px 15px 28px;
+  --footer-body-padding-mobile: 24px 15px 28px;
 
-  /* mobile (<768px): links stack vertically (no pipes), legal copy is smaller
-     and centered, logo sits above the legal text */
-  --footer-link-mobile-gap: 10px; /* @boilerplate */
-  --footer-legal-mobile-font-size: 14px; /* @boilerplate */
-  --footer-legal-mobile-line-height: 20px; /* @boilerplate */
-  --footer-legal-mobile-margin-bottom: 14px; /* @boilerplate */
+  /* legal column (left) */
+  --footer-legal-color: #484848;
+  --footer-legal-font-size: 14px;
+  --footer-legal-line-height: 20px;
+  --footer-legal-margin-bottom: 16px;
+  --footer-legal-width: 58.3333%;
 
-  /* link row: centered, teal, pipe-separated */
-  --footer-link-color: var(--dark-color); /* @boilerplate */
-  --footer-link-font-size: 20px; /* @boilerplate */
-  --footer-link-font-weight: 700; /* @boilerplate */
-  --footer-link-padding: 0 20px; /* @boilerplate */
-  --footer-link-separator: 2px solid var(--dark-color); /* @boilerplate */
+  /* right column */
+  --footer-right-width: 41.6667%;
 
-  /* word-space the source gets from whitespace between its inline-block <li>s;
-     restores the 6.5px edge-to-edge gap (4.5px space + 2px pipe) between links */
-  --footer-link-separator-gap: 4.5px; /* @boilerplate */
-  --footer-link-row-line-height: 16px; /* @boilerplate */
+  /* "For assistance, call" label */
+  --footer-assist-color: #484848;
+  --footer-assist-font-size: 17px; /* desktop (matches source) */
+  --footer-assist-font-size-mobile: 14px;
+  --footer-assist-line-height: 21px;
+  --footer-assist-font-weight: 700;
+  --footer-assist-margin-right: 11px;
 
-  /* link row: top space above the links (source <li> margin-top: 15px) */
-  --footer-link-row-margin-top: 15px; /* @boilerplate */
+  /* phone pill button */
+  --footer-phone-background: #bf2c58;
+  --footer-phone-hover-background: var(--brand-rose-dark); /* #9a2346 */
+  --footer-phone-color: #fff;
+  --footer-phone-font-size: 16px;
+  --footer-phone-font-weight: 700;
+  --footer-phone-line-height: 22px;
+  --footer-phone-padding: 20px 21px 20px 45px;
+  --footer-phone-radius: 30px;
+  --footer-phone-icon-size: 16px 19px;
+  --footer-phone-icon-position: 19px 24px;
 
-  /* divider under the link row (source: 20px ul padding-bottom + 5px li
-     margin-bottom, netting a 24px gap below the link text to the rule) */
-  --footer-divider-color: #fff; /* @boilerplate */
-  --footer-divider-padding-bottom: 23px; /* @boilerplate */
-  --footer-divider-margin-bottom: 11px; /* @boilerplate */
+  /* social icons + Lundbeck logo row */
+  --footer-social-row-margin-top: 27px;
+  --footer-social-icon-width: 27px;
+  --footer-social-icon-gap: 13px;
+  --footer-logo-width: 160px;
 
-  /* legal text + logo */
-
-  /* body-weight Avenir substitute (Nunito Sans) for the legal copy; the
-     local()-only avenir-* fallbacks otherwise drop to Arial off-Mac */
-  --footer-legal-font-family: "Avenir LT W01_55 Roman", "nunito sans", "Avenir Next", avenir, "Segoe UI", roboto, helvetica, arial, sans-serif; /* @boilerplate */
-
-  /* desktop legal copy size (mobile uses --footer-legal-mobile-font-size) */
-  --footer-legal-font-size: 16px; /* @boilerplate */
-
-  /* explicit px (not unitless) so Nunito's tall intrinsic metrics can't push the
-     line box toward `normal` (~28px); matches the source's 22.857px exactly */
-  --footer-legal-line-height: 22.86px; /* @boilerplate */
-
-  /* the legal/logo row matches the source's content height (184px) so the whole
-     gray footer box totals the source's 314px */
-  --footer-columns-row-min-height: 184px; /* @boilerplate */
-
-  /* divider gutters (source Bootstrap columns: 15px on the legal side, 40px on
-     the logo side — asymmetric, so the rule sits at the 2/3 column split) */
-  --footer-divider-gap-outer: 15px; /* @boilerplate */
-  --footer-divider-gap-legal: 15px; /* @boilerplate */
-  --footer-divider-gap-logo: 40px; /* @boilerplate */
-  --footer-legal-margin-bottom: 16px; /* @boilerplate */
-
-  /* logo keeps its natural aspect (undistorted); width only */
-  --footer-logo-width: 140px; /* @boilerplate */
-
-  /* logo left offset within its column (source: ~71px from the column content
-     edge, i.e. left-aligned with an extra indent rather than centred) */
-  --footer-logo-offset: 71px; /* @boilerplate */
-
-  /* the logo column (which draws the vertical divider) is pushed down 30px and
-     sized to 88px tall via the logo's top margin + the column's bottom padding,
-     matching the source's 88px divider; the logo lands 40px below the text top. */
-  --footer-logo-col-margin-top: 30px; /* @boilerplate */
-  --footer-logo-col-padding-bottom: 20px; /* @boilerplate */
-  --footer-logo-margin-top: 10px; /* @boilerplate */
+  /* logo sits 27px from the last social icon; the icon already emits a 13px
+     right margin, so this adds the remaining 14px */
+  --footer-logo-margin-left: 14px;
 }
