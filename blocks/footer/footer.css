@@ -74,6 +74,15 @@ footer .footer .columns-container .columns > div > :first-child p:not(:last-chil
   margin-bottom: var(--footer-legal-margin-bottom);
 }
 
+/* mobile assistance row: label on the left, phone pill on the right */
+footer .footer .columns-container > .default-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: var(--footer-assist-mobile-margin-bottom);
+}
+
 /* "For assistance, call" label — mobile copy (in the standalone wrapper) */
 footer .footer .columns-container > .default-content-wrapper p strong {
   color: var(--footer-assist-color);
@@ -141,6 +150,12 @@ footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img):la
     padding: var(--footer-body-padding);
   }
 
+  /* desktop: the mobile assistance wrapper is empty (its content is hidden),
+     so drop its mobile bottom margin to avoid dead space above the columns */
+  footer .footer .columns-container > .default-content-wrapper {
+    margin-bottom: 0;
+  }
+
   /* links on one centered row */
   footer .footer .section:first-child p {
     display: inline-block;
@@ -149,6 +164,10 @@ footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img):la
 
   footer .footer .section:first-child p:not(:last-child) {
     margin-right: var(--footer-link-gap);
+  }
+
+  footer .footer .section:first-child a {
+    font-size: var(--footer-link-font-size-desktop);
   }
 
   /* legal copy left-aligned */

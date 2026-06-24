@@ -11,7 +11,8 @@
   --footer-linkbar-padding: 20px 0 22px;
   --footer-link-color: #fff;
   --footer-link-hover-color: var(--brand-teal-light); /* #7ebcc6 */
-  --footer-link-font-size: 16px;
+  --footer-link-font-size: 14px; /* mobile */
+  --footer-link-font-size-desktop: 16px;
   --footer-link-font-weight: 600;
   --footer-link-line-height: 22px;
   --footer-link-gap: 40px; /* horizontal space between links */
@@ -39,6 +40,9 @@
   --footer-assist-line-height: 21px;
   --footer-assist-font-weight: 700;
   --footer-assist-margin-right: 11px;
+
+  /* mobile: gap below the phone-pill row before the legal copy */
+  --footer-assist-mobile-margin-bottom: 15px;
 
   /* phone pill button */
   --footer-phone-background: #bf2c58;
