@@ -546,6 +546,22 @@ main .icon.icon-bullet { /* @libs */
   }
 }
 
+.left {
+  text-align: left;
+
+  &.columns > div > div {
+    justify-content: left;
+  }
+}
+
+.right {
+  text-align: right;
+
+  &.columns > div > div {
+    justify-content: right;
+  }
+}
+
 /* sections */
 main > .section { /* @libs */
   margin: 0; /* @libs */
