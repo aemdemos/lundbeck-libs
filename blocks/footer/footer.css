@@ -1,4 +1,4 @@
-@import url('./footer-tokens.css');
+@import url('./footer-tokens.css'); /* @boilerplate */
 
 /* =====================================================================
    FOOTER — shared structural / layout styles (boilerplate)
@@ -7,6 +7,10 @@
    default behaviour, written to be driven by the design tokens defined
    in footer-tokens.css. To adapt the footer for a new site, you should
    only need to edit footer-tokens.css — not this file.
+
+   Every CSS line carries an "@boilerplate" marker comment so that, when
+   this lib is cloned for a new site, it is clear each rule originates from
+   the shared boilerplate (and should not normally be edited here).
 
    Layout model (matches the DA authoring structure across all sites):
      1. Link section   .section:first-child  — list of legal/nav links,
@@ -19,223 +23,223 @@
      when the author includes it, so unused slots cost nothing.
    ===================================================================== */
 
-footer {
-  background-color: var(--footer-background);
-  color: var(--footer-text-color);
-  font-family: var(--footer-font-family);
-  font-size: var(--footer-font-size);
-}
+footer { /* @boilerplate */
+  background-color: var(--footer-background); /* @boilerplate */
+  color: var(--footer-text-color); /* @boilerplate */
+  font-family: var(--footer-font-family); /* @boilerplate */
+  font-size: var(--footer-font-size); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer p {
-  margin: 0;
-}
+footer .footer p { /* @boilerplate */
+  margin: 0; /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer > div {
-  margin: 0;
-}
+footer .footer > div { /* @boilerplate */
+  margin: 0; /* @boilerplate */
+} /* @boilerplate */
 
 /* ===== Link section (mobile-first: links stack centered).
    Renders as a full-width coloured band when --footer-linkbar-background
    is set to a colour; stays transparent (inline list) when it isn't. ===== */
-footer .footer .section:first-child {
-  padding: var(--footer-linkbar-padding);
-  background-color: var(--footer-linkbar-background);
-}
+footer .footer .section:first-child { /* @boilerplate */
+  padding: var(--footer-linkbar-padding); /* @boilerplate */
+  background-color: var(--footer-linkbar-background); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .section:first-child .default-content-wrapper {
-  max-width: var(--footer-max-width);
-  margin: 0 auto;
-  padding: var(--footer-linkbar-inner-padding);
-  text-align: var(--footer-link-text-align);
-}
+footer .footer .section:first-child .default-content-wrapper { /* @boilerplate */
+  max-width: var(--footer-max-width); /* @boilerplate */
+  margin: 0 auto; /* @boilerplate */
+  padding: var(--footer-linkbar-inner-padding); /* @boilerplate */
+  text-align: var(--footer-link-text-align); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .section:first-child p {
-  margin-top: var(--footer-link-mobile-gap);
-}
+footer .footer .section:first-child p { /* @boilerplate */
+  margin-top: var(--footer-link-mobile-gap); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .section:first-child p:first-child {
-  margin-top: 0;
-}
+footer .footer .section:first-child p:first-child { /* @boilerplate */
+  margin-top: 0; /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .section:first-child a {
-  color: var(--footer-link-color);
-  font-size: var(--footer-link-font-size);
-  font-weight: var(--footer-link-font-weight);
-  line-height: var(--footer-link-line-height);
-  text-decoration: var(--footer-link-decoration);
-  transition: color var(--footer-transition);
-}
+footer .footer .section:first-child a { /* @boilerplate */
+  color: var(--footer-link-color); /* @boilerplate */
+  font-size: var(--footer-link-font-size); /* @boilerplate */
+  font-weight: var(--footer-link-font-weight); /* @boilerplate */
+  line-height: var(--footer-link-line-height); /* @boilerplate */
+  text-decoration: var(--footer-link-decoration); /* @boilerplate */
+  transition: color var(--footer-transition); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .section:first-child a:hover {
-  color: var(--footer-link-hover-color);
-  text-decoration: var(--footer-link-hover-decoration);
-}
+footer .footer .section:first-child a:hover { /* @boilerplate */
+  color: var(--footer-link-hover-color); /* @boilerplate */
+  text-decoration: var(--footer-link-hover-decoration); /* @boilerplate */
+} /* @boilerplate */
 
 /* ===== Body: legal copy (column 1) + assistance/social/logo (column 2) ===== */
-footer .footer .columns-container {
-  padding: var(--footer-body-padding-mobile);
-  background-color: var(--footer-background);
-}
+footer .footer .columns-container { /* @boilerplate */
+  padding: var(--footer-body-padding-mobile); /* @boilerplate */
+  background-color: var(--footer-background); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .columns-container > * {
-  max-width: var(--footer-max-width);
-  margin-inline: auto;
-}
+footer .footer .columns-container > * { /* @boilerplate */
+  max-width: var(--footer-max-width); /* @boilerplate */
+  margin-inline: auto; /* @boilerplate */
+} /* @boilerplate */
 
 /* legal copy */
-footer .footer .columns p {
-  color: var(--footer-legal-color);
-  font-size: var(--footer-legal-font-size);
-  line-height: var(--footer-legal-line-height);
-  text-align: center;
-}
+footer .footer .columns p { /* @boilerplate */
+  color: var(--footer-legal-color); /* @boilerplate */
+  font-size: var(--footer-legal-font-size); /* @boilerplate */
+  line-height: var(--footer-legal-line-height); /* @boilerplate */
+  text-align: center; /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .columns-container .columns > div > :first-child p:not(:last-child) {
-  margin-bottom: var(--footer-legal-margin-bottom);
-}
+footer .footer .columns-container .columns > div > :first-child p:not(:last-child) { /* @boilerplate */
+  margin-bottom: var(--footer-legal-margin-bottom); /* @boilerplate */
+} /* @boilerplate */
 
 /* mobile assistance row: label on the left, phone pill on the right.
    Only present when the author adds a phone pill (e.g. Vyepti). */
-footer .footer .columns-container > .default-content-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--footer-mobile-assist-gap);
-  margin-bottom: var(--footer-assist-mobile-margin-bottom);
-}
+footer .footer .columns-container > .default-content-wrapper { /* @boilerplate */
+  display: flex; /* @boilerplate */
+  align-items: center; /* @boilerplate */
+  justify-content: space-between; /* @boilerplate */
+  gap: var(--footer-mobile-assist-gap); /* @boilerplate */
+  margin-bottom: var(--footer-assist-mobile-margin-bottom); /* @boilerplate */
+} /* @boilerplate */
 
 /* "For assistance, call" label — mobile copy (in the standalone wrapper) */
-footer .footer .columns-container > .default-content-wrapper p strong {
-  color: var(--footer-assist-color);
-  font-size: var(--footer-assist-font-size-mobile);
-  font-weight: var(--footer-assist-font-weight);
-  line-height: var(--footer-assist-line-height);
-}
+footer .footer .columns-container > .default-content-wrapper p strong { /* @boilerplate */
+  color: var(--footer-assist-color); /* @boilerplate */
+  font-size: var(--footer-assist-font-size-mobile); /* @boilerplate */
+  font-weight: var(--footer-assist-font-weight); /* @boilerplate */
+  line-height: var(--footer-assist-line-height); /* @boilerplate */
+} /* @boilerplate */
 
 /* "For assistance, call" label — desktop copy (in the right column) */
-footer .footer .columns-container p:has(.hide-mobile) strong {
-  color: var(--footer-assist-color);
-  font-size: var(--footer-assist-font-size);
-  font-weight: var(--footer-assist-font-weight);
-  line-height: var(--footer-assist-line-height);
-}
+footer .footer .columns-container p:has(.hide-mobile) strong { /* @boilerplate */
+  color: var(--footer-assist-color); /* @boilerplate */
+  font-size: var(--footer-assist-font-size); /* @boilerplate */
+  font-weight: var(--footer-assist-font-weight); /* @boilerplate */
+  line-height: var(--footer-assist-line-height); /* @boilerplate */
+} /* @boilerplate */
 
 /* phone pill — styled wherever a tel: link appears (mobile wrapper + desktop
    right column). The icon is supplied via --footer-phone-icon-image. */
-footer .footer a[href^="tel:"] {
-  display: inline-block;
-  padding: var(--footer-phone-padding);
-  border-radius: var(--footer-phone-radius);
-  background-color: var(--footer-phone-background);
-  background-image: var(--footer-phone-icon-image);
-  background-repeat: no-repeat;
-  background-position: var(--footer-phone-icon-position);
-  background-size: var(--footer-phone-icon-size);
-  color: var(--footer-phone-color);
-  font-size: var(--footer-phone-font-size);
-  font-weight: var(--footer-phone-font-weight);
-  line-height: var(--footer-phone-line-height);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: background-color var(--footer-transition);
-}
+footer .footer a[href^="tel:"] { /* @boilerplate */
+  display: inline-block; /* @boilerplate */
+  padding: var(--footer-phone-padding); /* @boilerplate */
+  border-radius: var(--footer-phone-radius); /* @boilerplate */
+  background-color: var(--footer-phone-background); /* @boilerplate */
+  background-image: var(--footer-phone-icon-image); /* @boilerplate */
+  background-repeat: no-repeat; /* @boilerplate */
+  background-position: var(--footer-phone-icon-position); /* @boilerplate */
+  background-size: var(--footer-phone-icon-size); /* @boilerplate */
+  color: var(--footer-phone-color); /* @boilerplate */
+  font-size: var(--footer-phone-font-size); /* @boilerplate */
+  font-weight: var(--footer-phone-font-weight); /* @boilerplate */
+  line-height: var(--footer-phone-line-height); /* @boilerplate */
+  text-decoration: none; /* @boilerplate */
+  white-space: nowrap; /* @boilerplate */
+  transition: background-color var(--footer-transition); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer a[href^="tel:"]:hover {
-  background-color: var(--footer-phone-hover-background);
-}
+footer .footer a[href^="tel:"]:hover { /* @boilerplate */
+  background-color: var(--footer-phone-hover-background); /* @boilerplate */
+} /* @boilerplate */
 
 /* social icons + company logo: each is a <p> wrapping an <a><picture><img> */
-footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img) {
-  display: inline-block;
-  margin-right: var(--footer-social-icon-gap);
-  vertical-align: middle;
-}
+footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img) { /* @boilerplate */
+  display: inline-block; /* @boilerplate */
+  margin-right: var(--footer-social-icon-gap); /* @boilerplate */
+  vertical-align: middle; /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img) img {
-  display: block;
-  width: var(--footer-social-icon-width);
-  height: auto;
-}
+footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img) img { /* @boilerplate */
+  display: block; /* @boilerplate */
+  width: var(--footer-social-icon-width); /* @boilerplate */
+  height: auto; /* @boilerplate */
+} /* @boilerplate */
 
 /* last image is the company (Lundbeck) logo — larger, gapped from the icons */
-footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img):last-child {
-  margin-right: 0;
-  margin-left: var(--footer-logo-margin-left);
-}
+footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img):last-child { /* @boilerplate */
+  margin-right: 0; /* @boilerplate */
+  margin-left: var(--footer-logo-margin-left); /* @boilerplate */
+} /* @boilerplate */
 
-footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img):last-child img {
-  width: var(--footer-logo-width);
-}
+footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img):last-child img { /* @boilerplate */
+  width: var(--footer-logo-width); /* @boilerplate */
+} /* @boilerplate */
 
-@media (width >= 768px) {
-  footer .footer .columns-container {
-    padding: var(--footer-body-padding);
-  }
+@media (width >= 768px) { /* @boilerplate */
+  footer .footer .columns-container { /* @boilerplate */
+    padding: var(--footer-body-padding); /* @boilerplate */
+  } /* @boilerplate */
 
   /* desktop: the mobile assistance wrapper is empty (its content is hidden),
      so drop its mobile bottom margin to avoid dead space above the columns */
-  footer .footer .columns-container > .default-content-wrapper {
-    margin-bottom: 0;
-  }
+  footer .footer .columns-container > .default-content-wrapper { /* @boilerplate */
+    margin-bottom: 0; /* @boilerplate */
+  } /* @boilerplate */
 
   /* links on one centered row */
-  footer .footer .section:first-child p {
-    display: inline-block;
-    margin-top: 0;
-  }
+  footer .footer .section:first-child p { /* @boilerplate */
+    display: inline-block; /* @boilerplate */
+    margin-top: 0; /* @boilerplate */
+  } /* @boilerplate */
 
-  footer .footer .section:first-child p:not(:last-child) {
-    margin-right: var(--footer-link-gap);
-  }
+  footer .footer .section:first-child p:not(:last-child) { /* @boilerplate */
+    margin-right: var(--footer-link-gap); /* @boilerplate */
+  } /* @boilerplate */
 
-  footer .footer .section:first-child a {
-    font-size: var(--footer-link-font-size-desktop);
-  }
+  footer .footer .section:first-child a { /* @boilerplate */
+    font-size: var(--footer-link-font-size-desktop); /* @boilerplate */
+  } /* @boilerplate */
 
   /* legal copy left-aligned */
-  footer .footer .columns p {
-    text-align: left;
-  }
+  footer .footer .columns p { /* @boilerplate */
+    text-align: left; /* @boilerplate */
+  } /* @boilerplate */
 
   /* two columns: legal / right column, top-aligned */
-  footer .footer .columns.columns-2-cols > div {
-    align-items: flex-start;
-    gap: 0;
-  }
+  footer .footer .columns.columns-2-cols > div { /* @boilerplate */
+    align-items: flex-start; /* @boilerplate */
+    gap: 0; /* @boilerplate */
+  } /* @boilerplate */
 
-  footer .footer .columns.columns-2-cols > div > :first-child {
-    flex: 0 0 var(--footer-legal-width);
-  }
+  footer .footer .columns.columns-2-cols > div > :first-child { /* @boilerplate */
+    flex: 0 0 var(--footer-legal-width); /* @boilerplate */
+  } /* @boilerplate */
 
-  footer .footer .columns.columns-2-cols > div > :nth-child(2) {
-    display: flex;
-    flex: 0 0 var(--footer-right-width);
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-end;
-  }
+  footer .footer .columns.columns-2-cols > div > :nth-child(2) { /* @boilerplate */
+    display: flex; /* @boilerplate */
+    flex: 0 0 var(--footer-right-width); /* @boilerplate */
+    flex-wrap: wrap; /* @boilerplate */
+    align-items: center; /* @boilerplate */
+    justify-content: flex-end; /* @boilerplate */
+  } /* @boilerplate */
 
   /* assistance label sits inline before the phone pill (both wrapped in
      .hide-mobile spans, visible on desktop) */
-  footer .footer .columns-container .columns > div > :nth-child(2) > p:has(.hide-mobile) {
-    order: 1;
-  }
+  footer .footer .columns-container .columns > div > :nth-child(2) > p:has(.hide-mobile) { /* @boilerplate */
+    order: 1; /* @boilerplate */
+  } /* @boilerplate */
 
   /* gap between the "For assistance, call" label and the phone pill */
-  footer .footer .columns-container .columns > div > :nth-child(2) > p:first-child {
-    margin-right: var(--footer-assist-margin-right);
-  }
+  footer .footer .columns-container .columns > div > :nth-child(2) > p:first-child { /* @boilerplate */
+    margin-right: var(--footer-assist-margin-right); /* @boilerplate */
+  } /* @boilerplate */
 
   /* forced flex line break so social icons + logo drop to a second row */
-  footer .footer .columns-container .columns > div > :nth-child(2)::after {
-    content: '';
-    order: 2;
-    flex-basis: 100%;
-    height: 0;
-  }
+  footer .footer .columns-container .columns > div > :nth-child(2)::after { /* @boilerplate */
+    content: ''; /* @boilerplate */
+    order: 2; /* @boilerplate */
+    flex-basis: 100%; /* @boilerplate */
+    height: 0; /* @boilerplate */
+  } /* @boilerplate */
 
-  footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img) {
-    order: 3;
-    margin-top: var(--footer-social-row-margin-top);
-  }
-}
+  footer .footer .columns-container .columns > div > :nth-child(2) > p:has(img) { /* @boilerplate */
+    order: 3; /* @boilerplate */
+    margin-top: var(--footer-social-row-margin-top); /* @boilerplate */
+  } /* @boilerplate */
+} /* @boilerplate */
