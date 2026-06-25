@@ -30,31 +30,31 @@
 
 .cards.image-left > ul > li,
 .cards.image-right > ul > li {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  display: flex; /* @boilerplate */
+  flex-direction: row; /* @boilerplate */
+  align-items: flex-start; /* @boilerplate */
 }
 
 .cards.image-left .cards-card-image,
 .cards.image-right .cards-card-image {
-  flex: 0 0 var(--cards-image-side-width);
+  flex: 0 0 var(--cards-image-side-width); /* @boilerplate */
 }
 
 .cards.image-left .cards-card-body,
 .cards.image-right .cards-card-body {
-  flex: 1;
-  min-width: 0;
+  flex: 1; /* @boilerplate */
+  min-width: 0; /* @boilerplate */
 }
 
 .cards.image-left > ul > li img,
 .cards.image-right > ul > li img {
-  width: auto;
-  max-width: 100%;
-  aspect-ratio: unset;
+  width: auto; /* @boilerplate */
+  max-width: 100%; /* @boilerplate */
+  aspect-ratio: unset; /* @boilerplate */
 }
 
 .cards.image-right .cards-card-image {
-  order: 1;
+  order: 1; /* @boilerplate */
 }
 
 @media (width >= 992px) {
