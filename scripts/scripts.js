@@ -1,5 +1,6 @@
 import {
   buildBlock,
+  createOptimizedPicture,
   decorateBlock,
   loadBlock,
   loadHeader,
@@ -16,6 +17,10 @@ import {
   toClassName,
   loadScript,
 } from './aem.js';
+import {
+  createArtDirectionPicture,
+  DEFAULT_BLOCK_SINGLE_PICTURE_BREAKPOINTS,
+} from './utils.js';
 /** Max sections/children to process (CWE-770). */
 const MAX_SECTIONS = 100;
 const MAX_SECTION_CHILDREN = 200;
@@ -276,7 +281,8 @@ function metaStringValue(value) {
 
 /**
  * Sets inline background-color and optionally prepends a decorative .bg-image layer.
- * Keys match section model fields and {@link readBlockConfig}: `background-color`, `background-image`.
+ * Keys match section model fields and {@link readBlockConfig}: `background-color`,
+ * `background-image` … `background-image-5` (art-direction renditions).
  * @param {HTMLElement} section
  * @param {Record<string, unknown>} meta
  */
@@ -286,23 +292,31 @@ function applySectionBackgroundDecorations(section, meta = {}) {
     section.style.setProperty('background', color);
   }
 
-  const imageUrl = metaStringValue(meta['background-image']).trim();
-  if (!imageUrl || !isAllowedBackgroundImageUrl(imageUrl)) return;
+  // background-image may be a comma-separated list when multiple images share one doc cell;
+  // background-image-2…5 are individual UE reference fields.
+  const bgImageStr = String(meta['background-image'] || '');
+  const rawUrls = [
+    ...bgImageStr.split(',').map((s) => s.trim()),
+    metaStringValue(meta['background-image-2']).trim(),
+    metaStringValue(meta['background-image-3']).trim(),
+    metaStringValue(meta['background-image-4']).trim(),
+    metaStringValue(meta['background-image-5']).trim(),
+  ].slice(0, 5).filter((url) => url && isAllowedBackgroundImageUrl(url));
+
+  if (!rawUrls.length) return;
 
   // localhost never has a valid TLS cert; downgrade https → http so the request succeeds
-  const parsedUrl = new URL(imageUrl.trim(), window.location.href);
-  if (parsedUrl.hostname === 'localhost') parsedUrl.protocol = 'http:';
-  const safeImageUrl = parsedUrl.href;
+  const sources = rawUrls.map((url) => {
+    const parsed = new URL(url, window.location.href);
+    if (parsed.hostname === 'localhost') parsed.protocol = 'http:';
+    return { src: parsed.href, alt: '' };
+  });
 
   const bg = document.createElement('div');
   bg.className = 'bg-image';
-  const picture = document.createElement('picture');
-  const img = document.createElement('img');
-  img.src = safeImageUrl;
-  img.alt = 'decorative background';
-  img.loading = 'lazy';
-  img.decoding = 'async'; // prevent blocking the main thread
-  picture.append(img);
+  const picture = sources.length === 1
+    ? createOptimizedPicture(sources[0].src, '', false, DEFAULT_BLOCK_SINGLE_PICTURE_BREAKPOINTS)
+    : createArtDirectionPicture(sources, false);
   bg.append(picture);
   section.prepend(bg);
 }
@@ -370,6 +384,10 @@ export function decorateSections(main) {
       background: section.getAttribute('data-background') || '',
       'background-color': section.getAttribute('data-background-color') || '',
       'background-image': section.getAttribute('data-background-image') || '',
+      'background-image-2': section.getAttribute('data-background-image-2') || '',
+      'background-image-3': section.getAttribute('data-background-image-3') || '',
+      'background-image-4': section.getAttribute('data-background-image-4') || '',
+      'background-image-5': section.getAttribute('data-background-image-5') || '',
     });
   }
 }
